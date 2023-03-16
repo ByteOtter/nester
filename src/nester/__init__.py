@@ -4,11 +4,9 @@ import os
 import sys
 import click
 
-OPERATION = ""
-LANGUAGE = ""
 PATH = ""
 
-SUPPORTED_LANGUAGES = ["python", "c", "cpp", "cs", "rb"]
+LANGUAGES = {"py": "python", "c": "C", "cpp": "C++", "rb": "Ruby", "java": "Java"}
 
 
 @click.command()
@@ -17,21 +15,33 @@ def cli():
 
 
 @click.command()
-@click.option("-g", default=0, help="Set up git repository aswell.")
+@click.argument("language", type=click.Choice(LANGUAGES.keys))
 @click.option("--git", default=0, help="Set up git repository aswell.")
-@click.argument("language")
 def create(language):
-    pass
+    print(
+        "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
+    )
+    print(f"Creating file structure for {language}...")
 
 
 @click.command()
-def validate():
-    pass
+@click.argument("language", type=click.Choice(LANGUAGES.keys))
+def validate(language):
+    print(
+        "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
+    )
+    print(f"Validating file structure for your {language} project...")
 
 
 @click.command()
 def clean():
-    pass
+    print(
+        "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
+    )
+    print(f"Cleaning up your mess...")
+
+
+# TODO:add commands to cli group
 
 
 def interactive_mode():
@@ -58,7 +68,7 @@ def interactive_mode():
         userInput = input(
             "What language would you like to generate the structure for?\n(py, cpp, c, cs, rb)\n"
         )
-        if userInput not in SUPPORTED_LANGUAGES:
+        if userInput not in LANGUAGES:
             print("ERROR: Please enter a supported language!\n(py, cpp, c, cs, rb)\n")
             continue
         else:
@@ -73,8 +83,4 @@ def main():
     elif len(sys.argv) == 1:
         interactive_mode()
     else:
-        for argument in sys.argv[2:]:
-            if argument not in ALLOWED_OPERATIONS or SUPPORTED_LANGUAGES:
-                exit(
-                    "Invalid argument!\nUSAGE: nester <OPERATION> <LANGUAGE>\nSupported Languages: py, cpp, c, cs, rb"
-                )
+        cli()
