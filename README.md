@@ -59,7 +59,7 @@ This mode will be the default and how **Nester** is supposed to be used.<br>
 Simply call `nester`, hand it the operation and the language you want and whether you want to initialize a git repository alongside it. Done!
 
 ```
-nester <OPERATION> <OPTIONAL -git FLAG> <LANGUAGE>
+nester <OPERATION> <OPTIONAL -git FLAG> <LANGUAGE> <optional PROJECT_NAME>
 ```
 The following operations will be available:
 |`Operation`|Flags|Arguments|Effect|
