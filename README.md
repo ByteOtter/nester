@@ -87,6 +87,7 @@ Currently planned support for the following languages is planned.
 |Python|`py`||
 |C|`c`||
 |C++|`cpp`||
+|C#|`cs`||
 |Ruby|`rb`||
 |Java|`java`||
 
