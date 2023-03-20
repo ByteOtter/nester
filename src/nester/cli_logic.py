@@ -1,6 +1,10 @@
+import os
 import shutil
+
 import click
+
 import nester.utils as utils
+
 
 @click.group()
 def cli():
@@ -24,6 +28,7 @@ def create(language, projectname, git):
 
     if git:
         print(f"Also creating git repository...")
+        os.system("git init")
 
 
 @click.command()
@@ -36,7 +41,7 @@ def validate(language):
 
 
 @click.command()
-@click.option('--yes', '-y', is_flag=True, default=False)
+@click.option("--yes", "-y", is_flag=True, default=False)
 def clean(y):
     print(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
