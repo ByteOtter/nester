@@ -4,4 +4,4 @@
 #                                      current directory.
 
 cd src/
-python main.py $1 $2 $3 $4
+python nester.py $1 $2 $3 $4
