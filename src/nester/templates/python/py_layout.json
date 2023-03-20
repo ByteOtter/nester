@@ -1,0 +1,15 @@
+{
+  "src": {
+    "$projectname":{
+        "__init__.py": ""
+    },
+    "main.py":
+    "#!/usr/bin/env python3\nfrom $projectname import main\nif __name__ == \"__main__\":\nmain()"
+  },
+  ".gitignore": "$gitignore",
+  "README.md": "",
+  "LICENSE": "$license",
+  "setup.py": "",
+  "setup.cfg": "",
+  "pyproject.toml": ""
+}
