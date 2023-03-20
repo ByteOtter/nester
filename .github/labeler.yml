@@ -1,12 +1,21 @@
 python:
 - src/**/*.py
 
+json:
+- src/templates/**/*.json
+
 documentation:
 - docs/*
 - README.md
 - LICENSE
 - CODE_OF_CONDUCT.md
 - CONTRIBUTING
+
+tests:
+- tests/*
+
+bash/shell:
+- ./**/*.sh
 
 configs:
 - ./**/*.toml
