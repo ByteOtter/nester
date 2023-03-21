@@ -1,6 +1,12 @@
 python:
 - src/**/*.py
 
+cli-frontend:
+- src/nester/cli_logic.py
+
+interactive-mode:
+- src/nester/interactive_mode.py
+
 json:
 - src/templates/**/*.json
 
