@@ -20,7 +20,7 @@ def cli():
 @click.command()
 @click.argument(
     "language",
-    type=click.Choice(utils.LANGUAGES.keys()),
+    type=click.Choice(utils.LANGUAGES),
     required=1,
     metavar="[LANGUAGE]",
 )
@@ -43,10 +43,10 @@ def create(language, projectname, git):
     )
 
     print(
-        f"Creating file structure for your {utils.LANGUAGES[language]} project '{projectname}'..."
+        f"Creating file structure for your {language} project '{projectname}'..."
     )
 
-    utils.parse_dir(utils.LANGUAGES[language], language, projectname)
+    utils.parse_dir(language, projectname)
 
     if git:
         print(f"Also creating git repository...")
@@ -54,7 +54,7 @@ def create(language, projectname, git):
 
 
 @click.command(help=f"Validate current structure against Nester's JSON schemas.")
-@click.argument("language", type=click.Choice(utils.LANGUAGES.keys()))
+@click.argument("language", type=click.Choice(utils.LANGUAGES))
 def validate(language):
     print(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
