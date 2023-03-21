@@ -1,0 +1,3 @@
+# [MASTER]
+# disable=all
+# enable=unused-import, undefined-variable, trailing-whitespace, wildcard-import, import-error

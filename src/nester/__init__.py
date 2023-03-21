@@ -10,6 +10,6 @@ def main():
         exit("VALIDATION ERROR: Invalid number of arguments!")
     elif len(sys.argv) == 1:
         # interactive_mode()
-        exit()
+        exit("No arguments detected. Aborting ...")
     else:
         cli_logic.cli()
