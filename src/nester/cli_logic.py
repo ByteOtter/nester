@@ -42,9 +42,7 @@ def create(language, projectname, git):
         f"Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
 
-    print(
-        f"Creating file structure for your {language} project '{projectname}'..."
-    )
+    print(f"Creating file structure for your {language} project '{projectname}'...")
 
     utils.parse_dir(language, projectname)
 

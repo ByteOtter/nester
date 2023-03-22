@@ -4,9 +4,10 @@ from pathlib import Path, PurePath
 PATH = Path.cwd()
 PROJECT_ROOT = Path(__file__).parent.absolute()
 
+
 def detect_languages():
     base_path = Path.joinpath(PROJECT_ROOT, "templates")
-    return [PurePath(folder).name for folder in base_path.glob('*/')]
+    return [PurePath(folder).name for folder in base_path.glob("*/")]
 
 
 LANGUAGES = detect_languages()
