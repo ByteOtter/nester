@@ -1,13 +1,19 @@
 import json
-from pathlib import Path
+from pathlib import Path, PurePath
 
 PATH = Path.cwd()
 PROJECT_ROOT = Path(__file__).parent.absolute()
-LANGUAGES = {"py": "python", "c": "c", "cpp": "c++", "rb": "ruby", "java": "java"}
+
+def detect_languages():
+    base_path = Path.joinpath(PROJECT_ROOT, "templates")
+    return [PurePath(folder).name for folder in base_path.glob('*/')]
 
 
-def parse_dir(language, short_lang, projectname):
-    template = f"{PROJECT_ROOT}/templates/{language}/{short_lang}_layout.json"
+LANGUAGES = detect_languages()
+
+
+def parse_dir(language, projectname):
+    template = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
     with open(template, "r") as tempfile:
         structure = json.loads(tempfile.read())
 

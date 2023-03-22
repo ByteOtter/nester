@@ -1,6 +1,6 @@
 #!/bin/bash
 # USAGE: nester <OPERATION> <LANGUAGE> <PATH>
-# EXAMPLE: nester create python . -s | Create src-layout for python project in
+# EXAMPLE: nester create py . -s | Create src-layout for py project in
 #                                      current directory.
 
 cd src/
