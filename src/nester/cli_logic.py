@@ -50,6 +50,8 @@ def create(language, projectname, git):
         print(f"Also creating git repository...")
         os.system("git init")
 
+    print(f"Done! Happy Hacking!")
+
 
 @click.command(help=f"Validate current structure against Nester's JSON schemas.")
 @click.argument("language", type=click.Choice(utils.LANGUAGES))

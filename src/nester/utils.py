@@ -19,13 +19,16 @@ LANGUAGES = detect_languages()
 
 def get_project_dir(projectname):
     """
-    Get the project root directory
+    Get the project root directory.
+    If the name of the current working directory does not match the projectname,
+    a new directory will be created with the given projectname inside which the project
+    is created.
 
     :param projectname: the name of the project
     :return: the path of the project root
     """
     if Path.cwd().name != projectname:
-        Path.mkdir(projectname, True)
+        Path.mkdir(Path(projectname), 0o777, True)
         return Path.joinpath(Path.cwd(), projectname)
     else:
         return Path.cwd()
