@@ -19,7 +19,7 @@ A small command line tool to set up the basic structure for your Python, C#, C++
 - [Installation](#installation)
 - [Usage](#usage)
   - [CLI Mode](#cli-mode)
-  - [Interactive / GUI - Mode](#interactive--gui---mode)
+  - [Interactive / GUI - Mode (coming soon)](#interactive--gui---mode-coming-soon)
   - [Supported Languages](#supported-languages)
 - [Contributing](#contributing)
 
@@ -68,7 +68,7 @@ The following operations will be available:
 |`validate`|n/A|`Language`|Checks the current directory and its sub-directories if it corresponds to the schema provided for the language|
 |`clean`|`-y/--yes`|n/A|Deletes the content of the current folder|
 
-### Interactive / GUI - Mode
+### Interactive / GUI - Mode (coming soon)
 
 This is considered to be the fallback mode. If **Nester** is called without any arguments you will be asked to enter all parameters manually.
 

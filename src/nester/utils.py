@@ -28,7 +28,7 @@ def get_project_dir(projectname):
     :return: the path of the project root
     """
     if Path.cwd().name != projectname:
-        Path.mkdir(Path(projectname), 0o777, True)
+        Path.mkdir(Path(projectname), 0o755, True)
         return Path.joinpath(Path.cwd(), projectname)
     else:
         return Path.cwd()
