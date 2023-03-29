@@ -18,6 +18,12 @@ LANGUAGES = detect_languages()
 
 
 def get_project_dir(projectname):
+    """
+    Get the project root directory
+
+    :param projectname: the name of the project
+    :return: the path of the project root
+    """
     if Path.cwd().name != projectname:
         Path.mkdir(projectname, True)
         return Path.joinpath(Path.cwd(), projectname)
