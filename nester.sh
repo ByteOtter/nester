@@ -3,5 +3,4 @@
 # EXAMPLE: nester create py . -s | Create src-layout for py project in
 #                                      current directory.
 
-cd src/
-python nester.py $1 $2 $3 $4
+python $( dirname -- "$0"; )/src/nester.py $1 $2 $3 $4
