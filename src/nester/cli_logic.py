@@ -44,7 +44,9 @@ def create(language, projectname, git):
 
     print(f"Creating file structure for your {language} project '{projectname}'...")
 
-    utils.parse_dir(language, projectname)
+    structure = utils.parse_dir(language, projectname)
+    project_dir = utils.get_project_dir(projectname, True)
+    utils.iterate_structure(structure, project_dir, projectname)
 
     if git:
         print(f"Also creating git repository...")
@@ -54,12 +56,17 @@ def create(language, projectname, git):
 
 
 @click.command(help=f"Validate current structure against Nester's JSON schemas.")
+@click.argument("projectname", type=click.STRING, required=1)
 @click.argument("language", type=click.Choice(utils.LANGUAGES))
-def validate(language):
+def validate(language, projectname):
     print(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
     print(f"Validating file structure for your {language} project...")
+
+    structure = utils.parse_dir(language, projectname)
+    project_dir = utils.get_project_dir(projectname, False)
+    utils.validate_structure(structure, project_dir)
 
 
 @click.command()

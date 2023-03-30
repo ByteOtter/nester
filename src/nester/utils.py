@@ -17,7 +17,16 @@ def detect_languages():
 LANGUAGES = detect_languages()
 
 
-def get_project_dir(projectname):
+def insert_projectname(structure, projectname):
+    for key, val in structure.items():
+        if isinstance(val, dict):
+            insert_projectname(val, projectname)
+    # BUG:
+    # structure = {(projectname: value if key == "$projectname" else key: value)  for (key, value) in structure}
+    return structure
+
+
+def get_project_dir(projectname, should_create):
     """
     Get the project root directory.
     If the name of the current working directory does not match the projectname,
@@ -27,13 +36,14 @@ def get_project_dir(projectname):
     :param projectname: the name of the project
     :return: the path of the project root
     """
-    if Path.cwd().name != projectname:
+    if Path.cwd().name != projectname and should_create:
         Path.mkdir(Path(projectname), 0o755, True)
         return Path.joinpath(Path.cwd(), projectname)
     else:
         return Path.cwd()
 
 
+# TODO: Rename and make modular
 def parse_dir(language, projectname):
     """
     Load the template for the project and call iterate_structure to create the directories and files
@@ -42,14 +52,12 @@ def parse_dir(language, projectname):
     :param projectname: the name of the project
     :return: None
     """
-    project_dir = get_project_dir(projectname)
     template = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
     with open(template, "r") as tempfile:
         structure = json.loads(tempfile.read())
+    structure = insert_projectname(structure, projectname)
 
-    iterate_structure(structure, project_dir, projectname)
-
-    return "Success!"
+    return structure
 
 
 def iterate_structure(structure, base_path, projectname):
@@ -61,17 +69,32 @@ def iterate_structure(structure, base_path, projectname):
     :param projectname: the name of the project
     :return: None
     """
+    structure = insert_projectname(structure, projectname)
+
     for key, val in structure.items():
-        if key == "$projectname":
-            key = projectname
         if isinstance(val, dict):
             base_path = Path.joinpath(base_path, key)
             Path.mkdir(base_path)
             iterate_structure(val, base_path, projectname)
             base_path = base_path.parent
-            continue
         else:
             file = Path.joinpath(base_path, key)
             Path.touch(file)
             if isinstance(val, str):
                 file.write_text(val)
+
+
+def validate_structure(structure, projectname, base_path):
+    """
+    peding
+    """
+    structure = insert_projectname(structure, projectname)
+
+    for key, val in structure.items():
+        if isinstance(val, dict):
+            base_path = Path.joinpath(base_path, key)
+            validate_structure(val, projectname, base_path)
+            base_path = base_path.parent
+        if not Path.is_file(key) or Path.is_dir(key):
+            return "Necessary file {key} is not inside your project structure!"
+    return "All files validated. Everything is okay!"
