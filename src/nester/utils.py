@@ -17,15 +17,6 @@ def detect_languages():
 LANGUAGES = detect_languages()
 
 
-def insert_projectname(structure, projectname):
-    for key, val in structure.items():
-        if isinstance(val, dict):
-            insert_projectname(val, projectname)
-    # BUG:
-    # structure = {(projectname: value if key == "$projectname" else key: value)  for (key, value) in structure}
-    return structure
-
-
 def get_project_dir(projectname, should_create):
     """
     Get the project root directory.
@@ -54,8 +45,9 @@ def parse_dir(language, projectname):
     """
     template = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
     with open(template, "r") as tempfile:
-        structure = json.loads(tempfile.read())
-    structure = insert_projectname(structure, projectname)
+        project_name = tempfile.read()
+        project_name = project_name.replace("$projectname", projectname)
+        structure = json.loads(project_name)
 
     return structure
 
@@ -69,7 +61,6 @@ def iterate_structure(structure, base_path, projectname):
     :param projectname: the name of the project
     :return: None
     """
-    structure = insert_projectname(structure, projectname)
 
     for key, val in structure.items():
         if isinstance(val, dict):
@@ -86,15 +77,20 @@ def iterate_structure(structure, base_path, projectname):
 
 def validate_structure(structure, projectname, base_path):
     """
-    peding
+    Iterates through the subdirectories of the current directory and validates if it is a subset of the schema for
+    the given language.
+
+    :param structure: The directory structure from the template
+    :param base_path: The current directory
+    :param projectname: The name of the project
+    :return: Boolean
     """
-    structure = insert_projectname(structure, projectname)
 
     for key, val in structure.items():
         if isinstance(val, dict):
             base_path = Path.joinpath(base_path, key)
             validate_structure(val, projectname, base_path)
             base_path = base_path.parent
-        if not Path.is_file(key) or Path.is_dir(key):
-            return "Necessary file {key} is not inside your project structure!"
-    return "All files validated. Everything is okay!"
+        if not Path.is_file(Path(key)) or Path.is_dir(Path(key)):
+            return True
+    return False
