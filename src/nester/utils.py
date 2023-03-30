@@ -92,5 +92,6 @@ def validate_structure(structure, projectname, base_path):
             validate_structure(val, projectname, base_path)
             base_path = base_path.parent
         if not Path.is_file(Path(key)) or Path.is_dir(Path(key)):
-            return True
-    return False
+            return False
+    # BUG: this cannot be reached for some reason.
+    return True
