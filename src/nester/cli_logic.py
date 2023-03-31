@@ -74,8 +74,11 @@ def validate(language, projectname):
 
 
 @click.command()
-@click.option("--yes", "-y", is_flag=True, default=False, help="auto-confirm")
-def clean(y):
+@click.argument("projectname", type=click.STRING, required=1)
+@click.confirmation_option(
+    prompt="Are you sure you want to delete this project?\nThis CANNOT be undone!"
+)
+def clean(projectname):
     """
     Delete ALL contents within the current directory.
 
@@ -84,11 +87,11 @@ def clean(y):
     print(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
-    if y:
-        print(f"Cleaning up your mess...")
-        shutil.rmtree(utils.PROJECT_ROOT)
-    else:
-        print(f"No confirmation flag (--yes/-y) given. Aborting...")
+
+    project_dir = utils.get_project_dir(projectname, False)
+    print(f"Cleaning up your mess...")
+    shutil.rmtree(project_dir)
+    print(f"Everything cleaned up!")
 
 
 cli.add_command(create)
