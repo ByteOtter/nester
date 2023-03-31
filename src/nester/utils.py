@@ -1,6 +1,5 @@
 import json
 from pathlib import Path, PurePath
-import pdb
 
 PROJECT_ROOT = Path(__file__).parent.absolute()
 
@@ -26,10 +25,12 @@ def get_project_dir(projectname, should_create):
     is created.
 
     :param projectname: the name of the project
+    :param should_create: if directory should be created or not
     :return: the path of the project root
     """
-    if Path.cwd().name != projectname and should_create:
-        Path.mkdir(Path(projectname), 0o755, True)
+    if Path.cwd().name != projectname:
+        if should_create:
+            Path.mkdir(Path(projectname), 0o755, True)
         return Path.joinpath(Path.cwd(), projectname)
     else:
         return Path.cwd()
@@ -87,17 +88,18 @@ def validate_structure(structure, projectname, base_path):
     :return: Boolean
     """
 
-    pdb.set_trace()
+    missing_file = False
 
     for key, val in structure.items():
         if isinstance(val, dict):
             base_path = Path.joinpath(base_path, key)
-            print("going in")
             validate_structure(val, projectname, base_path)
             base_path = base_path.parent
         key_path = Path.joinpath(base_path, key)
-        if not Path.is_file(key_path) and Path.is_dir(key_path):
+        if not Path.is_file(key_path) and not Path.is_dir(key_path):
             print(f"'{key}' file or directory not found!")
-            return False
-    # BUG: this cannot be reached for some reason.
+            missing_file = True
+            continue
+    if missing_file:
+        return False
     return True
