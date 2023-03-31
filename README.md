@@ -62,11 +62,11 @@ Simply call `nester`, hand it the operation and the language you want and whethe
 nester <OPERATION> <OPTIONAL -git FLAG> <LANGUAGE> <PROJECT_NAME>
 ```
 The following operations will be available:
-|`Operation`|Flags|Arguments|Effect|
+|`Operation`|Flags|Argument|Argument|Effect|
 |-|-|-|-|
-|`create`|`-g/--git`|`Language`|Creates the project structure for the selected lanugage in *the current directory*. IF `-git` is set it will also call `git init` in this directory and create an example `.gitignore` file|
-|`validate`|n/A|`Language`|Checks the current directory and its sub-directories if it corresponds to the schema provided for the language|
-|`clean`|`-y/--yes`|n/A|Deletes the content of the current folder|
+|`create`|`-g/--git`|`Language`|`Projectname`|Creates the project structure for the selected lanugage in *the current directory*. IF `-git` is set it will also call `git init` in this directory|
+|`validate`|n/A|`Language`|`Projectname`|Checks the current directory and its sub-directories if it corresponds to the schema provided for the language|
+|`clean`|`-y/--yes`|`Projectname`|n/A|Deletes the content of the specified project|
 
 ### Interactive / GUI - Mode (coming soon)
 
