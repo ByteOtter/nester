@@ -63,7 +63,7 @@ nester <OPERATION> <OPTIONAL -git FLAG> <LANGUAGE> <PROJECT_NAME>
 ```
 The following operations will be available:
 |`Operation`|Flags|Argument|Argument|Effect|
-|-|-|-|-|
+|-|-|-|-|-|
 |`create`|`-g/--git`|`Language`|`Projectname`|Creates the project structure for the selected lanugage in *the current directory*. IF `-git` is set it will also call `git init` in this directory|
 |`validate`|n/A|`Language`|`Projectname`|Checks the current directory and its sub-directories if it corresponds to the schema provided for the language|
 |`clean`|`-y/--yes`|`Projectname`|n/A|Deletes the content of the specified project|
