@@ -1,5 +1,6 @@
 import json
 from pathlib import Path, PurePath
+import pdb
 
 PROJECT_ROOT = Path(__file__).parent.absolute()
 
@@ -86,12 +87,17 @@ def validate_structure(structure, projectname, base_path):
     :return: Boolean
     """
 
+    pdb.set_trace()
+
     for key, val in structure.items():
         if isinstance(val, dict):
             base_path = Path.joinpath(base_path, key)
+            print("going in")
             validate_structure(val, projectname, base_path)
             base_path = base_path.parent
-        if not Path.is_file(Path(key)) or Path.is_dir(Path(key)):
+        key_path = Path.joinpath(base_path, key)
+        if not Path.is_file(key_path) and Path.is_dir(key_path):
+            print(f"'{key}' file or directory not found!")
             return False
     # BUG: this cannot be reached for some reason.
     return True
