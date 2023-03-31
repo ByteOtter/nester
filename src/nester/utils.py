@@ -17,7 +17,7 @@ def detect_languages():
 LANGUAGES = detect_languages()
 
 
-def get_project_dir(projectname):
+def get_project_dir(projectname, should_create):
     """
     Get the project root directory.
     If the name of the current working directory does not match the projectname,
@@ -25,15 +25,18 @@ def get_project_dir(projectname):
     is created.
 
     :param projectname: the name of the project
+    :param should_create: if directory should be created or not
     :return: the path of the project root
     """
     if Path.cwd().name != projectname:
-        Path.mkdir(Path(projectname), 0o755, True)
+        if should_create:
+            Path.mkdir(Path(projectname), 0o755, True)
         return Path.joinpath(Path.cwd(), projectname)
     else:
         return Path.cwd()
 
 
+# TODO: Rename and make modular
 def parse_dir(language, projectname):
     """
     Load the template for the project and call iterate_structure to create the directories and files
@@ -42,14 +45,13 @@ def parse_dir(language, projectname):
     :param projectname: the name of the project
     :return: None
     """
-    project_dir = get_project_dir(projectname)
     template = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
     with open(template, "r") as tempfile:
-        structure = json.loads(tempfile.read())
+        project_name = tempfile.read()
+        project_name = project_name.replace("$projectname", projectname)
+        structure = json.loads(project_name)
 
-    iterate_structure(structure, project_dir, projectname)
-
-    return "Success!"
+    return structure
 
 
 def iterate_structure(structure, base_path, projectname):
@@ -61,17 +63,43 @@ def iterate_structure(structure, base_path, projectname):
     :param projectname: the name of the project
     :return: None
     """
+
     for key, val in structure.items():
-        if key == "$projectname":
-            key = projectname
         if isinstance(val, dict):
             base_path = Path.joinpath(base_path, key)
             Path.mkdir(base_path)
             iterate_structure(val, base_path, projectname)
             base_path = base_path.parent
-            continue
         else:
             file = Path.joinpath(base_path, key)
             Path.touch(file)
             if isinstance(val, str):
                 file.write_text(val)
+
+
+def validate_structure(structure, projectname, base_path):
+    """
+    Iterates through the subdirectories of the current directory and validates if it is a subset of the schema for
+    the given language.
+
+    :param structure: The directory structure from the template
+    :param base_path: The current directory
+    :param projectname: The name of the project
+    :return: Boolean
+    """
+
+    missing_file = False
+
+    for key, val in structure.items():
+        if isinstance(val, dict):
+            base_path = Path.joinpath(base_path, key)
+            validate_structure(val, projectname, base_path)
+            base_path = base_path.parent
+        key_path = Path.joinpath(base_path, key)
+        if not Path.is_file(key_path) and not Path.is_dir(key_path):
+            print(f"'{key}' file or directory not found!")
+            missing_file = True
+            continue
+    if missing_file:
+        return False
+    return True
