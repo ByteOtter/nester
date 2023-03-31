@@ -75,15 +75,8 @@ def validate(language, projectname):
 
 @click.command()
 @click.argument("projectname", type=click.STRING, required=1)
-@click.option(
-    "--yes",
-    "-y",
-    is_flag=True,
-    default=False,
-    help="auto-confirm",
-    callback=utils.abort_if_false,
-    expose_value=False,
-    prompt="Are you sure you want to delete this project?",
+@click.confirmation_option(
+    prompt="Are you sure you want to delete this project?\nThis CANNOT be undone!"
 )
 def clean(projectname):
     """

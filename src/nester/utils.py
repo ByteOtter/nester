@@ -4,11 +4,6 @@ from pathlib import Path, PurePath
 PROJECT_ROOT = Path(__file__).parent.absolute()
 
 
-def abort_if_false(ctx, param, value):
-    if not value:
-        ctx.abort()
-
-
 def detect_languages():
     """
     Look through the templates folder to find which languages we have templates for
