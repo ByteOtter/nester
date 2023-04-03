@@ -36,8 +36,7 @@ def get_project_dir(projectname, should_create):
         return Path.cwd()
 
 
-# TODO: Rename and make modular
-def parse_dir(language, projectname):
+def load_json(language, projectname):
     """
     Load the template for the project and call iterate_structure to create the directories and files
 

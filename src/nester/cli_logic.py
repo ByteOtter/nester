@@ -44,7 +44,7 @@ def create(language, projectname, git):
 
     print(f"Creating file structure for your {language} project '{projectname}'...")
 
-    structure = utils.parse_dir(language, projectname)
+    structure = utils.load_json(language, projectname)
     project_dir = utils.get_project_dir(projectname, True)
     utils.iterate_structure(structure, project_dir, projectname)
 
@@ -64,7 +64,7 @@ def validate(language, projectname):
     )
     print(f"Validating file structure for your {language} project...")
 
-    structure = utils.parse_dir(language, projectname)
+    structure = utils.load_json(language, projectname)
     project_dir = utils.get_project_dir(projectname, False)
 
     if not utils.validate_structure(structure, projectname, project_dir):
