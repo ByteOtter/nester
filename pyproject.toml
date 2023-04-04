@@ -1,3 +1,18 @@
 [build-system]
 requires = ["setuptools", "setuptools-scm", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "Nester"
+dynamic = [
+  "authors",
+  "urls",
+  "description",
+  "keywords",
+  "license",
+  "classifiers",
+  "version"
+]
+
+[tool.isort]
+profile = "black"
