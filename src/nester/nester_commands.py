@@ -1,11 +1,13 @@
+"""
+This module implements Nester's CLI-behaviour.
+"""
+
 import os
 import shutil
-
 import click
+from . import utils
 
-import nester.utils as utils
-
-_context_settings = dict(help_option_names=["-h", "--help"])
+_context_settings = {"help_option_names": ["-h", "--help"]}
 
 
 @click.group(context_settings=_context_settings)
@@ -49,16 +51,19 @@ def create(language, projectname, git):
     utils.iterate_structure(structure, project_dir, projectname)
 
     if git:
-        print(f"Also creating git repository...")
+        print("Also creating git repository...")
         os.system("git init")
 
-    print(f"Done! Happy Hacking!")
+    print("Done! Happy Hacking!")
 
 
-@click.command(help=f"Validate current structure against Nester's JSON schemas.")
+@click.command(help="Validate current structure against Nester's JSON schemas.")
 @click.argument("language", type=click.Choice(utils.LANGUAGES))
 @click.argument("projectname", type=click.STRING, required=1)
 def validate(language, projectname):
+    """
+    Validate given project against the schema for the given language.
+    """
     print(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
@@ -68,9 +73,9 @@ def validate(language, projectname):
     project_dir = utils.get_project_dir(projectname, False)
 
     if not utils.validate_structure(structure, projectname, project_dir):
-        print(f"Your structure does not seem to line up to our schemas :(")
+        print("Your structure does not seem to line up to our schemas :(")
     else:
-        print(f"Validation complete! Everything looks good. :)")
+        print("Validation complete! Everything looks good. :)")
 
 
 @click.command()
@@ -89,9 +94,9 @@ def clean(projectname):
     )
 
     project_dir = utils.get_project_dir(projectname, False)
-    print(f"Cleaning up your mess...")
+    print("Cleaning up your mess...")
     shutil.rmtree(project_dir)
-    print(f"Everything cleaned up!")
+    print("Everything cleaned up!")
 
 
 cli.add_command(create)

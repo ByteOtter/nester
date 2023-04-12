@@ -6,14 +6,17 @@ This method of running nester is deprecated by using the cli_logic module direct
 
 import sys
 
-import nester.nester_commands as nester_commands
+from nester import nester_commands
 
 
 def main():
+    """
+    Main method.
+    """
     if not sys.argv or len(sys.argv) > 6:
-        exit("VALIDATION ERROR: Invalid number of arguments!")
+        sys.exit("VALIDATION ERROR: Invalid number of arguments!")
     elif len(sys.argv) == 1:
         # interactive_mode()
-        exit("No arguments detected. Aborting ...")
+        sys.exit("No arguments detected. Aborting ...")
     else:
         nester_commands.cli()

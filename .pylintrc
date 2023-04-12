@@ -1,3 +1,4 @@
-# [MASTER]
-# disable=all
+[MASTER]
+disable=line-too-long, unnecessary-pass, f-string-without-interpolation, no-name-in-module
+ignore-paths=docs, tests
 # enable=unused-import, undefined-variable, trailing-whitespace, wildcard-import, import-error

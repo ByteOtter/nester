@@ -1,3 +1,11 @@
+"""
+This module provides all functions necessary for Nester's three main utilities:
+
+- create
+- validate
+- clean
+"""
+
 import json
 from pathlib import Path, PurePath
 
@@ -35,8 +43,7 @@ def get_project_dir(projectname, should_create):
         if should_create:
             Path.mkdir(Path(projectname), 0o755, True)
         return Path.joinpath(Path.cwd(), projectname)
-    else:
-        return Path.cwd()
+    return Path.cwd()
 
 
 def load_json(language, projectname):
@@ -50,7 +57,7 @@ def load_json(language, projectname):
     :return: None
     """
     template = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
-    with open(template, "r") as tempfile:
+    with open(template, "r", encoding="utf-8") as tempfile:
         project_name = tempfile.read()
         project_name = project_name.replace("$projectname", projectname)
         structure = json.loads(project_name)
