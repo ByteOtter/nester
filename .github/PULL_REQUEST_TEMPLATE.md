@@ -8,6 +8,7 @@ Tick the applicable box:
 - [ ] UI improvement
 - [ ] Security changes
 - [ ] Tests
+- [ ] Documentation changed
 <br/>
 
 - [ ] General Maintenance
