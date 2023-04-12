@@ -21,6 +21,9 @@ A small command line tool to set up the basic structure for your Python, C#, C++
   - [CLI Mode](#cli-mode)
   - [Interactive / GUI - Mode (coming soon)](#interactive--gui---mode-coming-soon)
   - [Supported Languages](#supported-languages)
+- [Documentation](#documentation)
+    - [Read the Docs (wip)](#read-the-docs-wip)
+    - [Towncrier (wip)](#towncrier-wip)
 - [Contributing](#contributing)
 
 ## Introduction
@@ -41,7 +44,7 @@ One simple cli-Command and Nester will do the rest for you, optionally even init
 
 ## Installation
 
-**Nester** is not yet packaged.
+**Nester** is not yet released.
 
 The only way to install it is to clone the repository and install it this way.
 
@@ -94,6 +97,21 @@ Currently planned support for the following languages is planned.
 *Note:* Python will be set up with the `src-Layout` which currently seems to be the standard for Python projects and was the stone that started it all.
 
 For the future we are also looking into supporting languages with built-in set up features simply by calling them aswell as other languages with standardized structure layouts, but for now this list is all which will be supported.
+
+## Documentation
+
+Good documentation is very important to us, even with such a small project like Nester. To this end we have two methods in place to build documentation for us:
+
+#### Read the Docs (wip)
+
+On our [Read the Docs](https://readthedocs.org/projects/nester/) we build the general documentation for the project. You can find the installation and usage guides there, aswell as an overview over the languages we support oder want to support.
+
+Also there is the automatically build documentation of functions and modules that make Nester go.
+
+#### Towncrier (wip)
+
+Towncrier is used to build changelogs for us. It is required that Pull Requests, which change Nesters behaviour, include a changelog file.
+
 ## Contributing
 
 We are happy to welcome you to the group of Nester contributors. Please check the [Contributing Guide](docs/CONTRIBUTING.md) to find out how you can help achieve our goal.
