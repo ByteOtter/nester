@@ -6,7 +6,7 @@ This method of running nester is deprecated by using the cli_logic module direct
 
 import sys
 
-import nester.cli_logic as cli_logic
+import nester.nester_commands as nester_commands
 
 
 def main():
@@ -16,4 +16,4 @@ def main():
         # interactive_mode()
         exit("No arguments detected. Aborting ...")
     else:
-        cli_logic.cli()
+        nester_commands.cli()
