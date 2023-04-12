@@ -9,6 +9,7 @@ def detect_languages():
     Look through the templates folder to find which languages we have templates for
 
     :return: List of languages that have template folders
+    :rtype: list
     """
     base_path = Path.joinpath(PROJECT_ROOT, "templates")
     return [PurePath(folder).name for folder in base_path.glob("*/")]
@@ -25,7 +26,9 @@ def get_project_dir(projectname, should_create):
     is created.
 
     :param projectname: the name of the project
+    :type projectname: str
     :param should_create: if directory should be created or not
+    :type should_create: bool
     :return: the path of the project root
     """
     if Path.cwd().name != projectname:
@@ -41,7 +44,9 @@ def load_json(language, projectname):
     Load the template for the project and call iterate_structure to create the directories and files
 
     :param language: the programming language of the project
+    :type language: str
     :param projectname: the name of the project
+    :type projectname: str
     :return: None
     """
     template = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
@@ -58,8 +63,11 @@ def iterate_structure(structure, base_path, projectname):
     Iterate through the items in the structure and create directories and files based on that structure
 
     :param structure: the directory structure from the template
+    :type structure: dict
     :param base_path: The current directory
+    :type base_path: Path
     :param projectname: the name of the project
+    :type projectname: str
     :return: None
     """
 
@@ -82,8 +90,11 @@ def validate_structure(structure, projectname, base_path):
     the given language.
 
     :param structure: The directory structure from the template
+    :type structure: dict
     :param base_path: The current directory
+    :type base_path: Path
     :param projectname: The name of the project
+    :type projectname: str
     :return: Boolean
     """
 

@@ -1,0 +1,11 @@
+Welcome to Nester's documentation!
+==================================
+
+Nester strives to be as easy to use as possible.
+
+To achieve this it can be used in two ways:
+
+CLI-Mode
+--------
+
+This is how Nester was intended to be used: As a small CLI-tool.

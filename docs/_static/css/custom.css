@@ -1,0 +1,26 @@
+/* Set body background color */
+.body {
+  background-color: #111; /* very dark grey */
+}
+
+/* Set main content text color */
+.wy-nav-content {
+  color: #eee; /* light grey */
+}
+
+/* Set heading text color */
+.wy-nav-content h1,
+.wy-nav-content h2,
+.wy-nav-content h3,
+.wy-nav-content h4,
+.wy-nav-content h5,
+.wy-nav-content h6 {
+  color: #f00; /* red */
+}
+
+/* Set logo background color and resize */
+.wy-side-nav-search .logo img {
+  width: 40%; /* resize to 40% of original size */
+  height: auto;
+  background-color: #222; /* dark grey */
+}
