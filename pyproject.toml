@@ -2,6 +2,11 @@
 requires = ["setuptools", "setuptools-scm", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.entry_points]
+console_scripts = [
+  "nester = src.cli_logic:cli"
+]
+
 [project]
 name = "Nester"
 dynamic = [

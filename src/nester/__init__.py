@@ -1,3 +1,7 @@
+"""
+This method of running nester is deprecated by using the cli_logic module directly as a setuptool entry point.
+"""
+
 #!/usr/bin/env python3
 
 import sys
