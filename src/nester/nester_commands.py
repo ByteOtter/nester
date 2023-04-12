@@ -7,7 +7,7 @@ import shutil
 import click
 from . import utils
 
-_context_settings = {"help_option_names": ["-h", "--help"]}
+_context_settings = dict(help_option_names=["-h", "--help"])
 
 
 @click.group(context_settings=_context_settings)
@@ -48,7 +48,7 @@ def create(language, projectname, git):
 
     structure = utils.load_json(language, projectname)
     project_dir = utils.get_project_dir(projectname, True)
-    utils.iterate_structure(structure, project_dir, projectname)
+    utils.create_structure(structure, project_dir, projectname)
 
     if git:
         print("Also creating git repository...")
