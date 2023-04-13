@@ -1,0 +1,18 @@
+{
+  "$projectname.sln": "",
+  "$projectname.csproj":"",
+  "README.md": "Your project description",
+  "build": {},
+  "src": {
+    "$projectname": {
+      "Program.cs": "",
+      "Class.cs": ""
+    },
+    "$projectname_tests": {
+      "TestMyClass.cs": ""
+    }
+  },
+  "docs": {
+    "index.md": "<!--You project description here-->"
+  }
+}

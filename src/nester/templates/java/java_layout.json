@@ -1,0 +1,14 @@
+{
+  "out": {},
+  "src": {
+    "Main.java": "public class Main{}",
+    "test": {
+      "MainTest.java": "public class MainTest{}"
+    }
+  },
+  "lib": {},
+  "docs": {
+    "index.md": ""
+  },
+  "README.md": "<!--You project description here-->"
+}

@@ -1,0 +1,21 @@
+{
+  "include": {
+    "header.h": ""
+  },
+  "src": {
+    "main.c": "",
+    "module.c": ""
+  },
+  "build":{},
+  "lib": {},
+  "docs": {
+    "README.md": "Your docs go here!"
+  },
+  "test":{
+    "test_module.c":""
+  },
+  "config": {
+    "build_config.ini": ""
+  },
+  "README.md": "<!--You project description here-->"
+}
