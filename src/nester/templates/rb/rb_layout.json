@@ -1,0 +1,19 @@
+{
+  "lib":{
+    "$projectname": {
+      "class.rb": ""
+    }
+  },
+  "test": {
+    "main_test.rb": ""
+  },
+  "bin": {
+    "$projectname.rb": ""
+  },
+  "docs": {
+    "index.md": "<!--Your docs here-->"
+  },
+  "README.md": "<!--Your project description here-->",
+  "Gemfile": "",
+  "Gemfile.lock": ""
+}

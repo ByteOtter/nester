@@ -88,11 +88,11 @@ Currently planned support for the following languages is planned.
 |Language|Parameter|Supported yet?|
 |-|-|-|
 |Python|`py`|:heavy_check_mark:|
-|C|`c`|:o:|
-|C++|`cpp`|:o:|
-|C#|`cs`|:o:|
-|Ruby|`rb`|:o:|
-|Java|`java`|:o:|
+|C|`c`|:heavy_check_mark:|
+|C++|`cpp`|:heavy_check_mark:|
+|C#|`cs`|:heavy_check_mark:|
+|Ruby|`rb`|:heavy_check_mark:|
+|Java|`java`|:heavy_check_mark:|
 
 *Note:* Python will be set up with the `src-Layout` which currently seems to be the standard for Python projects and was the stone that started it all.
 
