@@ -35,5 +35,5 @@ html_theme_options = {
     "logo_only": True,  # Hide the title and home icon in navigation bar
 }
 html_static_path = ["_static"]
-# html_css_files = ["custom.css"] # WIP
+html_css_files = ["css/custom.css"]  # WIP
 html_logo = "_static/index_logo.png"

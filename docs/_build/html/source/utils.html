@@ -7,6 +7,7 @@
   <title>The Utils module &mdash; Nester  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -46,7 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation_guide.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage_guide.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dev_docs.html">Developer Docs</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">  The `utils` module</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">   The `utils` module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.detect_languages"><code class="docutils literal notranslate"><span class="pre">detect_languages()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.get_project_dir"><code class="docutils literal notranslate"><span class="pre">get_project_dir()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.iterate_structure"><code class="docutils literal notranslate"><span class="pre">iterate_structure()</span></code></a></li>
@@ -85,7 +86,13 @@
 <h1>The Utils module<a class="headerlink" href="#the-utils-module" title="Permalink to this heading"></a></h1>
 <p>The utils module is the summary of all functionality needed by Nester.</p>
 <p>We are planning to modularize and clean it up in the future.</p>
-<span class="target" id="module-nester.utils"></span><dl class="py function">
+<span class="target" id="module-nester.utils"></span><p>This module provides all functions necessary for Nester’s three main utilities:</p>
+<ul class="simple">
+<li><p>create</p></li>
+<li><p>validate</p></li>
+<li><p>clean</p></li>
+</ul>
+<dl class="py function">
 <dt class="sig sig-object py" id="nester.utils.detect_languages">
 <span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">detect_languages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.detect_languages" title="Permalink to this definition"></a></dt>
 <dd><p>Look through the templates folder to find which languages we have templates for</p>

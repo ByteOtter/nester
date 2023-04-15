@@ -1,11 +1,28 @@
+@import '../sphinx-rtd-theme';
+
 /* Set body background color */
-.body {
+body .rst-content .document{
   background-color: #111; /* very dark grey */
+}
+
+.wy-nav-content-wrap {
+  background-color: #111;
 }
 
 /* Set main content text color */
 .wy-nav-content {
-  color: #eee; /* light grey */
+  background-color: #111; /* light grey */
+  color: #fff;
+}
+
+.wy-side-nav-search {
+  background-color: #222;
+}
+
+.highlight,
+ .code-block {
+  background-color: #222;
+  border-color: #222;
 }
 
 /* Set heading text color */
@@ -15,7 +32,7 @@
 .wy-nav-content h4,
 .wy-nav-content h5,
 .wy-nav-content h6 {
-  color: #f00; /* red */
+  color: #ffff; /* red */
 }
 
 /* Set logo background color and resize */
@@ -23,4 +40,38 @@
   width: 40%; /* resize to 40% of original size */
   height: auto;
   background-color: #222; /* dark grey */
+}
+
+/* Change the background color of the autodoc block */
+.sig.sig-object.py {
+  color: #363636;
+}
+
+/* Change the color of hyperlinks in Sphinx RTD theme */
+.rst-content a:not(.reference):not(.headerlink):not(.external):not(.fn-backref) {
+  color: #ff5100;
+}
+
+/* Change color of hyperlinks in Sphinx RTD theme table of contents */
+.wy-menu.wy-menu-vertical ul li a {
+  color: #fff;
+}
+
+/* Change color of internal references in Sphinx RTD theme */
+.wy-nav-content-wrap a.reference.internal:link,
+.wy-nav-content-wrap a.reference.internal:visited {
+    color: #ff5100;
+}
+
+/* Change background color of toctree-l2 class within a toctree-l1.current element in Sphinx RTD theme */
+html.writer-html5 body.wy-body-for-nav div.wy-grid-for-nav nav.wy-nav-side div.wy-side-scroll div.wy-menu.wy-menu-vertical ul.current li.toctree-l1.current ul li.toctree-l2 a.reference.internal,
+html.writer-html5 body.wy-body-for-nav div.wy-grid-for-nav nav.wy-nav-side div.wy-side-scroll div.wy-menu.wy-menu-vertical ul.current li.toctree-l1.current a.current.reference.internal {
+  background-color: #111;
+}
+
+/*Change background color of rendered code in toc on index.rst*/
+html.writer-html5 body.wy-body-for-nav div.wy-grid-for-nav section.wy-nav-content-wrap div.wy-nav-content div.rst-content div.document div section#welcome-to-nester-s-documentation div.toctree-wrapper.compound ul li.toctree-l1 ul li.toctree-l2 a.reference.internal code.docutils.literal.notranslate {
+  background-color: #222;
+  color: #ff5100;
+  border-style: hidden;
 }
