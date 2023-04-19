@@ -105,7 +105,7 @@ Good documentation is very important to us, even with such a small project like 
 
 #### Read the Docs (wip)
 
-On our [Read the Docs](https://readthedocs.org/projects/nester/) we build the general documentation for the project. You can find the installation and usage guides there, aswell as an overview over the languages we support oder want to support.
+On our [Read the Docs](https://nester.readthedocs.io/en/latest/index.html#) we build the general documentation for the project. You can find the installation and usage guides there, aswell as an overview over the languages we support oder want to support.
 
 Also there is the automatically build documentation of functions and modules that make Nester go.
 
