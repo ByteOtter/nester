@@ -8,7 +8,7 @@
     alt="Our logo">
 </img>
 </p>
-<h2 align="center" style="text-decoration:underline">Building your nest for you</h2>
+<h2 align="center" style="text-decoration:underline">Building the nest for you</h2>
 
 <h3 style="text-decoration:underline">Welcome to Nester!</h3>
 A small command line tool to set up the basic structure for your Python, C#, C++, Java or Ruby project.
@@ -52,6 +52,7 @@ However, this is ***not recommended*** until the first release is done.
 
 If you still want to get it and contribute to it, refer to the [Contributing Guide](docs/CONTRIBUTING.md) to find out how.
 
+We plan to release Nester to pypi first and as an `.rpm` package in the future.
 ## Usage
 
 **Nester** strives to be easy to use and will have to modes of operation:

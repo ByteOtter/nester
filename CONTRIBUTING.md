@@ -42,7 +42,7 @@ cd nester
 pip install -e .
 ```
 
-This should install all necessary requirements for nester.
+This should install all necessary requirements for nester aswell as nester itself.
 
 >Note: If you encounter any issues with dependencies or installation, please refer to the troubleshooting section or reach out for help in the issues section or via email.
 
