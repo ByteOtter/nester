@@ -29,7 +29,7 @@ start_string = "<!--Towncrier release notes start-->"
 underlines = ["", "", ""]
 template = "changelog.d/changelog_template.jinja"
 title_format = "# Nester [{version}](https://github.com/ByteOtter/nester/tree/v{version}) - {project_date}"
-issue_format = "[#{issue}](https://github.com/cobbler/nester/issues/{issue})"
+issue_format = "[#{issue}](https://github.com/ByteOtter/nester/issues/{issue})"
 single_file = false
 wrap = true
 
