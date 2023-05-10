@@ -3,11 +3,10 @@ This module implements Nester's CLI-behaviour.
 """
 
 import os
-import shutil
 import click
 from . import utils
 
-_context_settings = {"help_option_names": ["-h", "--help"]}
+_context_settings = dict(help_option_names=["-h", "--help"])
 
 
 @click.group(context_settings=_context_settings)
@@ -48,7 +47,7 @@ def create(language, projectname, git):
 
     structure = utils.load_json(language, projectname)
     project_dir = utils.get_project_dir(projectname, True)
-    utils.iterate_structure(structure, project_dir, projectname)
+    utils.create_structure(structure, project_dir, projectname)
 
     if git:
         print("Also creating git repository...")
@@ -92,11 +91,7 @@ def clean(projectname):
     print(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
-
-    project_dir = utils.get_project_dir(projectname, False)
-    print("Cleaning up your mess...")
-    shutil.rmtree(project_dir)
-    print("Everything cleaned up!")
+    utils.clean(projectname)
 
 
 cli.add_command(create)

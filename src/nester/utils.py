@@ -8,6 +8,7 @@ This module provides all functions necessary for Nester's three main utilities:
 
 import json
 from pathlib import Path, PurePath
+from shutil import rmtree
 
 PROJECT_ROOT = Path(__file__).parent.absolute()
 
@@ -48,24 +49,31 @@ def get_project_dir(projectname, should_create):
 
 def load_json(language, projectname):
     """
-    Load the template for the project and call iterate_structure to create the directories and files
+    Load the template for the project.
 
     :param language: the programming language of the project
     :type language: str
     :param projectname: the name of the project
     :type projectname: str
-    :return: None
+    :return structure: Returns the structure of the given language as a dict
+    :rtype: dict
     """
     template = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
     with open(template, "r", encoding="utf-8") as tempfile:
         project_name = tempfile.read()
         project_name = project_name.replace("$projectname", projectname)
-        structure = json.loads(project_name)
+        structure = {}
+        try:
+            structure = json.loads(project_name)
+        except json.JSONDecodeError as exc:
+            print(f"JSONDecodeError: {exc}")
+        except ValueError as exc:
+            print(f"ValueError: {exc}")
 
     return structure
 
 
-def iterate_structure(structure, base_path, projectname):
+def create_structure(structure, base_path, projectname):
     """
     Iterate through the items in the structure and create directories and files based on that structure
 
@@ -82,7 +90,7 @@ def iterate_structure(structure, base_path, projectname):
         if isinstance(val, dict):
             base_path = Path.joinpath(base_path, key)
             Path.mkdir(base_path)
-            iterate_structure(val, base_path, projectname)
+            create_structure(val, base_path, projectname)
             base_path = base_path.parent
         else:
             file = Path.joinpath(base_path, key)
@@ -102,7 +110,8 @@ def validate_structure(structure, projectname, base_path):
     :type base_path: Path
     :param projectname: The name of the project
     :type projectname: str
-    :return: Boolean
+    :return: True or False depending on if the structure corresponds to the schema or not
+    :rtype: bool
     """
 
     missing_file = False
@@ -120,3 +129,15 @@ def validate_structure(structure, projectname, base_path):
     if missing_file:
         return False
     return True
+
+
+def clean(projectname):
+    """
+    Cleanup the given project.
+
+    :param projectname: The name of the project
+    """
+    project_dir = get_project_dir(projectname, False)
+    print("Cleaning up your mess...")
+    rmtree(project_dir)
+    print("Everything cleaned up!")
