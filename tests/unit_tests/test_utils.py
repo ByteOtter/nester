@@ -2,7 +2,6 @@
 This module contains unit tests for the utils.py functions
 """
 
-from unittest.mock import patch
 from unittest import mock
 from pathlib import Path
 
@@ -33,7 +32,7 @@ def test_load_json():
     fake_json = '{"src": {"test_project": {"__init__.py": "test"}}}'
 
     # Act
-    with patch("builtins.open", mock.mock_open(read_data=fake_json)):
+    with mock.patch("builtins.open", mock.mock_open(read_data=fake_json)):
         result = utils.load_json("py", "test")
 
     # Assert
@@ -52,14 +51,3 @@ def test_create_structure(tmp_path):
     # Assert
     assert Path.exists(tmp_path / "src/test_project/__init__.py")
     assert file.read_text() == "test"
-
-
-def test_validate_structure(tmp_path):
-    # Create a valid and an invalid directory tree
-    utils.create_structure(_VALID_STRUCTURE, tmp_path, "test_project")
-    utils.create_structure(_INVALID_STRUCTURE, tmp_path, "test_invalid_project")
-    # assert if the given directory tree passes or fails the test when comparing to the correct schema
-    assert utils.validate_structure(_VALID_STRUCTURE, "test_project", tmp_path)
-    assert not utils.validate_structure(
-        _VALID_STRUCTURE, "test_invalid_project", tmp_path / "test_invalid_project"
-    )

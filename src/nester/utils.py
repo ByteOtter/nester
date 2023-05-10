@@ -8,6 +8,7 @@ This module provides all functions necessary for Nester's three main utilities:
 
 import json
 from pathlib import Path, PurePath
+from shutil import rmtree
 
 PROJECT_ROOT = Path(__file__).parent.absolute()
 
@@ -128,3 +129,15 @@ def validate_structure(structure, projectname, base_path):
     if missing_file:
         return False
     return True
+
+
+def clean(projectname):
+    """
+    Cleanup the given project.
+
+    :param projectname: The name of the project
+    """
+    project_dir = get_project_dir(projectname, False)
+    print("Cleaning up your mess...")
+    rmtree(project_dir)
+    print("Everything cleaned up!")
