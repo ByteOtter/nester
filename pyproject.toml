@@ -18,6 +18,10 @@ dynamic = [
 [project.scripts]
 nester = "nester.nester_commands:cli"
 
+[tool.setuptools_scm]
+root = "."
+relative_to = "src/nester/__init__.py"
+
 [tool.isort]
 profile = "black"
 

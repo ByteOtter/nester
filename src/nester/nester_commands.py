@@ -4,7 +4,7 @@ This module implements Nester's CLI-behaviour.
 
 import os
 import click
-from . import utils
+from . import utils, __version__
 
 _context_settings = dict(help_option_names=["-h", "--help"])
 
@@ -94,6 +94,19 @@ def clean(projectname):
     utils.clean(projectname)
 
 
+@click.command()
+def version():
+    """
+    Print Nester version
+    """
+
+    print(
+        """Nester - Copyright (c) 2023 ByteOtter. (github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more info.\nNester-version:""",
+        __version__,
+    )
+
+
 cli.add_command(create)
 cli.add_command(validate)
 cli.add_command(clean)
+cli.add_command(version)

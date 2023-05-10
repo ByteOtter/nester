@@ -13,7 +13,10 @@ src/nester/__pycache__/
 src/nester/**/__pycache__/
 test/__pycache__/
 
+
 # build information
+**/**/__nester_struct.egg-info/
+src/nester_struct.egg-info/
 src/Nester.egg-info/
 src/nester.egg-info/
 build/
