@@ -48,9 +48,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage_guide.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dev_docs.html">Developer Docs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">   The `utils` module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nester.utils.clean"><code class="docutils literal notranslate"><span class="pre">clean()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.utils.create_structure"><code class="docutils literal notranslate"><span class="pre">create_structure()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.detect_languages"><code class="docutils literal notranslate"><span class="pre">detect_languages()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.get_project_dir"><code class="docutils literal notranslate"><span class="pre">get_project_dir()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nester.utils.iterate_structure"><code class="docutils literal notranslate"><span class="pre">iterate_structure()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.load_json"><code class="docutils literal notranslate"><span class="pre">load_json()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.validate_structure"><code class="docutils literal notranslate"><span class="pre">validate_structure()</span></code></a></li>
 </ul>
@@ -93,6 +94,35 @@
 <li><p>clean</p></li>
 </ul>
 <dl class="py function">
+<dt class="sig sig-object py" id="nester.utils.clean">
+<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.clean" title="Permalink to this definition"></a></dt>
+<dd><p>Cleanup the given project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>projectname</strong> – The name of the project</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nester.utils.create_structure">
+<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">create_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.create_structure" title="Permalink to this definition"></a></dt>
+<dd><p>Iterate through the items in the structure and create directories and files based on that structure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>dict</em>) – the directory structure from the template</p></li>
+<li><p><strong>base_path</strong> (<em>Path</em>) – The current directory</p></li>
+<li><p><strong>projectname</strong> (<em>str</em>) – the name of the project</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="nester.utils.detect_languages">
 <span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">detect_languages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.detect_languages" title="Permalink to this definition"></a></dt>
 <dd><p>Look through the templates folder to find which languages we have templates for</p>
@@ -127,27 +157,9 @@ is created.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.utils.iterate_structure">
-<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">iterate_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.iterate_structure" title="Permalink to this definition"></a></dt>
-<dd><p>Iterate through the items in the structure and create directories and files based on that structure</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>structure</strong> (<em>dict</em>) – the directory structure from the template</p></li>
-<li><p><strong>base_path</strong> (<em>Path</em>) – The current directory</p></li>
-<li><p><strong>projectname</strong> (<em>str</em>) – the name of the project</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="nester.utils.load_json">
 <span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">load_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.load_json" title="Permalink to this definition"></a></dt>
-<dd><p>Load the template for the project and call iterate_structure to create the directories and files</p>
+<dd><p>Load the template for the project.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -155,8 +167,11 @@ is created.</p>
 <li><p><strong>projectname</strong> (<em>str</em>) – the name of the project</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Return structure<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the structure of the given language as a dict</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -175,7 +190,10 @@ the given language.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Boolean</p>
+<dd class="field-even"><p>True or False depending on if the structure corresponds to the schema or not</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
