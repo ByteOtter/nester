@@ -43,4 +43,4 @@ def test_cleanup():
     project_dir = utils.get_project_dir(TEST_PROJECTNAME, False)
     shutil.rmtree(project_dir)
 
-    assert 1
+    assert not Path.exists(project_dir)
