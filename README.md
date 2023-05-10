@@ -17,6 +17,9 @@ A small command line tool to set up the basic structure for your Python, C#, C++
 - [Introduction](#introduction)
 - [Our Goal](#our-goal)
 - [Installation](#installation)
+  - [Get it on PyPi!](#get-it-on-pypi)
+  - [Get it as an `.rmp` package](#get-it-as-an-rmp-package)
+  - [Build it from source](#build-it-from-source)
 - [Usage](#usage)
   - [CLI Mode](#cli-mode)
   - [Interactive / GUI - Mode (coming soon)](#interactive--gui---mode-coming-soon)
@@ -44,15 +47,28 @@ One simple cli-Command and Nester will do the rest for you, optionally even init
 
 ## Installation
 
-**Nester** is not yet released.
+### Get it on PyPi!
 
-The only way to install it is to clone the repository and install it this way.
+`Nester` is finally released on [PyPi](https://pypi.org)!<br>
+To do so, make sure you have at least `Python 3.10` and `pip` installed.<br>
+To get `Nester` simply run:
 
-However, this is ***not recommended*** until the first release is done.
+```bash
+pip install nester-struct
+```
+Your done! Have fun with `Nester`!
 
-If you still want to get it and contribute to it, refer to the [Contributing Guide](docs/CONTRIBUTING.md) to find out how.
+### Get it as an `.rmp` package
 
 We plan to release Nester to pypi first and as an `.rpm` package in the future.
+
+TBA
+
+### Build it from source
+
+If you want to contribute to `Nester` or just prefer building it yoursef, refer to the [Contributing Guide](docs/CONTRIBUTING.md) to find out how.
+
+
 ## Usage
 
 **Nester** strives to be easy to use and will have to modes of operation:
