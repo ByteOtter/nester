@@ -1,0 +1,26 @@
+{
+  "$projectname": {
+    "Properties": {
+      "launchSettings.json": ""
+    },
+    "$projectname.csproj": "",
+    "appsettings.json": "",
+    "Program.cs": "",
+    "Startup.cs": "",
+    "Controllers": {
+      "HomeController.cs": ""
+    },
+    "Models": {
+      "MyModel.cs": ""
+    },
+    "Views": {
+      "Home": {
+        "Index.cshtml": {}
+      },
+      "_ViewImports.cshtml": "",
+      "_ViewStart.cshtml": ""
+    }
+  },
+  "README": "",
+  "LICENSE": ""
+}

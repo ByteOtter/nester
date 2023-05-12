@@ -1,0 +1,14 @@
+{
+  "$projectname": {
+    "include": {
+      "my_header.h": {}
+    },
+    "src": {
+      "main.c": {},
+      "my_source.c": {}
+    },
+    "Makefile": {}
+  },
+  "README": {},
+  "LICENSE": {}
+}

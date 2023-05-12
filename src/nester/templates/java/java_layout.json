@@ -1,0 +1,22 @@
+{
+  "$projectname": {
+    "src": {
+      "main": {
+        "java": {
+          "Main.java": "",
+          "$projectname.java": ""
+        },
+        "resources": ""
+      },
+      "test": {
+        "java": {
+          "MainTest.java": ""
+        },
+        "resources": ""
+      }
+    },
+    "build.gradle": ""
+  },
+  "README": "",
+  "LICENSE": ""
+}

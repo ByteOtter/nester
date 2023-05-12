@@ -1,0 +1,16 @@
+{
+  "$projectname": {
+    "include": {
+      "$projectname_header.hpp": ""
+    },
+    "src": {
+      "main.cpp": "",
+      "my_source.cpp": ""
+    },
+    "tests": {
+      "my_test.test.cpp": ""
+    }
+  },
+  "README": "",
+  "LICENSE": ""
+}
