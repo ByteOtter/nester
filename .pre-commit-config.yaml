@@ -10,14 +10,8 @@ repos:
         # https://pre-commit.com/#top_level-default_language_version
         language_version: python3.10
         additional_dependencies: ['click==8.1.3']
-  # condlict with pre-commit. Will stay deactivated for now.
-  # Run isort manually like this :
-  #
-  # isort --profile black .
-  #
-  # while in the project's root directory.
-  # - repo: https://github.com/pycqa/isort
-  #   rev: 5.6.4
-  #   hooks:
-  #     - id: isort
-  #       args: ["--profile", "black", "--filter-files"]
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--filter-files"]
