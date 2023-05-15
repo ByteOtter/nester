@@ -1,14 +1,14 @@
 {
   "lib":{
     "$projectname": {
-      "class.rb": ""
+      "class.rb": "class MyClass\n\n  def my_method\n    # Your code here\n  end\n\nend"
     }
   },
   "test": {
-    "main_test.rb": ""
+    "main_test.rb": "# Your tests here"
   },
   "bin": {
-    "$projectname.rb": ""
+    "$projectname.rb": "#!/usr/bin/env ruby\n\nrequire_relative '../lib/class'\n\n# Your code here"
   },
   "docs": {
     "index.md": "<!--Your docs here-->"
