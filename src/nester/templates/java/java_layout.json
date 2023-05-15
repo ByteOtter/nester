@@ -3,20 +3,20 @@
     "src": {
       "main": {
         "java": {
-          "Main.java": "",
-          "$projectname.java": ""
+          "Main.java": "public class Main {\n\n  public static void main(String[] args) {\n    // Your code here\n  }\n}",
+          "$projectname.java": "public class $projectname {\n\n  // Your code here\n}"
         },
-        "resources": ""
+        "resources": {}
       },
       "test": {
         "java": {
-          "MainTest.java": ""
+          "MainTest.java": "import org.junit.Test;\nimport static org.junit.Assert.*;\n\npublic class MainTest {\n\n  @Test\n  public void test() {\n    // Your test code here\n    assertTrue(true);\n  }\n}"
         },
-        "resources": ""
+        "resources": {}
       }
     },
-    "build.gradle": ""
+    "build.gradle": "plugins {\n  id 'java'\n}\n\nrepositories {\n  jcenter()\n}\n\ndependencies {\n  testImplementation 'junit:junit:4.13.2'\n}"
   },
-  "README": "",
+  "README": "<!--Your Readme goes here-->",
   "LICENSE": ""
 }

@@ -7,7 +7,7 @@
     "#!/usr/bin/env python3\nfrom $projectname import main\nif __name__ == \"__main__\":\nmain()"
   },
   ".gitignore": "$gitignore",
-  "README.md": "",
+  "README.md": "<!--Your Readme goes here-->",
   "LICENSE": "$license",
   "setup.py": "",
   "setup.cfg": "",
