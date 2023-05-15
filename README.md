@@ -13,12 +13,14 @@
 <h3 style="text-decoration:underline">Welcome to Nester!</h3>
 A small command line tool to set up the basic structure for your Python, C#, C++, Java or Ruby project.
 
+[![Documentation Status](https://readthedocs.org/projects/nester/badge/?version=latest)](https://nester.readthedocs.io/en/latest/?badge=latest)
+
 **Index**
 - [Introduction](#introduction)
 - [Our Goal](#our-goal)
 - [Installation](#installation)
   - [Get it on PyPi!](#get-it-on-pypi)
-  - [Get it as an `.rmp` package](#get-it-as-an-rmp-package)
+  - [Get it as an `.rpm` package](#get-it-as-an-rpm-package)
   - [Build it from source](#build-it-from-source)
 - [Usage](#usage)
   - [CLI Mode](#cli-mode)
@@ -58,7 +60,7 @@ pip install nester-struct
 ```
 Your done! Have fun with `Nester`!
 
-### Get it as an `.rmp` package
+### Get it as an `.rpm` package
 
 We plan to release Nester to pypi first and as an `.rpm` package in the future.
 
