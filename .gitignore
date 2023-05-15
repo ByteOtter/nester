@@ -12,7 +12,7 @@ env/
 src/nester/__pycache__/
 src/nester/**/__pycache__/
 test/__pycache__/
-.pytest_cache/
+.pytest_cache
 
 # pytest coverage
 .coverage

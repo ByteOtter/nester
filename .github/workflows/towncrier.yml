@@ -19,11 +19,11 @@ jobs:
           python3-netifaces
       - uses: actions/checkout@v3
       - name: Mark directory as safe for Git
-        run: git config --global --add safe.directory /__w/nester/nester
+        run: git config --global --add safe.directory /__w/src/nester
       - name: Install towncrier
         run: pip install .[docs]
       - name: Add src directory to Python path
-        run: export PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE/src
+        run: export PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE/src/nester
       - name: Build changelog
         run: towncrier --yes
       - name: Create Pull Request
