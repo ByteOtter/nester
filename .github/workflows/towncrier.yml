@@ -22,6 +22,8 @@ jobs:
         run: git config --global --add safe.directory /__w/nester/nester
       - name: Install towncrier
         run: pip install .[docs]
+      - name: Add src directory to Python path
+        run: export PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE/src
       - name: Build changelog
         run: towncrier --yes
       - name: Create Pull Request
