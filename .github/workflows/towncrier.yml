@@ -21,7 +21,7 @@ jobs:
       - name: Mark directory as safe for Git
         run: git config --global --add safe.directory /__w/nester/nester
       - name: Install towncrier
-        run: pip install .[docs]
+        run: pip install .[changelog]
       - name: Build changelog
         run: towncrier --yes
       - name: Create Pull Request
