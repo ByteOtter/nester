@@ -16,7 +16,7 @@ jobs:
           python-version: 3.9
           cache: pip
           cache-dependency-path: setup.py
-      - run: pip install -e .[doc]
+      - run: pip install -e .[docs]
 
       - name: get added newsfragments
         if: ( ! contains(github.event.pull_request.labels.*.name, 'no changelog') )
