@@ -9,11 +9,17 @@
 </img>
 </p>
 <h2 align="center" style="text-decoration:underline">Building the nest for you</h2>
+<p align="center">
+
+[![Documentation Status](https://readthedocs.org/projects/nester/badge/?version=latest)](https://nester.readthedocs.io/en/latest/?badge=latest)
+[![PyPI - Version](https://img.shields.io/pypi/v/nester-struct?color=green&label=PyPi%20Version&logo=PyPi&logoColor=green)](https://pypi.org/project/nester-struct/)
+![PyPI - Downloads](https://img.shields.io/pypi/dd/nester-struct?color=green&label=PyPi%20Downloads&logo=pypi&logoColor=green)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nester-struct?color=green&label=Python%20Version&logo=Python&logoColor=green)
+![PyPI - License](https://img.shields.io/pypi/l/nester-struct?color=green&label=License)
+</p>
 
 <h3 style="text-decoration:underline">Welcome to Nester!</h3>
 A small command line tool to set up the basic structure for your Python, C#, C++, Java or Ruby project.
-
-[![Documentation Status](https://readthedocs.org/projects/nester/badge/?version=latest)](https://nester.readthedocs.io/en/latest/?badge=latest)
 
 **Index**
 - [Introduction](#introduction)
