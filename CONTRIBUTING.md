@@ -28,7 +28,7 @@ Now you have a local copy of the Nester repository on your machine.
 
 ## Install Requirements
 
-Nester uses `setuptools` as its build tool and `pyproject.toml` and `setup.cfg` as configuration files. To install the requirements for Nester, you can use `pip` as follows:
+Nester uses `setuptools` as its build tool and `pyproject.toml` and `setup.cfg` as configuration files. **We strongly recommend you use a `virtualenv` to isolate your development environment from the rest of your system.** To install the requirements for Nester, you can use `pip` as follows:
 
 1. Change to the Nester directory:
 
@@ -42,7 +42,9 @@ cd nester
 pip install -e .
 ```
 
-This should install all necessary requirements for nester aswell as nester itself.
+This should install all necessary requirements for nester aswell as nester itself.<br>
+Using the `-e` flag will also install Nester as `editable`. Which means that your installation of Nester within your virtual environment will update itself when you make changes to the code.<br>
+*Note*: Sometimes it is still required to uninstall your Nester installation and reinstall it. Run `pip uninstall nester-struct` to uninstall it.
 
 >Note: If you encounter any issues with dependencies or installation, please refer to the troubleshooting section or reach out for help in the issues section or via email.
 

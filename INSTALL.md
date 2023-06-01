@@ -14,9 +14,7 @@
 
 <h2> Notice</h2>
 
-:heavy_exclamation_mark: **Please note that Nester is not yet released.**
-
-While we plan on releasing the first version of Nester soon, we are still working out the last kinks in our testing and release process.
+Nester is currently released to `PyPi`, the Python Packaging Index.
 
 ---
 <h2>Index</h2>
@@ -28,7 +26,15 @@ While we plan on releasing the first version of Nester soon, we are still workin
 ---
 ## Install via `pip`
 
-We plan to publish Nester to [pypi](pypi.org) first. COMING SOON.
+To install Nester from `PyPi`, make sure you have `pip` aswell as at least `python 3.10.10` installed.
+
+Open a Terminal and run:
+```bash
+pip install nester-struct
+```
+
+Note: The package name `nester` was already occupied by the time we released Nester to PyPi. Although we could not find a package with that name.<br>
+We are currently investigating if we can get the name assigned to us.
 
 ---
 
