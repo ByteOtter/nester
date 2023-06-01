@@ -3,8 +3,11 @@ This module implements Nester's CLI-behaviour.
 """
 
 import os
+import sys
+
 import click
-from . import utils, __version__
+
+from . import __version__, nester_log, utils
 
 _context_settings = dict(help_option_names=["-h", "--help"])
 
@@ -29,7 +32,8 @@ def cli():
 @click.option(
     "--git", "-g", is_flag=True, default=False, help="Set up git repository aswell."
 )
-def create(language, projectname, git):
+@click.option("--no-log", is_flag=True, default=False, help="Do not log this project.")
+def create(language, projectname, git, no_log):
     """
     Create new project structure within current directory.
 
@@ -43,6 +47,13 @@ def create(language, projectname, git):
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software."
     )
 
+    print(f"Checking log file for possible duplicate.")
+    if nester_log.check_log_for_duplicate(projectname):
+        print(
+            f"\033[31mUups! A project called '{projectname}' already exists!\033[0m\nPlease choose a different name and try again!"
+        )
+        sys.exit(1)
+
     print(f"Creating file structure for your {language} project '{projectname}'...")
 
     structure = utils.load_json(language, projectname)
@@ -53,7 +64,18 @@ def create(language, projectname, git):
         print("Also creating git repository...")
         os.system("git init")
 
-    print("Done! Happy Hacking!")
+    if not no_log:
+        nester_log.create_log_file_if_none()
+        nester_log.LOGGER.info(
+            "",
+            extra={
+                "projectname": projectname,
+                "programming_language": language,
+                "location": str(project_dir),
+            },
+        )
+
+    print("\033[32mDone! Happy Hacking!\033[0m")
 
 
 @click.command(help="Validate current structure against Nester's JSON schemas.")
@@ -72,9 +94,11 @@ def validate(language, projectname):
     project_dir = utils.get_project_dir(projectname, False)
 
     if not utils.validate_structure(structure, projectname, project_dir):
-        print("Your structure does not seem to line up to our schemas :(")
+        print(
+            "\033[31mYour structure does not seem to line up to our schemas :(\033[0m"
+        )
     else:
-        print("Validation complete! Everything looks good. :)")
+        print("\033[32mValidation complete!\033[0m Everything looks good. :)")
 
 
 @click.command()
@@ -95,6 +119,24 @@ def clean(projectname):
 
 
 @click.command()
+@click.option(
+    "--clean", is_flag=True, default=False, help="Remove orphaned log entries"
+)
+def log(clean):
+    """
+    List all previously created projects.
+
+    Note: Only projects that were created without the `--no-log` flag are shown here.
+    """
+    print(
+        "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
+    )
+    if clean:
+        nester_log.clean_orphaned_entries()
+    nester_log.print_log_to_table()
+
+
+@click.command()
 def version():
     """
     Print Nester version
@@ -109,4 +151,5 @@ def version():
 cli.add_command(create)
 cli.add_command(validate)
 cli.add_command(clean)
+cli.add_command(log)
 cli.add_command(version)

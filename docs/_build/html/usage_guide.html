@@ -49,6 +49,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#cli-mode">CLI-Mode</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nester-create">Nester create</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nester-validate">Nester validate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nester-list">Nester list</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nester-clean">Nester clean</a></li>
 </ul>
 </li>
@@ -90,10 +91,11 @@
 <section id="cli-mode">
 <h2>CLI-Mode<a class="headerlink" href="#cli-mode" title="Permalink to this heading"></a></h2>
 <p>This is how Nester was intended to be used: As a small CLI-tool.
-Nester has three main functions it can perform:</p>
+Nester has four main functions it can perform:</p>
 <ul class="simple">
 <li><p><cite>create</cite></p></li>
 <li><p><cite>validate</cite></p></li>
+<li><p><cite>list</cite></p></li>
 <li><p><cite>clean</cite></p></li>
 </ul>
 <p>Let us look into each three in more detail…</p>
@@ -111,6 +113,7 @@ If not Nester will automatically create a directory for your project.</p>
 <li><p><strong>language</strong> (<em>str</em>) – The shortform of a supported programming language. Refer to the :doc: <cite>list of supported languages &lt;supported_languages&gt;</cite>.</p></li>
 <li><p><strong>projectname</strong> (<em>str</em>) – The name of the project package that will be created.</p></li>
 <li><p><strong>-g</strong><strong>|</strong><strong>--git</strong> (<em>flag</em>) – An optional flag to initialize a Git repository in the project directory. If specified, a Git repository will be created simultaneously with the project structure.</p></li>
+<li><p><strong>--no-log</strong> (<em>flag</em>) – An optional flag to disable project logging for the current project.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -142,6 +145,27 @@ Files you created, which are therefore not part of our schema, or such which hav
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="nester-list">
+<h3>Nester list<a class="headerlink" href="#nester-list" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">nester</span> <span class="pre">list()</span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Lists</span> <span class="pre">all</span> <span class="pre">previously</span> <span class="pre">created</span> <span class="pre">projects,</span> <span class="pre">which</span> <span class="pre">had</span> <span class="pre">logging</span> <span class="pre">enabled,</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">table.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>--clean</strong> (<em>flag</em>) – An optional flag to clean up orphaned log entries.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>

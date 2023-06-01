@@ -10,13 +10,14 @@ CLI-Mode
 --------
 
 This is how Nester was intended to be used: As a small CLI-tool.
-Nester has three main functions it can perform:
+Nester has four main functions it can perform:
 
 - `create`
 - `validate`
+- `list`
 - `clean`
 
-Let us look into each three in more detail...
+Let us look into each of the four commands in more detail...
 
 Nester create
 ~~~~~~~~~~~~~~~
@@ -33,6 +34,8 @@ Nester create
    :type projectname: str
    :param -g|--git: An optional flag to initialize a Git repository in the project directory. If specified, a Git repository will be created simultaneously with the project structure.
    :type -g|--git: flag
+   :param --no-log: An optional flag to disable project logging for the current project.
+   :type --no-log: flag
    :return: None
    :rtype: None
 
@@ -50,6 +53,18 @@ Nester validate
   :type projectname: str
   :return: Tells you via Terminal wether your structure lines up or not.
   :rtype: str
+
+Nester log
+~~~~~~~~~~~
+
+.. function:: nester log()
+
+  Lists all previously created projects, which had logging enabled, in a table.
+
+  :param --clean: An optional flag to clean up orphaned log entries.
+  :type --clean: flag
+  :return: None
+  :rtype: None
 
 Nester clean
 ~~~~~~~~~~~~

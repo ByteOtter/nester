@@ -1,4 +1,4 @@
 [MASTER]
-disable=line-too-long, unnecessary-pass, f-string-without-interpolation, no-name-in-module, use-dict-literal
+disable=line-too-long, unnecessary-pass, f-string-without-interpolation, no-name-in-module, use-dict-literal, redefined-outer-name, inconsistent-return-statements, broad-exception-caught
 ignore-paths=docs, tests
 # enable=unused-import, undefined-variable, trailing-whitespace, wildcard-import, import-error

@@ -52,9 +52,11 @@ Let me tell you though, who cares?
 
 ## Our Goal
 
-Our goal with **Nester** is to provide developers a quick and easy way to set up new projects adhearing to the given language's standard giving you more time to actually build your application without having to deal with mkdir-hell.
+Our goal with **Nester** is to provide developers a quick and easy way to set up and manage new projects adhearing to the given language's standard giving you more time to actually build your application without having to deal with mkdir-hell.
 
 One simple cli-Command and Nester will do the rest for you, optionally even initializing a new git-repository for you.
+
+Nester, by default, also logs all projects you create with it which allows you to easily view and clean up your projects and avoid creating duplicate projects. Never loose your overview over your projects again!
 
 ## Installation
 
@@ -95,8 +97,9 @@ nester <OPERATION> <OPTIONAL -git FLAG> <LANGUAGE> <PROJECT_NAME>
 The following operations will be available:
 |`Operation`|Flags|Argument|Argument|Effect|
 |-|-|-|-|-|
-|`create`|`-g/--git`|`Language`|`Projectname`|Creates the project structure for the selected lanugage in *the current directory*. IF `-git` is set it will also call `git init` in this directory|
+|`create`|`-g/--git`, `--no-log`|`Language`|`Projectname`|Creates the project structure for the selected lanugage in *the current directory*. IF `-git` is set it will also call `git init` in this directory. `--no-log` Will prevent Nester from creating a log entry for this project. You can find the log in your home directory at `~/nester.log`|
 |`validate`|n/A|`Language`|`Projectname`|Checks the current directory and its sub-directories if it corresponds to the schema provided for the language|
+|`list`|n/A|n/A|n/A|Prints out all *logged* projects that have been created previously|
 |`clean`|`-y/--yes`|`Projectname`|n/A|Deletes the content of the specified project|
 
 ### Interactive / GUI - Mode (coming soon)

@@ -10,6 +10,8 @@ import json
 from pathlib import Path, PurePath
 from shutil import rmtree
 
+from . import nester_log
+
 PROJECT_ROOT = Path(__file__).parent.absolute()
 
 
@@ -40,11 +42,14 @@ def get_project_dir(projectname, should_create):
     :type should_create: bool
     :return: the path of the project root
     """
-    if Path.cwd().name != projectname:
-        if should_create:
-            Path.mkdir(Path(projectname), 0o755, True)
-        return Path.joinpath(Path.cwd(), projectname)
-    return Path.cwd()
+    try:
+        if Path.cwd().name != projectname:
+            if should_create:
+                Path.mkdir(Path(projectname), 0o755, True)
+            return Path.joinpath(Path.cwd(), projectname)
+        return Path.cwd()
+    except FileNotFoundError:
+        print("\033[32mProject directory not found!\033[0m")
 
 
 def load_json(language, projectname):
@@ -85,7 +90,6 @@ def create_structure(structure, base_path, projectname):
     :type projectname: str
     :return: None
     """
-
     for key, val in structure.items():
         if isinstance(val, dict):
             base_path = Path.joinpath(base_path, key)
@@ -138,6 +142,10 @@ def clean(projectname):
     :param projectname: The name of the project
     """
     project_dir = get_project_dir(projectname, False)
-    print("Cleaning up your mess...")
-    rmtree(project_dir)
-    print("Everything cleaned up!")
+    if not project_dir.exists():
+        print(f"\033[31mError: Project '{projectname}' not found!")
+    else:
+        print("Cleaning up your mess...")
+        rmtree(project_dir)
+        nester_log.remove_log_entry(projectname)
+        print("\033[32mEverything cleaned up!\033[0m")
