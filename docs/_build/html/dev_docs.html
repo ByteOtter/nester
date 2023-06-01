@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The Utils module" href="source/utils.html" />
+    <link rel="next" title="Contributing to Nester" href="contributing.html" />
     <link rel="prev" title="Usage" href="usage_guide.html" /> 
 </head>
 
@@ -46,8 +46,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation_guide.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage_guide.html">Usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Docs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Docs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html"> Contributing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/utils.html"> The `utils` module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/logging.html"> The `nester_log` module</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="source/utils.html">   The `utils` module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/logging.html">   The `nester_log` module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supported_languages.html">Supported Languages</a></li>
 </ul>
 
@@ -77,6 +83,40 @@
              
   <section id="developer-docs">
 <h1>Developer Docs<a class="headerlink" href="#developer-docs" title="Permalink to this heading"></a></h1>
+<p>These docs are a compilation of all of Nester’s components aswell as information you need to contribute to Nester.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html"> Contributing Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#clone-the-repository">Clone the Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#install-requirements">Install Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#use-pull-request-and-issue-templates">Use Pull Request and Issue Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#feature-requests">Feature Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#keeping-style">Keeping Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#submitting-a-pull-request">Submitting a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/utils.html"> The `utils` module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/utils.html#nester.utils.clean"><code class="docutils literal notranslate"><span class="pre">clean()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/utils.html#nester.utils.create_structure"><code class="docutils literal notranslate"><span class="pre">create_structure()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/utils.html#nester.utils.detect_languages"><code class="docutils literal notranslate"><span class="pre">detect_languages()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/utils.html#nester.utils.get_project_dir"><code class="docutils literal notranslate"><span class="pre">get_project_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/utils.html#nester.utils.load_json"><code class="docutils literal notranslate"><span class="pre">load_json()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/utils.html#nester.utils.validate_structure"><code class="docutils literal notranslate"><span class="pre">validate_structure()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/logging.html"> The `nester_log` module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/logging.html#nester.nester_log.ProjectLogFormatter"><code class="docutils literal notranslate"><span class="pre">ProjectLogFormatter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/logging.html#nester.nester_log.check_log_for_duplicate"><code class="docutils literal notranslate"><span class="pre">check_log_for_duplicate()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/logging.html#nester.nester_log.clean_orphaned_entries"><code class="docutils literal notranslate"><span class="pre">clean_orphaned_entries()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/logging.html#nester.nester_log.create_log_file_if_none"><code class="docutils literal notranslate"><span class="pre">create_log_file_if_none()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/logging.html#nester.nester_log.print_log_to_table"><code class="docutils literal notranslate"><span class="pre">print_log_to_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/logging.html#nester.nester_log.remove_log_entry"><code class="docutils literal notranslate"><span class="pre">remove_log_entry()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 
 
@@ -84,7 +124,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="usage_guide.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="source/utils.html" class="btn btn-neutral float-right" title="The Utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing to Nester" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

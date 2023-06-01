@@ -1,5 +1,5 @@
 """
-This module handles Nester's logging functionality. Nester logs all projects created with it unless the --no-log flag ist set when calling nester create
+This module handles Nester's logging functionality. Nester logs all projects created with it unless the --no-log flag ist set when calling nester create.
 """
 
 import logging
@@ -37,6 +37,9 @@ LOGGER.setLevel(logging.INFO)
 def create_log_file_if_none():
     """
     Create '.nester.log' file if it does not exist already.
+
+    :param: None
+    :return: None
     """
     formatter = ProjectLogFormatter(
         "%(asctime)s - %(name)s - %(levelname)s - Project: %(projectname)s - Language: %(programming_language)s - Location: %(location)s"
@@ -53,7 +56,7 @@ def check_log_for_duplicate(projectname):
 
     :param projectname: Name of the project to be checked
     :return: True/False depending on whether an entry has been found.
-    :rtype: Bool
+    :rtype: bool
     """
     try:
         with _LOG_FILE_PATH.open("r", encoding="utf-8") as log_file:
@@ -74,6 +77,9 @@ def remove_log_entry(projectname, verbose=True):
     Check if the given project appears in the log. If it does, remove the entry from the log.
 
     :param projectname: The name of the project to be removed.
+    :type projectname: str
+    :param verbose: Flag whether or not to suppress print statements. Needed for clean function.
+    :type verbose: bool
     :return: None
     """
     try:
@@ -115,6 +121,9 @@ def clean_orphaned_entries():
     """
     Check all projects listed in the log and see whether their paths are still valid.
     If not remove the entry.
+
+    :param: None
+    :return: None
     """
     items_removed = 0
 
@@ -144,6 +153,9 @@ def clean_orphaned_entries():
 def print_log_to_table():
     """
     Read the log file and print its contents into a table.
+
+    :param: None
+    :return: None
     """
     try:
         # Check if logfile exists

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing to Nester &mdash; Nester  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Utils module" href="source/utils.html" />
+    <link rel="prev" title="Developer Docs" href="dev_docs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/index_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation_guide.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage_guide.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="dev_docs.html">Developer Docs</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> Contributing Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-repository">Clone the Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-requirements">Install Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-pull-request-and-issue-templates">Use Pull Request and Issue Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#feature-requests">Feature Requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keeping-style">Keeping Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submitting-a-pull-request">Submitting a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source/utils.html"> The `utils` module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/logging.html"> The `nester_log` module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/utils.html">   The `utils` module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/logging.html">   The `nester_log` module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_languages.html">Supported Languages</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Nester</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="dev_docs.html">Developer Docs</a></li>
+      <li class="breadcrumb-item active">Contributing to Nester</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/contributing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing-to-nester">
+<span id="nester-contributing"></span><h1>Contributing to Nester<a class="headerlink" href="#contributing-to-nester" title="Permalink to this heading"></a></h1>
+<p>Thank you for your interest in contributing to Nester! Nester is a tool for setting up programming project structures using JSON schemas stored in <cite>src/nester/templates</cite>. To make the contribution process smooth and efficient, please read the following guide.</p>
+<section id="clone-the-repository">
+<h2>Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this heading"></a></h2>
+<p>To start contributing to Nester, you will first need to clone the GitHub repository. You can do this by following these steps:</p>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://github.com/ByteOtter/nester">Nester’s GitHub repository</a></p></li>
+<li><p>Click on the “Fork” button in the top right corner to create a fork of the repository on your GitHub account.</p></li>
+<li><p>Clone your forked repository to your local machine using <cite>git clone</cite> command. Replace <cite>yourusername</cite> with your actual GitHub username:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:yourusername/nester.git
+</pre></div>
+</div>
+<p>Now you have a local copy of the Nester repository on your machine.</p>
+</section>
+<section id="install-requirements">
+<h2>Install Requirements<a class="headerlink" href="#install-requirements" title="Permalink to this heading"></a></h2>
+<p>Nester uses <cite>setuptools</cite> as its build tool and <cite>pyproject.toml</cite> and <cite>setup.cfg</cite> as configuration file.</p>
+<ol class="arabic simple">
+<li><p>Change to the Nester directory:</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>nester
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Install the dependencies listed in <cite>setup.cfg</cite> using <cite>pip</cite>:</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+<p>This should install all necessary requirements for nester as well as nester itself.</p>
+</section>
+<section id="use-pull-request-and-issue-templates">
+<h2>Use Pull Request and Issue Templates<a class="headerlink" href="#use-pull-request-and-issue-templates" title="Permalink to this heading"></a></h2>
+<p>As a project owner, I encourage you to use the provided Pull Request and Issue templates when contributing to Nester. These templates provide guidelines and instructions for creating effective Pull Requests (PRs) and Issues. Please follow the template and provide as much information as possible to help us understand your contribution or question.</p>
+<p>When creating a PR, make sure to include a detailed description of the changes you made, including any relevant code changes, tests, and documentation updates. If your contribution requires a new feature or a bug fix, please explain the rationale behind it and provide any necessary context.</p>
+<p>For issues, please provide a clear and concise description of the problem, along with any relevant steps to reproduce it, error messages, and expected behavior.</p>
+<p>By using the provided templates, you can help ensure that your contributions are reviewed and addressed in a timely manner, and that your questions are answered effectively.</p>
+<p>Thank you for your contribution to Nester! We appreciate your effort and look forward to reviewing your contributions. If you have any questions, feel free to ask in the issues section or via email.</p>
+</section>
+<section id="feature-requests">
+<h2>Feature Requests<a class="headerlink" href="#feature-requests" title="Permalink to this heading"></a></h2>
+<p>Like most other projects out there we strive to expand Nester’s functionality and language support. However, there are some guidelines we would like you to respect when it comes to suggesting new languages specifically.</p>
+<ul class="simple">
+<li><p>The suggested language must have at least a widely accepted standard of how a project needs to be structured. This structure must make sense and must be able to be read by the language’s compiler or build systems</p></li>
+<li><p>Documentation needs to be provided as context when suggesting a new language structure or the change of an existing one. A good example would be official style guides found in the language’s documentation</p></li>
+<li><p>Languages with existing set up commands. We are aware that there are languages (Like Go, Ruby or Rust) which come with some form of CLI setup utility. And despite us being interested in linking them into Nester as well (by calling their utility), for now we would like you to refrain from suggesting these as they do not have priority for us.</p></li>
+</ul>
+</section>
+<section id="keeping-style">
+<h2>Keeping Style<a class="headerlink" href="#keeping-style" title="Permalink to this heading"></a></h2>
+<p>To maintain consistent code style in Nester, we use the <a class="reference external" href="https://black.readthedocs.io/en/stable/index.html">Black</a> code formatter. Before submitting your changes, please run the Black formatter on your code to ensure it adheres to the project’s style guidelines.</p>
+<p>After installing the dependencies and setting up the development environment with <cite>pip install -e .</cite>, you should have Black already installed. You can now run the following command from the root directory of the Nester repository:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>black<span class="w"> </span>.
+</pre></div>
+</div>
+<p>Additionally, you can make your life simpler by having <cite>pre-commit</cite> installed.</p>
+<p>This tool uses the <cite>.pre-commit-config.yaml</cite> to run checks on your code before you commit your changes with <cite>git</cite>.</p>
+<p><strong>Note</strong>: If the black runner of <cite>pre-commit</cite> changes a file you need to <cite>git add</cite> it again. It is a little quirky sometimes.</p>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading"></a></h2>
+<p>We highly value good documentation to help users understand and use Nester effectively. When contributing to Nester, please make sure to follow these documentation guidelines:</p>
+<ol class="arabic simple">
+<li><p>Every commit must have a changelog file containing a sensible changelog message. These files will be built by Towncrier.</p></li>
+<li><p>When contributing new features, please update the existing documentation or add new documentation as necessary. Nester’s documentation is built using [Sphinx](<a class="reference external" href="https://www.sphinx-doc.org/en/master/">https://www.sphinx-doc.org/en/master/</a>) and published on [Read the Docs](<a class="reference external" href="https://readthedocs.org/">https://readthedocs.org/</a>).</p></li>
+</ol>
+<p><strong>Note</strong>: If you need help with writing documentation, please reach out to us for assistance. Your contributions to documentation are highly appreciated!</p>
+</section>
+<section id="submitting-a-pull-request">
+<h2>Submitting a Pull Request<a class="headerlink" href="#submitting-a-pull-request" title="Permalink to this heading"></a></h2>
+<p>When you are ready to submit your contribution, please follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Create a new branch for your changes. Use a descriptive branch name that summarizes the purpose of your changes.</p></li>
+<li><p>Make your changes and commit them with a clear commit message.</p></li>
+<li><p>Push your branch to your forked repository on GitHub.</p></li>
+<li><p>Open a pull request against the <cite>main</cite> branch of the Nester repository. Please provide a clear title and description for your pull request, and reference any relevant issues or discussions.</p></li>
+<li><p>Your pull request will be reviewed by the project maintainers, and feedback will be provided. Please be responsive to any comments or requests for changes.</p></li>
+<li><p>Once your pull request is approved and all checks pass, it will be merged into the <cite>main</cite> branch.</p></li>
+<li><p>Thank you for your contribution to Nester! Your efforts are greatly appreciated.</p></li>
+</ol>
+<p><strong>Note</strong>: We advise you to pull the latest changes from the upstream repository and rebase your branch before submitting your Pull Request to avoid Merge Conflicts.</p>
+<p>Happy hacking!</p>
+<p>- Your Nester Team!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dev_docs.html" class="btn btn-neutral float-left" title="Developer Docs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="source/utils.html" class="btn btn-neutral float-right" title="The Utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Christopher Hock aka ByteOtter.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

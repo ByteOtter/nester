@@ -71,7 +71,7 @@ html.writer-html5 body.wy-body-for-nav div.wy-grid-for-nav nav.wy-nav-side div.w
 
 /*Change background color of rendered code in toc on index.rst*/
 html.writer-html5 body.wy-body-for-nav div.wy-grid-for-nav section.wy-nav-content-wrap div.wy-nav-content div.rst-content div.document div section#welcome-to-nester-s-documentation div.toctree-wrapper.compound ul li.toctree-l1 ul li.toctree-l2 a.reference.internal code.docutils.literal.notranslate {
-  background-color: #222;
+  background-color: #ffff;
   color: #ff5100;
   border-style: hidden;
 }

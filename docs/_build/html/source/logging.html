@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Nester Log module &mdash; Nester  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Supported languages" href="../supported_languages.html" />
+    <link rel="prev" title="The Utils module" href="utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/index_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation_guide.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage_guide.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_docs.html">Developer Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">   The `utils` module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">   The `nester_log` module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.ProjectLogFormatter"><code class="docutils literal notranslate"><span class="pre">ProjectLogFormatter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nester.nester_log.ProjectLogFormatter.format"><code class="docutils literal notranslate"><span class="pre">ProjectLogFormatter.format()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nester.nester_log.ProjectLogFormatter.process"><code class="docutils literal notranslate"><span class="pre">ProjectLogFormatter.process()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.check_log_for_duplicate"><code class="docutils literal notranslate"><span class="pre">check_log_for_duplicate()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.clean_orphaned_entries"><code class="docutils literal notranslate"><span class="pre">clean_orphaned_entries()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.create_log_file_if_none"><code class="docutils literal notranslate"><span class="pre">create_log_file_if_none()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.print_log_to_table"><code class="docutils literal notranslate"><span class="pre">print_log_to_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.remove_log_entry"><code class="docutils literal notranslate"><span class="pre">remove_log_entry()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../supported_languages.html">Supported Languages</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nester</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../dev_docs.html">Developer Docs</a></li>
+      <li class="breadcrumb-item active">The Nester Log module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/logging.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-nester-log-module">
+<h1>The Nester Log module<a class="headerlink" href="#the-nester-log-module" title="Permalink to this heading"></a></h1>
+<p>Nester Log is a functionality of Nester added in v0.5.0.</p>
+<p>It allows Nester to log all projects that are created with.</p>
+<p>The user can easily query them and get a list with all of his projects, the languages they are written in, and their location based from the user’s home directory.</p>
+<span class="target" id="module-nester.nester_log"></span><p>This module handles Nester’s logging functionality. Nester logs all projects created with it unless the –no-log flag ist set when calling nester create.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nester.nester_log.ProjectLogFormatter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">ProjectLogFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.nester_log.ProjectLogFormatter" title="Permalink to this definition"></a></dt>
+<dd><p>Custom formatter class to handle the custom log fields Nester requires.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nester.nester_log.ProjectLogFormatter.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.nester_log.ProjectLogFormatter.format" title="Permalink to this definition"></a></dt>
+<dd><p>Override logging.Formatter.format function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nester.nester_log.ProjectLogFormatter.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.nester_log.ProjectLogFormatter.process" title="Permalink to this definition"></a></dt>
+<dd><p>Override logging.Formatter.process function</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nester.nester_log.check_log_for_duplicate">
+<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">check_log_for_duplicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.nester_log.check_log_for_duplicate" title="Permalink to this definition"></a></dt>
+<dd><p>Check the nester.log file in the home directory, whether a given projectname has been taken already.
+If no log file exists: Continue with the program.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>projectname</strong> – Name of the project to be checked</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True/False depending on whether an entry has been found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nester.nester_log.clean_orphaned_entries">
+<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">clean_orphaned_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nester.nester_log.clean_orphaned_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Check all projects listed in the log and see whether their paths are still valid.
+If not remove the entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nester.nester_log.create_log_file_if_none">
+<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">create_log_file_if_none</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nester.nester_log.create_log_file_if_none" title="Permalink to this definition"></a></dt>
+<dd><p>Create ‘.nester.log’ file if it does not exist already.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nester.nester_log.print_log_to_table">
+<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">print_log_to_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nester.nester_log.print_log_to_table" title="Permalink to this definition"></a></dt>
+<dd><p>Read the log file and print its contents into a table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nester.nester_log.remove_log_entry">
+<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">remove_log_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.nester_log.remove_log_entry" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the given project appears in the log. If it does, remove the entry from the log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>projectname</strong> (<em>str</em>) – The name of the project to be removed.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Flag whether or not to suppress print statements. Needed for clean function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="utils.html" class="btn btn-neutral float-left" title="The Utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../supported_languages.html" class="btn btn-neutral float-right" title="Supported languages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Christopher Hock aka ByteOtter.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -49,7 +49,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#cli-mode">CLI-Mode</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nester-create">Nester create</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nester-validate">Nester validate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nester-list">Nester list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nester-log">Nester log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nester-clean">Nester clean</a></li>
 </ul>
 </li>
@@ -98,7 +98,7 @@ Nester has four main functions it can perform:</p>
 <li><p><cite>list</cite></p></li>
 <li><p><cite>clean</cite></p></li>
 </ul>
-<p>Let us look into each three in more detail…</p>
+<p>Let us look into each of the four commands in more detail…</p>
 <section id="nester-create">
 <h3>Nester create<a class="headerlink" href="#nester-create" title="Permalink to this heading"></a></h3>
 <dl class="py function">
@@ -150,14 +150,13 @@ Files you created, which are therefore not part of our schema, or such which hav
 </dd></dl>
 
 </section>
-<section id="nester-list">
-<h3>Nester list<a class="headerlink" href="#nester-list" title="Permalink to this heading"></a></h3>
+<section id="nester-log">
+<h3>Nester log<a class="headerlink" href="#nester-log" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">nester</span> <span class="pre">list()</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Lists</span> <span class="pre">all</span> <span class="pre">previously</span> <span class="pre">created</span> <span class="pre">projects,</span> <span class="pre">which</span> <span class="pre">had</span> <span class="pre">logging</span> <span class="pre">enabled,</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">table.</span></span></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">nester</span> <span class="pre">log()</span></span></dt>
+<dd><p>Lists all previously created projects, which had logging enabled, in a table.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>--clean</strong> (<em>flag</em>) – An optional flag to clean up orphaned log entries.</p>
 </dd>

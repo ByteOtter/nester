@@ -16,6 +16,7 @@ Nester is your convenient CLI companion which lays the foundation for your progr
    Usage <usage_guide>
    Developer Docs <dev_docs>
       The `utils` module <source/utils>
+      The `nester_log` module <source/logging>
    Supported Languages <supported_languages>
 
 

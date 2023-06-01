@@ -17,7 +17,7 @@ Nester has four main functions it can perform:
 - `list`
 - `clean`
 
-Let us look into each three in more detail...
+Let us look into each of the four commands in more detail...
 
 Nester create
 ~~~~~~~~~~~~~~~
@@ -54,10 +54,11 @@ Nester validate
   :return: Tells you via Terminal wether your structure lines up or not.
   :rtype: str
 
-Nester list
+Nester log
 ~~~~~~~~~~~
 
-.. function:: nester list()
+.. function:: nester log()
+
   Lists all previously created projects, which had logging enabled, in a table.
 
   :param --clean: An optional flag to clean up orphaned log entries.
