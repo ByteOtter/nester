@@ -99,7 +99,7 @@ The following operations will be available:
 |-|-|-|-|-|
 |`create`|`-g/--git`, `--no-log`|`Language`|`Projectname`|Creates the project structure for the selected lanugage in *the current directory*. IF `-git` is set it will also call `git init` in this directory. `--no-log` Will prevent Nester from creating a log entry for this project. You can find the log in your home directory at `~/nester.log`|
 |`validate`|n/A|`Language`|`Projectname`|Checks the current directory and its sub-directories if it corresponds to the schema provided for the language|
-|`list`|n/A|n/A|n/A|Prints out all *logged* projects that have been created previously|
+|`log`|n/A|n/A|n/A|Prints out all *logged* projects that have been created previously|
 |`clean`|`-y/--yes`|`Projectname`|n/A|Deletes the content of the specified project|
 
 ### Interactive / GUI - Mode (coming soon)
