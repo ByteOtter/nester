@@ -1,14 +1,20 @@
 python:
 - src/**/*.py
 
+json:
+- src/templates/**/*.json
+
 cli-frontend:
-- src/nester/cli_logic.py
+- src/nester/nester_commands.py
+
+logging:
+- src/nester/nester_log.py
 
 interactive-mode:
 - src/nester/interactive_mode.py
 
-json:
-- src/templates/**/*.json
+utils:
+- src/nester/utils.py
 
 documentation:
 - docs/*
@@ -16,17 +22,35 @@ documentation:
 - LICENSE
 - CODE_OF_CONDUCT.md
 - CONTRIBUTING
+- .readthedocs.yaml
 
 tests:
 - tests/*
 
-bash/shell:
-- ./**/*.sh
+codequality:
+- .pylintrc
+- .pre-commit-config.yaml
 
 configs:
 - ./**/*.toml
 - ./**/*.yml
 - ./**/*.cfg
 
+packaging:
+- pyproject.toml
+- setup.cfg
+
+workflows:
+- .github/workflows/*.yml
+
 container:
 - Dockerfile
+
+repository-maintenance:
+- .gitignore
+- .pre-commit-config.yaml
+- CODEOWNERS
+- CONTRIBUTING.md
+- LICENSE
+- INSTALL.md
+- .github/*
