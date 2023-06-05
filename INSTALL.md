@@ -40,7 +40,26 @@ We are currently investigating if we can get the name assigned to us.
 
 ## Install as `rpm`
 
-We plan to build a Nester `rpm` package.
+We can now offer a `.rpm` package!
+
+To do so follow these steps (on openSUSE):
+
+1. Add the repository
+```bash
+sudo zypper addrepo https://download.opensuse.org/repositories/home:kodymo/openSUSE_Tumbleweed/home:kodymo.repo
+```
+2. Refresh your repositories
+```bash
+sudo zypper ref
+```
+3. Install Nester
+```bash
+sudo zypper install python3-nester
+```
+Note: The repository contains three builds for nester for Python 3.9, 3.10 and 3.11. `zypper` will automatically decide which version to use when running the command above.
+
+You can visit the repository on the [package maintainer's OBS account](https://build.opensuse.org/package/show/home:kodymo/python-nester).
+
 
 ---
 

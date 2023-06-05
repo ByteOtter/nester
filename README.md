@@ -29,7 +29,7 @@ A small command line tool to set up the basic structure for your Python, C#, C++
 - [Our Goal](#our-goal)
 - [Installation](#installation)
   - [Get it on PyPi!](#get-it-on-pypi)
-  - [Get it as an `.rpm` package](#get-it-as-an-rpm-package)
+  - [Get it as an `.rpm` package (wip)](#get-it-as-an-rpm-package-wip)
   - [Build it from source](#build-it-from-source)
 - [Usage](#usage)
   - [CLI Mode](#cli-mode)
@@ -62,7 +62,7 @@ Nester, by default, also logs all projects you create with it which allows you t
 
 ### Get it on PyPi!
 
-`Nester` is finally released on [PyPi](https://pypi.org)!<br>
+`Nester` is released on [PyPi](https://pypi.org)!<br>
 To do so, make sure you have at least `Python 3.10` and `pip` installed.<br>
 To get `Nester` simply run:
 
@@ -71,11 +71,27 @@ pip install nester-struct
 ```
 Your done! Have fun with `Nester`!
 
-### Get it as an `.rpm` package
+### Get it as an `.rpm` package (wip)
 
-We plan to release Nester to pypi first and as an `.rpm` package in the future.
+We can now offer a `.rpm` package!
 
-TBA
+To do so follow these steps (on openSUSE):
+
+1. Add the repository
+```bash
+sudo zypper addrepo https://download.opensuse.org/repositories/home:kodymo/openSUSE_Tumbleweed/home:kodymo.repo
+```
+2. Refresh your repositories
+```bash
+sudo zypper ref
+```
+3. Install Nester
+```bash
+sudo zypper install python3-nester
+```
+Note: The repository contains three builds for nester for Python 3.9, 3.10 and 3.11. `zypper` will automatically decide which version to use when running the command above.
+
+You can visit the repository on the [package maintainer's OBS account](https://build.opensuse.org/package/show/home:kodymo/python-nester).
 
 ### Build it from source
 

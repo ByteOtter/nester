@@ -53,6 +53,7 @@
 <li class="toctree-l1"><a class="reference internal" href="usage_guide.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev_docs.html">Developer Docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/utils.html">   The `utils` module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/logging.html">   The `nester_log` module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supported_languages.html">Supported Languages</a></li>
 </ul>
 
@@ -103,12 +104,28 @@
 <p>Some systems may not initially ship with <cite>python3</cite> or <cite>pip</cite> or you may simply do not want to use <cite>pip</cite>.
 For this reason we are planning to offer Nester in a varietly of different Linux packages.</p>
 <p>As we are most familiar with the <cite>rpm</cite> format for openSUSE this is what we will offer first.</p>
-<p>Note: This is a feature we will offer at some point. No dates are planned yet!</p>
-<p>To install it run</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>zypper<span class="w"> </span><span class="k">in</span><span class="w"> </span>nester
+<p>We can now offer a <cite>.rpm</cite> package!</p>
+<p>To do so follow these steps (on openSUSE):</p>
+<ol class="arabic simple">
+<li><p>Add the repository</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>zypper<span class="w"> </span>addrepo<span class="w"> </span><span class="sb">`</span>https://download.opensuse.org/repositories/home:kodymo/openSUSE_Tumbleweed/home:kodymo.repo<span class="sb">`</span>_
 </pre></div>
 </div>
-<p>This should install the package.</p>
+<ol class="arabic simple" id="https-download-opensuse-org-repositories-home-kodymo-opensuse-tumbleweed-home-kodymo-repo" start="2">
+<li><p>Refresh your repositories</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>zypper<span class="w"> </span>ref
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Install Nester</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>zypper<span class="w"> </span>install<span class="w"> </span>python3-nester
+</pre></div>
+</div>
+<p>Note: The repository contains three builds for nester for Python 3.9, 3.10 and 3.11. <cite>zypper</cite> will automatically decide which version to use when running the command above.</p>
+<p>You can visit the repository on the [package maintainer’s OBS account](<a class="reference external" href="https://build.opensuse.org/package/show/home:kodymo/python-nester">https://build.opensuse.org/package/show/home:kodymo/python-nester</a>).</p>
 </section>
 <section id="building-from-source">
 <h2>Building from source<a class="headerlink" href="#building-from-source" title="Permalink to this heading"></a></h2>

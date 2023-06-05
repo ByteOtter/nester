@@ -94,9 +94,12 @@ Documentation
 We highly value good documentation to help users understand and use Nester effectively. When contributing to Nester, please make sure to follow these documentation guidelines:
 
 1. Every commit must have a changelog file containing a sensible changelog message. These files will be built by Towncrier.
-2. When contributing new features, please update the existing documentation or add new documentation as necessary. Nester's documentation is built using [Sphinx](https://www.sphinx-doc.org/en/master/) and published on [Read the Docs](https://readthedocs.org/).
+2. When contributing new features, please update the existing documentation or add new documentation as necessary. Nester's documentation is built using `Sphinx`_ and published on Read the Docs.
 
 **Note**: If you need help with writing documentation, please reach out to us for assistance. Your contributions to documentation are highly appreciated!
+
+.. _Sphinx:
+  https://www.sphinx-doc.org/en/master/
 
 Submitting a Pull Request
 -------------------------
