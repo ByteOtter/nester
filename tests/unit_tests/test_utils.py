@@ -7,13 +7,6 @@ from unittest import mock
 
 import src.nester.utils as utils
 
-# Test data
-_TEST_PROJECTNAME = "test_project"
-_VALID_STRUCTURE = {"src": {"test_project": {"__init__.py": "test"}}}
-_INVALID_STRUCTURE = {
-    "invalid_directory": {"test_invalid_project": {"invalid.py": "invalid"}}
-}
-
 
 def test_detect_languages():
     languages = utils.detect_languages()
@@ -26,7 +19,7 @@ def test_detect_languages():
     assert "rb" in languages
 
 
-def test_load_json():
+def test_load_json(valid_structure):
     # Arrange
     fake_json = '{"src": {"test_project": {"__init__.py": "test"}}}'
 
@@ -34,18 +27,19 @@ def test_load_json():
     with mock.patch("builtins.open", mock.mock_open(read_data=fake_json)):
         result = utils.load_json("py", "test")
 
+    print(valid_structure, result)
     # Assert
-    assert result == _VALID_STRUCTURE
+    assert result == valid_structure
 
 
-def test_create_structure(tmp_path):
+def test_create_structure(tmp_path, fake_project_name, valid_structure):
     # Arrange
     source_path = Path.joinpath(tmp_path, "src")
-    project_path = Path.joinpath(source_path, _TEST_PROJECTNAME)
+    project_path = Path.joinpath(source_path, fake_project_name)
     file = Path.joinpath(project_path, "__init__.py")
 
     # Act
-    utils.create_structure(_VALID_STRUCTURE, tmp_path, _TEST_PROJECTNAME)
+    utils.create_structure(valid_structure, tmp_path, fake_project_name)
 
     # Assert
     assert Path.exists(tmp_path / "src/test_project/__init__.py")
