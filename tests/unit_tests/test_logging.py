@@ -7,11 +7,6 @@ from unittest.mock import mock_open, patch
 
 import src.nester.nester_log as nester_log
 
-__log_content = (
-    "2023-05-31 - nester - INFO - Project: pyproject - Language: py - Location: /home/user\n"
-    "2023-05-31 - nester - INFO - Project: CProject - Language: c - Location: /home/user\n"
-)
-
 
 def test_project_log_formatter():
     """
@@ -32,14 +27,14 @@ def test_project_log_formatter():
     assert formatted_record == "LoggerTestProject - Python - /path/to/project"
 
 
-def test_check_log_for_duplicate(mocker):
+def test_check_log_for_duplicate(mocker, fake_log_content):
     """
     Test duplicate checking.
 
     Function seems to be unable to be properly mocked. Manual tests successful though.
     Test remains to test if the function reacts properly if no duplicate is found.
     """
-    mocker = mock_open(read_data=__log_content)
+    mocker = mock_open(read_data=fake_log_content)
 
     with patch("builtins.open", mocker):
         # BUG: This assert False though it should not.
@@ -47,11 +42,11 @@ def test_check_log_for_duplicate(mocker):
         assert nester_log.check_log_for_duplicate("csproject") is False
 
 
-def test_remove_log_entry(mocker):
+def test_remove_log_entry(mocker, fake_log_content):
     """
     Test removing a log entry from the log.
     """
-    mocker = mock_open(read_data=__log_content)
+    mocker = mock_open(read_data=fake_log_content)
 
     with patch("builtins.open", mocker):
         nester_log.remove_log_entry("cproject", False)
