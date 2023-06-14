@@ -4,8 +4,9 @@ This module contains integration tests to asess if all of Nester's function work
 This is done by temporarily creating a project, calling all of Nester's features and cleaning up the created project in the end.
 """
 
-from unittest.mock import patch
 from pathlib import Path
+from unittest.mock import patch
+
 import src.nester.utils as utils
 
 # Test data
