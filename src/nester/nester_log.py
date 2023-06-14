@@ -36,7 +36,7 @@ LOGGER.setLevel(logging.INFO)
 
 def create_log_file_if_none():
     """
-    Create '.nester.log' file if it does not exist already.
+    Create ```.nester.log``` file if it does not exist already.
 
     :param: None
     :return: None
@@ -51,6 +51,8 @@ def create_log_file_if_none():
 
 def check_log_for_duplicate(projectname):
     """
+    Check for duplicate log entries.
+
     Check the nester.log file in the home directory, whether a given projectname has been taken already.
     If no log file exists: Continue with the program.
 
@@ -119,6 +121,9 @@ def remove_log_entry(projectname, verbose=True):
 
 def clean_orphaned_entries():
     """
+    Check log entries for orphaned projects.
+
+    Orphaned projects are projects created and logged by Nester, but the source tree has been removed.
     Check all projects listed in the log and see whether their paths are still valid.
     If not remove the entry.
 
