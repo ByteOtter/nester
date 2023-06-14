@@ -2,9 +2,8 @@
 This module contains unit tests for the utils.py functions
 """
 
-from unittest import mock
 from pathlib import Path
-
+from unittest import mock
 
 import src.nester.utils as utils
 
