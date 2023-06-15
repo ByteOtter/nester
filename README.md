@@ -15,7 +15,7 @@
 ![Tests](https://img.shields.io/github/actions/workflow/status/ByteOtter/nester/tests.yml?label=tests)
 
 [![PyPI - Version](https://img.shields.io/pypi/v/nester-struct?color=green&label=PyPi%20Version&logo=PyPi&logoColor=green)](https://pypi.org/project/nester-struct/)
-![PyPI - Downloads](https://img.shields.io/pypi/dd/nester-struct?color=green&label=PyPi%20Downloads&logo=pypi&logoColor=green)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/nester-struct?label=PyPi%20Downloads&logo=pypi&logoColor=green)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nester-struct?color=green&label=Python%20Version&logo=Python&logoColor=green)
 ![PyPI - License](https://img.shields.io/pypi/l/nester-struct?color=green&label=License)
 </p>
