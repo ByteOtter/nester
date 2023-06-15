@@ -43,25 +43,27 @@ def create(language, projectname, git, no_log):
     PROJECTNAME refers to the name of your project. Your package will be named that way.
     """
 
-    print(
+    click.echo(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software."
     )
 
-    print(f"Checking log file for possible duplicate.")
+    click.echo(f"Checking log file for possible duplicate.")
     if nester_log.check_log_for_duplicate(projectname):
         print(
             f"\033[31mUups! A project called '{projectname}' already exists!\033[0m\nPlease choose a different name and try again!"
         )
         sys.exit(1)
 
-    print(f"Creating file structure for your {language} project '{projectname}'...")
+    click.echo(
+        f"Creating file structure for your {language} project '{projectname}'..."
+    )
 
     structure = utils.load_json(language, projectname)
     project_dir = utils.get_project_dir(projectname, True)
     utils.create_structure(structure, project_dir, projectname)
 
     if git:
-        print("Also creating git repository...")
+        click.echo("Also creating git repository...")
         os.system("git init")
 
     if not no_log:
@@ -75,7 +77,7 @@ def create(language, projectname, git, no_log):
             },
         )
 
-    print("\033[32mDone! Happy Hacking!\033[0m")
+    click.echo("\033[32mDone! Happy Hacking!\033[0m")
 
 
 @click.command(help="Validate current structure against Nester's JSON schemas.")
@@ -112,7 +114,7 @@ def clean(projectname):
 
     THIS ACTION CANNOT BE UNDONE
     """
-    print(
+    click.echo(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
     utils.clean(projectname)
@@ -128,7 +130,7 @@ def log(clean):
 
     Note: Only projects that were created without the `--no-log` flag are shown here.
     """
-    print(
+    click.echo(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
     if clean:
@@ -142,7 +144,7 @@ def version():
     Print Nester version
     """
 
-    print(
+    click.echo(
         """Nester - Copyright (c) 2023 ByteOtter. (github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more info.\nNester-version:""",
         __version__,
     )
