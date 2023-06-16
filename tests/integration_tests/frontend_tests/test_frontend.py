@@ -81,6 +81,15 @@ def test_clean(runner, fake_language, fake_project_name):
     assert result.exit_code == 0
 
 
+def test_empty_log(runner):
+    # Act
+    result = runner.invoke(commands.log)
+
+    # Assert
+    assert "No projects logged." in result.output
+    assert result.exit_code == 0
+
+
 def test_log(runner, fake_language, fake_project_name):
     # Arrange
     args = [fake_language, fake_project_name]
