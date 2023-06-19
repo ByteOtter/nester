@@ -1,5 +1,5 @@
 """
-This module implements Nester's CLI-behaviour.
+This module implements Nester's CLI-behavior.
 """
 
 import os
@@ -28,19 +28,19 @@ def cli():
     required=1,
     metavar="[LANGUAGE]",
 )
-@click.argument("projectname", type=click.STRING, required=1)
+@click.argument("project_name", type=click.STRING, required=1)
 @click.option(
-    "--git", "-g", is_flag=True, default=False, help="Set up git repository aswell."
+    "--git", "-g", is_flag=True, default=False, help="Set up git repository as well."
 )
 @click.option("--no-log", is_flag=True, default=False, help="Do not log this project.")
-def create(language, projectname, git, no_log):
+def create(language, project_name, git, no_log):
     """
     Create new project structure within current directory.
 
     LANGUAGE can be either:
     py, c, cpp, cs, java, rb
 
-    PROJECTNAME refers to the name of your project. Your package will be named that way.
+    PROJECT_NAME refers to the name of your project. Your package will be named that way.
     """
 
     click.echo(
@@ -48,19 +48,19 @@ def create(language, projectname, git, no_log):
     )
 
     click.echo(f"Checking log file for possible duplicate.")
-    if nester_log.check_log_for_duplicate(projectname):
+    if nester_log.check_log_for_duplicate(project_name):
         print(
-            f"\033[31mUups! A project called '{projectname}' already exists!\033[0m\nPlease choose a different name and try again!"
+            f"\033[31mUups! A project called '{project_name}' already exists!\033[0m\nPlease choose a different name and try again!"
         )
         sys.exit(1)
 
     click.echo(
-        f"Creating file structure for your {language} project '{projectname}'..."
+        f"Creating file structure for your {language} project '{project_name}'..."
     )
 
-    structure = utils.load_json(language, projectname)
-    project_dir = utils.get_project_dir(projectname, True)
-    utils.create_structure(structure, project_dir, projectname)
+    structure = utils.load_json(language, project_name)
+    project_dir = utils.get_project_dir(project_name, True)
+    utils.create_structure(structure, project_dir, project_name)
 
     if git:
         click.echo("Also creating git repository...")
@@ -71,7 +71,7 @@ def create(language, projectname, git, no_log):
         nester_log.LOGGER.info(
             "",
             extra={
-                "projectname": projectname,
+                "project_name": project_name,
                 "programming_language": language,
                 "location": str(project_dir),
             },
@@ -82,8 +82,8 @@ def create(language, projectname, git, no_log):
 
 @click.command(help="Validate current structure against Nester's JSON schemas.")
 @click.argument("language", type=click.Choice(utils.LANGUAGES))
-@click.argument("projectname", type=click.STRING, required=1)
-def validate(language, projectname):
+@click.argument("project_name", type=click.STRING, required=1)
+def validate(language, project_name):
     """
     Validate given project against the schema for the given language.
     """
@@ -92,10 +92,10 @@ def validate(language, projectname):
     )
     print(f"Validating file structure for your {language} project...")
 
-    structure = utils.load_json(language, projectname)
-    project_dir = utils.get_project_dir(projectname, False)
+    structure = utils.load_json(language, project_name)
+    project_dir = utils.get_project_dir(project_name, False)
 
-    if not utils.validate_structure(structure, projectname, project_dir):
+    if not utils.validate_structure(structure, project_name, project_dir):
         print(
             "\033[31mYour structure does not seem to line up to our schemas :(\033[0m"
         )
@@ -104,11 +104,11 @@ def validate(language, projectname):
 
 
 @click.command()
-@click.argument("projectname", type=click.STRING, required=1)
+@click.argument("project_name", type=click.STRING, required=1)
 @click.confirmation_option(
     prompt="Are you sure you want to delete this project?\nThis CANNOT be undone!"
 )
-def clean(projectname):
+def clean(project_name):
     """
     Delete ALL contents within the current directory.
 
@@ -117,7 +117,7 @@ def clean(projectname):
     click.echo(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
-    utils.clean(projectname)
+    utils.clean(project_name)
 
 
 @click.command()

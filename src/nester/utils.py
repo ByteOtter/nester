@@ -29,44 +29,44 @@ def detect_languages():
 LANGUAGES = detect_languages()
 
 
-def get_project_dir(projectname, should_create):
+def get_project_dir(project_name, should_create):
     """
     Get the project root directory.
-    If the name of the current working directory does not match the projectname,
-    a new directory will be created with the given projectname inside which the project
+    If the name of the current working directory does not match the project_name,
+    a new directory will be created with the given project_name inside which the project
     is created.
 
-    :param projectname: the name of the project
-    :type projectname: str
+    :param project_name: the name of the project
+    :type project_name: str
     :param should_create: if directory should be created or not
     :type should_create: bool
     :return: the path of the project root
     """
     try:
-        if Path.cwd().name != projectname:
+        if Path.cwd().name != project_name:
             if should_create:
-                Path.mkdir(Path(projectname), 0o755, True)
-            return Path.joinpath(Path.cwd(), projectname)
+                Path.mkdir(Path(project_name), 0o755, True)
+            return Path.joinpath(Path.cwd(), project_name)
         return Path.cwd()
     except FileNotFoundError:
         print("\033[32mProject directory not found!\033[0m")
 
 
-def load_json(language, projectname):
+def load_json(language, project_name):
     """
     Load the template for the project.
 
     :param language: the programming language of the project
     :type language: str
-    :param projectname: the name of the project
-    :type projectname: str
+    :param project_name: the name of the project
+    :type project_name: str
     :return structure: Returns the structure of the given language as a dict
     :rtype: dict
     """
     template = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
     with open(template, "r", encoding="utf-8") as tempfile:
         project_name = tempfile.read()
-        project_name = project_name.replace("$projectname", projectname)
+        project_name = project_name.replace("$project_name", project_name)
         structure = {}
         try:
             structure = json.loads(project_name)
@@ -78,7 +78,7 @@ def load_json(language, projectname):
     return structure
 
 
-def create_structure(structure, base_path, projectname):
+def create_structure(structure, base_path, project_name):
     """
     Iterate through the items in the structure and create directories and files based on that structure
 
@@ -86,15 +86,15 @@ def create_structure(structure, base_path, projectname):
     :type structure: dict
     :param base_path: The current directory
     :type base_path: Path
-    :param projectname: the name of the project
-    :type projectname: str
+    :param project_name: the name of the project
+    :type project_name: str
     :return: None
     """
     for key, val in structure.items():
         if isinstance(val, dict):
             base_path = Path.joinpath(base_path, key)
             Path.mkdir(base_path)
-            create_structure(val, base_path, projectname)
+            create_structure(val, base_path, project_name)
             base_path = base_path.parent
         else:
             file = Path.joinpath(base_path, key)
@@ -103,7 +103,7 @@ def create_structure(structure, base_path, projectname):
                 file.write_text(val)
 
 
-def validate_structure(structure, projectname, base_path):
+def validate_structure(structure, project_name, base_path):
     """
     Iterates through the subdirectories of the current directory and validates if it is a subset of the schema for
     the given language.
@@ -112,8 +112,8 @@ def validate_structure(structure, projectname, base_path):
     :type structure: dict
     :param base_path: The current directory
     :type base_path: Path
-    :param projectname: The name of the project
-    :type projectname: str
+    :param project_name: The name of the project
+    :type project_name: str
     :return: True or False depending on if the structure corresponds to the schema or not
     :rtype: bool
     """
@@ -123,7 +123,7 @@ def validate_structure(structure, projectname, base_path):
     for key, val in structure.items():
         if isinstance(val, dict):
             base_path = Path.joinpath(base_path, key)
-            validate_structure(val, projectname, base_path)
+            validate_structure(val, project_name, base_path)
             base_path = base_path.parent
         key_path = Path.joinpath(base_path, key)
         if not Path.is_file(key_path) and not Path.is_dir(key_path):
@@ -135,17 +135,17 @@ def validate_structure(structure, projectname, base_path):
     return True
 
 
-def clean(projectname):
+def clean(project_name):
     """
     Cleanup the given project.
 
-    :param projectname: The name of the project
+    :param project_name: The name of the project
     """
-    project_dir = get_project_dir(projectname, False)
+    project_dir = get_project_dir(project_name, False)
     if not project_dir.exists():
-        print(f"\033[31mError: Project '{projectname}' not found!")
+        print(f"\033[31mError: Project '{project_name}' not found!")
     else:
         print("Cleaning up your mess...")
         rmtree(project_dir)
-        nester_log.remove_log_entry(projectname)
+        nester_log.remove_log_entry(project_name)
         print("\033[32mEverything cleaned up!\033[0m")

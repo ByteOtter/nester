@@ -23,7 +23,7 @@ class ProjectLogFormatter(logging.Formatter):
         """
         Override logging.Formatter.process function
         """
-        record.projectname = getattr(record, "projectname", "N/A")
+        record.project_name = getattr(record, "project_name", "N/A")
         record.programming_language = getattr(record, "programming_language", "N/A")
         record.location = getattr(record, "location", "N/A")
         return record
@@ -42,21 +42,21 @@ def create_log_file_if_none():
     :return: None
     """
     formatter = ProjectLogFormatter(
-        "%(asctime)s - %(name)s - %(levelname)s - Project: %(projectname)s - Language: %(programming_language)s - Location: %(location)s"
+        "%(asctime)s - %(name)s - %(levelname)s - Project: %(project_name)s - Language: %(programming_language)s - Location: %(location)s"
     )
     file_handler = logging.FileHandler(_LOG_FILE_PATH)
     file_handler.setFormatter(formatter)
     LOGGER.addHandler(file_handler)
 
 
-def check_log_for_duplicate(projectname):
+def check_log_for_duplicate(project_name):
     """
     Check for duplicate log entries.
 
-    Check the nester.log file in the home directory, whether a given projectname has been taken already.
+    Check the nester.log file in the home directory, whether a given project_name has been taken already.
     If no log file exists: Continue with the program.
 
-    :param projectname: Name of the project to be checked
+    :param project_name: Name of the project to be checked
     :return: True/False depending on whether an entry has been found.
     :rtype: bool
     """
@@ -68,18 +68,18 @@ def check_log_for_duplicate(projectname):
         return False
 
     for line in log:
-        if projectname in line:
+        if project_name in line:
             return True
 
     return False
 
 
-def remove_log_entry(projectname, verbose=True):
+def remove_log_entry(project_name, verbose=True):
     """
     Check if the given project appears in the log. If it does, remove the entry from the log.
 
-    :param projectname: The name of the project to be removed.
-    :type projectname: str
+    :param project_name: The name of the project to be removed.
+    :type project_name: str
     :param verbose: Flag whether or not to suppress print statements. Needed for clean function.
     :type verbose: bool
     :return: None
@@ -94,13 +94,13 @@ def remove_log_entry(projectname, verbose=True):
     entry_found = False
     updated_lines = []
 
-    if projectname[-1] == "/" and projectname[-2] != "\\":
-        # If projectname is given as directory or escaped "/" (with ending "/"), trim last "/".
-        # This may happen when using autocompletin in the terminal.
-        projectname = projectname[:-1]
+    if project_name[-1] == "/" and project_name[-2] != "\\":
+        # If project_name is given as directory or escaped "/" (with ending "/"), trim last "/".
+        # This may happen when using autocompletion in the terminal.
+        project_name = project_name[:-1]
 
     for line in log:
-        if projectname in line:
+        if project_name in line:
             entry_found = True
         else:
             updated_lines.append(line)
@@ -111,12 +111,12 @@ def remove_log_entry(projectname, verbose=True):
                 log_file.writelines(updated_lines)
             if verbose:
                 print(
-                    f"\033[32mLog entry for '{projectname}' removed successfully.\033[0m"
+                    f"\033[32mLog entry for '{project_name}' removed successfully.\033[0m"
                 )
         except Exception as exception:
             print(f"\033[31mError while removing entry: {exception}\033[0m")
     else:
-        print(f"\033[34mNo log entry found for '{projectname}'\033[0m")
+        print(f"\033[34mNo log entry found for '{project_name}'\033[0m")
 
 
 def clean_orphaned_entries():
@@ -140,7 +140,7 @@ def clean_orphaned_entries():
 
                 if not Path.exists(Path(location)):
                     remove_log_entry(project_name, False)
-                    print(f"Project '{project_name}' cleand up.")
+                    print(f"Project '{project_name}' cleaned up.")
                     items_removed = items_removed + 1
 
             if items_removed == 0:
