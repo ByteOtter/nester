@@ -12,24 +12,24 @@ from shutil import rmtree
 
 from . import nester_log
 
-PROJECT_ROOT = Path(__file__).parent.absolute()
+PROJECT_ROOT: Path = Path(__file__).parent.absolute()
 
 
-def detect_languages():
+def detect_languages() -> list:
     """
     Look through the templates folder to find which languages we have templates for
 
     :return: List of languages that have template folders
     :rtype: list
     """
-    base_path = Path.joinpath(PROJECT_ROOT, "templates")
+    base_path: Path = Path.joinpath(PROJECT_ROOT, "templates")
     return [PurePath(folder).name for folder in base_path.glob("*/")]
 
 
-LANGUAGES = detect_languages()
+LANGUAGES: list = detect_languages()
 
 
-def get_project_dir(project_name, should_create):
+def get_project_dir(project_name: str, should_create: bool) -> Path:
     """
     Get the project root directory.
     If the name of the current working directory does not match the project_name,
@@ -50,9 +50,10 @@ def get_project_dir(project_name, should_create):
         return Path.cwd()
     except FileNotFoundError:
         print("\033[32mProject directory not found!\033[0m")
+        return Path()
 
 
-def load_json(language, project_name):
+def load_json(language: str, project_name: str) -> dict:
     """
     Load the template for the project.
 
@@ -63,7 +64,8 @@ def load_json(language, project_name):
     :return structure: Returns the structure of the given language as a dict
     :rtype: dict
     """
-    template = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
+    template: str = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
+
     with open(template, "r", encoding="utf-8") as tempfile:
         project_name = tempfile.read()
         project_name = project_name.replace("$project_name", project_name)
@@ -78,7 +80,7 @@ def load_json(language, project_name):
     return structure
 
 
-def create_structure(structure, base_path, project_name):
+def create_structure(structure: dict, base_path: Path, project_name: str) -> None:  # type: ignore
     """
     Iterate through the items in the structure and create directories and files based on that structure
 
@@ -92,18 +94,18 @@ def create_structure(structure, base_path, project_name):
     """
     for key, val in structure.items():
         if isinstance(val, dict):
-            base_path = Path.joinpath(base_path, key)
+            base_path: Path = Path.joinpath(base_path, key)
             Path.mkdir(base_path)
             create_structure(val, base_path, project_name)
-            base_path = base_path.parent
+            base_path: Path = base_path.parent
         else:
-            file = Path.joinpath(base_path, key)
+            file: Path = Path.joinpath(base_path, key)
             Path.touch(file)
             if isinstance(val, str):
                 file.write_text(val)
 
 
-def validate_structure(structure, project_name, base_path):
+def validate_structure(structure: dict, project_name: str, base_path: Path) -> bool:
     """
     Iterates through the subdirectories of the current directory and validates if it is a subset of the schema for
     the given language.
@@ -118,14 +120,14 @@ def validate_structure(structure, project_name, base_path):
     :rtype: bool
     """
 
-    missing_file = False
+    missing_file: bool = False
 
     for key, val in structure.items():
         if isinstance(val, dict):
             base_path = Path.joinpath(base_path, key)
             validate_structure(val, project_name, base_path)
             base_path = base_path.parent
-        key_path = Path.joinpath(base_path, key)
+        key_path: Path = Path.joinpath(base_path, key)
         if not Path.is_file(key_path) and not Path.is_dir(key_path):
             print(f"'{key}' file or directory not found!")
             missing_file = True
@@ -135,13 +137,13 @@ def validate_structure(structure, project_name, base_path):
     return True
 
 
-def clean(project_name):
+def clean(project_name: str) -> None:
     """
     Cleanup the given project.
 
     :param project_name: The name of the project
     """
-    project_dir = get_project_dir(project_name, False)
+    project_dir: Path = get_project_dir(project_name, False)
     if not project_dir.exists():
         print(f"\033[31mError: Project '{project_name}' not found!")
     else:

@@ -4,12 +4,13 @@ This module implements Nester's CLI-behavior.
 
 import os
 import sys
+from pathlib import Path
 
 import click
 
 from . import __version__, nester_log, utils
 
-_context_settings = dict(help_option_names=["-h", "--help"])
+_context_settings: dict = dict(help_option_names=["-h", "--help"])
 
 
 @click.group(context_settings=_context_settings)
@@ -33,7 +34,7 @@ def cli():
     "--git", "-g", is_flag=True, default=False, help="Set up git repository as well."
 )
 @click.option("--no-log", is_flag=True, default=False, help="Do not log this project.")
-def create(language, project_name, git, no_log):
+def create(language: str, project_name: str, git: bool, no_log: bool) -> None:
     """
     Create new project structure within current directory.
 
@@ -58,8 +59,8 @@ def create(language, project_name, git, no_log):
         f"Creating file structure for your {language} project '{project_name}'..."
     )
 
-    structure = utils.load_json(language, project_name)
-    project_dir = utils.get_project_dir(project_name, True)
+    structure: dict = utils.load_json(language, project_name)
+    project_dir: Path = utils.get_project_dir(project_name, True)
     utils.create_structure(structure, project_dir, project_name)
 
     if git:
@@ -83,7 +84,7 @@ def create(language, project_name, git, no_log):
 @click.command(help="Validate current structure against Nester's JSON schemas.")
 @click.argument("language", type=click.Choice(utils.LANGUAGES))
 @click.argument("project_name", type=click.STRING, required=1)
-def validate(language, project_name):
+def validate(language: str, project_name: str) -> None:
     """
     Validate given project against the schema for the given language.
     """
@@ -92,8 +93,8 @@ def validate(language, project_name):
     )
     print(f"Validating file structure for your {language} project...")
 
-    structure = utils.load_json(language, project_name)
-    project_dir = utils.get_project_dir(project_name, False)
+    structure: dict = utils.load_json(language, project_name)
+    project_dir: Path = utils.get_project_dir(project_name, False)
 
     if not utils.validate_structure(structure, project_name, project_dir):
         print(
@@ -108,7 +109,7 @@ def validate(language, project_name):
 @click.confirmation_option(
     prompt="Are you sure you want to delete this project?\nThis CANNOT be undone!"
 )
-def clean(project_name):
+def clean(project_name: str) -> None:
     """
     Delete ALL contents within the current directory.
 
@@ -124,7 +125,7 @@ def clean(project_name):
 @click.option(
     "--clean", is_flag=True, default=False, help="Remove orphaned log entries"
 )
-def log(clean):
+def log(clean: bool) -> None:
     """
     List all previously created projects.
 
@@ -139,14 +140,14 @@ def log(clean):
 
 
 @click.command()
-def version():
+def version() -> None:
     """
     Print Nester version
     """
 
     click.echo(
         """Nester - Copyright (c) 2023 ByteOtter. (github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more info.\nNester-version:""",
-        __version__,
+        __version__,  # type: ignore
     )
 
 

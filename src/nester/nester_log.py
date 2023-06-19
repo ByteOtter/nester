@@ -12,14 +12,14 @@ class ProjectLogFormatter(logging.Formatter):
     Custom formatter class to handle the custom log fields Nester requires.
     """
 
-    def format(self, record):
+    def format(self, record: logging.LogRecord) -> str:
         """
         Override logging.Formatter.format function
         """
         record = self.process(record)
         return super().format(record)
 
-    def process(self, record):
+    def process(self, record: logging.LogRecord) -> logging.LogRecord:
         """
         Override logging.Formatter.process function
         """
@@ -29,27 +29,27 @@ class ProjectLogFormatter(logging.Formatter):
         return record
 
 
-_LOG_FILE_PATH = Path.home() / ".nester.log"
-LOGGER = logging.getLogger("nester")
+_LOG_FILE_PATH: Path = Path.home() / ".nester.log"
+LOGGER: logging.Logger = logging.getLogger("nester")
 LOGGER.setLevel(logging.INFO)
 
 
-def create_log_file_if_none():
+def create_log_file_if_none() -> None:
     """
     Create ```.nester.log``` file if it does not exist already.
 
     :param: None
     :return: None
     """
-    formatter = ProjectLogFormatter(
+    formatter: logging.Formatter = ProjectLogFormatter(
         "%(asctime)s - %(name)s - %(levelname)s - Project: %(project_name)s - Language: %(programming_language)s - Location: %(location)s"
     )
-    file_handler = logging.FileHandler(_LOG_FILE_PATH)
+    file_handler: logging.FileHandler = logging.FileHandler(_LOG_FILE_PATH)
     file_handler.setFormatter(formatter)
     LOGGER.addHandler(file_handler)
 
 
-def check_log_for_duplicate(project_name):
+def check_log_for_duplicate(project_name: str) -> bool:
     """
     Check for duplicate log entries.
 
@@ -74,7 +74,7 @@ def check_log_for_duplicate(project_name):
     return False
 
 
-def remove_log_entry(project_name, verbose=True):
+def remove_log_entry(project_name: str, verbose: bool = True) -> None:
     """
     Check if the given project appears in the log. If it does, remove the entry from the log.
 
@@ -86,13 +86,13 @@ def remove_log_entry(project_name, verbose=True):
     """
     try:
         with _LOG_FILE_PATH.open("r", encoding="utf-8") as log_file:
-            log = log_file.readlines()
+            log: list[str] = log_file.readlines()
     except FileNotFoundError:
         print("\033[34mNo log file found! Moving on ...\033[0m")
         return
 
-    entry_found = False
-    updated_lines = []
+    entry_found: bool = False
+    updated_lines: list[str] = []
 
     if project_name[-1] == "/" and project_name[-2] != "\\":
         # If project_name is given as directory or escaped "/" (with ending "/"), trim last "/".
@@ -119,7 +119,7 @@ def remove_log_entry(project_name, verbose=True):
         print(f"\033[34mNo log entry found for '{project_name}'\033[0m")
 
 
-def clean_orphaned_entries():
+def clean_orphaned_entries() -> None:
     """
     Check log entries for orphaned projects.
 
@@ -130,13 +130,15 @@ def clean_orphaned_entries():
     :param: None
     :return: None
     """
-    items_removed = 0
+    items_removed: int = 0
 
     try:
         with open(_LOG_FILE_PATH, "r", encoding="utf-8") as log_file:
             for line in log_file:
-                project_name = re.search(r"[-\s]+Project:\s+(.*?)\s+-", line).group(1)
-                location = re.search(r"[-\s]+Location:\s+(.*)", line).group(1)
+                project_name: str = re.search(
+                    r"[-\s]+Project:\s+(.*?)\s+-", line
+                ).group(1)
+                location: str = re.search(r"[-\s]+Location:\s+(.*)", line).group(1)
 
                 if not Path.exists(Path(location)):
                     remove_log_entry(project_name, False)
@@ -155,7 +157,7 @@ def clean_orphaned_entries():
         )
 
 
-def print_log_to_table():
+def print_log_to_table() -> None:
     """
     Read the log file and print its contents into a table.
 
@@ -182,11 +184,13 @@ def print_log_to_table():
                 print("-" * 80)
 
                 for line in log_file:
-                    project_name = re.search(r"[-\s]+Project:\s+(.*?)\s+-", line).group(
-                        1
-                    )
-                    language = re.search(r"[-\s]+Language:\s+(.*?)\s+-", line).group(1)
-                    location = re.search(r"[-\s]+Location:\s+(.*)", line).group(1)
+                    project_name: str = re.search(
+                        r"[-\s]+Project:\s+(.*?)\s+-", line
+                    ).group(1)
+                    language: str = re.search(
+                        r"[-\s]+Language:\s+(.*?)\s+-", line
+                    ).group(1)
+                    location: str = re.search(r"[-\s]+Location:\s+(.*)", line).group(1)
 
                     print(f"{project_name:<20} | {language:<10} | {location}")
                 print()
