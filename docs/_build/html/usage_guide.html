@@ -106,7 +106,7 @@ Nester has four main functions it can perform:</p>
 <h3>Nester create<a class="headerlink" href="#nester-create" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">nester</span> <span class="pre">create(language,</span> <span class="pre">projectname,</span> <span class="pre">[-g|--git])</span></span></dt>
+<span class="sig-name descname"><span class="pre">nester</span> <span class="pre">create(language,</span> <span class="pre">project_name,</span> <span class="pre">[-g|--git])</span></span></dt>
 <dd><p>Creates the project structure for the given project.
 If you are already in a directory which matches the name of the given project, the source files will be created in your current directory.
 If not Nester will automatically create a directory for your project.</p>
@@ -114,7 +114,7 @@ If not Nester will automatically create a directory for your project.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>language</strong> (<em>str</em>) – The shortform of a supported programming language. Refer to the :doc: <cite>list of supported languages &lt;supported_languages&gt;</cite>.</p></li>
-<li><p><strong>projectname</strong> (<em>str</em>) – The name of the project package that will be created.</p></li>
+<li><p><strong>project_name</strong> (<em>str</em>) – The name of the project package that will be created.</p></li>
 <li><p><strong>-g</strong><strong>|</strong><strong>--git</strong> (<em>flag</em>) – An optional flag to initialize a Git repository in the project directory. If specified, a Git repository will be created simultaneously with the project structure.</p></li>
 <li><p><strong>--no-log</strong> (<em>flag</em>) – An optional flag to disable project logging for the current project.</p></li>
 </ul>
@@ -133,14 +133,14 @@ If not Nester will automatically create a directory for your project.</p>
 <h3>Nester validate<a class="headerlink" href="#nester-validate" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">nester</span> <span class="pre">validate(language,</span> <span class="pre">projectname)</span></span></dt>
+<span class="sig-name descname"><span class="pre">nester</span> <span class="pre">validate(language,</span> <span class="pre">project_name)</span></span></dt>
 <dd><p>Validates the file structure of the given project against our JSON schmemas.
 Files you created, which are therefore not part of our schema, or such which have been created by other utilites (e.g. <cite>git init</cite>) will be ignored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>language</strong> (<em>str</em>) – The shortform of a supported programming language. Refer to the :doc: <cite>list of supported languages &lt;supported_languages&gt;</cite>.</p></li>
-<li><p><strong>projectname</strong> (<em>str</em>) – The name of the project or package you want to validate</p></li>
+<li><p><strong>project_name</strong> (<em>str</em>) – The name of the project or package you want to validate</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -177,13 +177,13 @@ Files you created, which are therefore not part of our schema, or such which hav
 <h3>Nester clean<a class="headerlink" href="#nester-clean" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">nester</span> <span class="pre">clean(projectname,</span> <span class="pre">[-y|--yes])</span></span></dt>
+<span class="sig-name descname"><span class="pre">nester</span> <span class="pre">clean(project_name,</span> <span class="pre">[-y|--yes])</span></span></dt>
 <dd><p>Deletes the <em>entire</em> content of the given project directory.</p>
 <p>This action <strong>cannot</strong> be undone.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>projectname</strong> (<em>str</em>) – The name of the project you want to delete.</p></li>
+<li><p><strong>project_name</strong> (<em>str</em>) – The name of the project you want to delete.</p></li>
 <li><p><strong>-y</strong><strong>|</strong><strong>--yes</strong> (<em>flag</em>) – An optional flag to auto-confirm your decision and skip the “Are you sure?” dialogue.</p></li>
 </ul>
 </dd>
