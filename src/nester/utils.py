@@ -65,22 +65,29 @@ def load_json(language: str, project_name: str) -> dict:
     :rtype: dict
     """
     template: str = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
+    structure = {}
 
-    with open(template, "r", encoding="utf-8") as tempfile:
-        file_handle = tempfile.read()
-        file_handle = file_handle.replace("$projectname", project_name)
-        structure = {}
-        try:
-            structure = json.loads(file_handle)
-        except json.JSONDecodeError as exc:
-            print(f"JSONDecodeError: {exc}")
-        except ValueError as exc:
-            print(f"ValueError: {exc}")
+    if language not in LANGUAGES:
+        print(f"\033[31mFatal Error: Language '{language}' not supported!\033[30m")
+        return structure
+
+    try:
+        with open(template, "r", encoding="utf-8") as tempfile:
+            file_handle = tempfile.read()
+            file_handle = file_handle.replace("$projectname", project_name)
+            try:
+                structure = json.loads(file_handle)
+            except json.JSONDecodeError as exc:
+                print(f"JSONDecodeError: {exc}")
+            except ValueError as exc:
+                print(f"ValueError: {exc}")
+    except FileNotFoundError as exc:
+        print(f"\033[31mFatal Error:'{language}' structure file not found!\033[30m")
 
     return structure
 
 
-def create_structure(structure: dict, base_path: Path, project_name: str) -> None:  # type: ignore
+def create_structure(structure: dict, base_path: Path, project_name: str) -> None:
     """
     Iterate through the items in the structure and create directories and files based on that structure
 
@@ -92,17 +99,20 @@ def create_structure(structure: dict, base_path: Path, project_name: str) -> Non
     :type project_name: str
     :return: None
     """
-    for key, val in structure.items():
-        if isinstance(val, dict):
-            base_path: Path = Path.joinpath(base_path, key)
-            Path.mkdir(base_path)
-            create_structure(val, base_path, project_name)
-            base_path: Path = base_path.parent
-        else:
-            file: Path = Path.joinpath(base_path, key)
-            Path.touch(file)
-            if isinstance(val, str):
-                file.write_text(val)
+    if structure is not None:
+        for key, val in structure.items():
+            if isinstance(val, dict):
+                base_path = Path.joinpath(base_path, key)
+                Path.mkdir(base_path)
+                create_structure(val, base_path, project_name)
+                base_path = base_path.parent
+            else:
+                file: Path = Path.joinpath(base_path, key)
+                Path.touch(file)
+                if isinstance(val, str):
+                    file.write_text(val)
+    else:
+        raise AttributeError("\033[31mFatal Error:\033[30m invalid language structure!")
 
 
 def validate_structure(structure: dict, project_name: str, base_path: Path) -> bool:

@@ -5,8 +5,8 @@ Implemented here are commonly used functions for Nester used in its frontend bot
 """
 
 import os
+import sys
 from pathlib import Path
-from sys import exit
 
 from . import nester_log, utils
 
@@ -26,7 +26,7 @@ def create_project(language: str, project_name: str, git: bool, no_log: bool) ->
         print(
             f"\033[31mUups! A project called '{project_name}' already exists!\033[0m\nPlease choose a different name and try again!"
         )
-        exit(1)
+        sys.exit(1)
 
     structure: dict = utils.load_json(language, project_name)
     project_dir: Path = utils.get_project_dir(project_name, True)
