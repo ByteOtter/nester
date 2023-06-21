@@ -67,11 +67,11 @@ def load_json(language: str, project_name: str) -> dict:
     template: str = f"{PROJECT_ROOT}/templates/{language}/{language}_layout.json"
 
     with open(template, "r", encoding="utf-8") as tempfile:
-        project_name = tempfile.read()
-        project_name = project_name.replace("$project_name", project_name)
+        file_handle = tempfile.read()
+        file_handle = file_handle.replace("$projectname", project_name)
         structure = {}
         try:
-            structure = json.loads(project_name)
+            structure = json.loads(file_handle)
         except json.JSONDecodeError as exc:
             print(f"JSONDecodeError: {exc}")
         except ValueError as exc:
