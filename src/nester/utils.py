@@ -7,6 +7,7 @@ This module provides all functions necessary for Nester's three main utilities:
 """
 
 import json
+import os
 from pathlib import Path, PurePath
 from shutil import rmtree
 
@@ -49,7 +50,7 @@ def get_project_dir(project_name: str, should_create: bool) -> Path:
             return Path.joinpath(Path.cwd(), project_name)
         return Path.cwd()
     except FileNotFoundError:
-        print("\033[32mProject directory not found!\033[0m")
+        print("\033[31mProject directory not found!\033[0m")
         return Path()
 
 
@@ -161,3 +162,20 @@ def clean(project_name: str) -> None:
         rmtree(project_dir)
         nester_log.remove_log_entry(project_name)
         print("\033[32mEverything cleaned up!\033[0m")
+
+
+def initialize_git_repository(project_dir: Path) -> None:
+    """
+    Initialize ```git``` repository in project dir.
+
+    :param project_dir: Directory of the project to initialize git repository in.
+    """
+    print("Creating git repository...")
+    # Save current working directory
+    current_dir = os.getcwd()
+    # Change to project directory
+    os.chdir(project_dir)
+    # Initialize git repository
+    os.system("git init")
+    # return to previous directory
+    os.chdir(current_dir)

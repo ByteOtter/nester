@@ -4,7 +4,6 @@ This module provides an abstraction of the functionality previously found in the
 Implemented here are commonly used functions for Nester used in its frontend both cli as well as TUI.
 """
 
-import os
 import sys
 from pathlib import Path
 
@@ -36,9 +35,7 @@ def create_project(language: str, project_name: str, git: bool, no_log: bool) ->
     print(f"Creating file structure for your {language} project '{project_name}'...")
 
     if git:
-        print("Also creating git repository...")
-        os.chdir(project_dir)
-        os.system("git init")
+        utils.initialize_git_repository(project_dir)
 
     if not no_log:
         nester_log.create_log_file_if_none()
@@ -93,10 +90,10 @@ def clean_project(project_name: str) -> None:
     :param project_name: Name of the project to be removed.
     """
     print("Checking log if project exists...")
-    if nester_log.check_log_for_duplicate(project_name):
-        utils.clean(project_name)
-    else:
+    if not nester_log.check_log_for_duplicate(project_name):
         print(
-            f"""\033[31mNo log entry found for '{project_name}'! Either the project was created with logging disabled.
+            f"""\033[31mError: Project '{project_name}' not found! Either the project was created with logging disabled.
 Or it does not exist."""
         )
+    else:
+        utils.clean(project_name)
