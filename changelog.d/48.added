@@ -1,0 +1,4 @@
+Add interactive mode
+
+Calling Nester without any arguments will cause it to activate interactive mode in which the user will be guided through
+the interaction.

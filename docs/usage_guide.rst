@@ -81,3 +81,10 @@ Nester clean
   :type -y|--yes: flag
   :return: None
   :rtype: None
+
+Interactive Mode
+----------------
+
+Calling Nester in the Terminal without providing any additional arguments launches `interactive mode`.
+
+Here you can choose the operation to perform and are guided through the process for each of them.

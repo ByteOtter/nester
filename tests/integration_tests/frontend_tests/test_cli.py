@@ -3,7 +3,7 @@
 import pytest
 from click.testing import CliRunner
 
-import src.nester.nester_commands as commands
+import nester.cli as commands
 import src.nester.utils as utils
 
 
@@ -105,11 +105,11 @@ def test_log(runner, fake_language, fake_project_name):
 
 def test_clean_with_unknown_project(runner):
     # Arrange
-    projectname = "no_project"
+    project_name = "no_project"
 
     # Act
-    result = runner.invoke(commands.clean, ["--yes", projectname])
+    result = runner.invoke(commands.clean, ["--yes", project_name])
 
     # Assert
-    assert f"Error: Project '{projectname}' not found!" in result.output
+    assert f"Error: Project '{project_name}' not found!" in result.output
     assert result.exit_code == 0

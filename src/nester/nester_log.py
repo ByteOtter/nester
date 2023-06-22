@@ -157,6 +157,36 @@ def clean_orphaned_entries() -> None:
         )
 
 
+def find_all_projects() -> list[str]:  # type: ignore
+    """
+    Read the log file and save all project names into a list.
+    """
+    projects: list[str] = []
+    try:
+        # Check if log fille exists
+        if not _LOG_FILE_PATH.exists():
+            print(
+                "\033[031mError: Log file could not be found.\033[0m\nThis could happen because you have not created a single project yet. Try `nester create` to get started!"
+            )
+        # Check if log file is empty
+        elif _LOG_FILE_PATH.stat().st_size == 0:
+            print(
+                "\033[33mNo projects logged. Try \033[35mnester create\033[33m to start!\033[0m"
+            )
+        else:
+            with open(_LOG_FILE_PATH, "r", encoding="utf-8") as log_file:
+                for line in log_file:
+                    project_name = re.search(r"[-\s]+Project:\s+(.*?)\s+-", line).group(
+                        1
+                    )
+                    projects.append(project_name)
+
+            return projects
+
+    except Exception as exception:
+        print(f"\033[31mAn unexpected error occurred: {exception}\033[30m")
+
+
 def print_log_to_table() -> None:
     """
     Read the log file and print its contents into a table.
@@ -172,11 +202,10 @@ def print_log_to_table() -> None:
             )
 
         # Check if logfile is empty
-        elif _LOG_FILE_PATH.stat().st_size == 0:
+        if _LOG_FILE_PATH.stat().st_size == 0:
             print(
                 "\033[33mNo projects logged. Try \033[35mnester create\033[33m to start!\033[0m"
             )
-
         else:
             with open(_LOG_FILE_PATH, "r", encoding="utf-8") as log_file:
                 # Print table header
