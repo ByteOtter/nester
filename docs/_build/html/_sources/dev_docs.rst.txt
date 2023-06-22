@@ -10,3 +10,4 @@ These docs are a compilation of all of Nester's components aswell as information
     Contributing Guide <contributing>
     The `utils` module <source/utils>
     The `nester_log` module <source/logging>
+    The `commands` module <source/commands>

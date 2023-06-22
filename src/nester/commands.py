@@ -85,7 +85,7 @@ def print_log(clean_log: bool) -> None:
 
 def clean_project(project_name: str) -> None:
     """
-    Delete project if found in log.
+    Delete project when it is found in the log.
 
     :param project_name: Name of the project to be removed.
     """
