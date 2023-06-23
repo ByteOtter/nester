@@ -6,6 +6,7 @@ The user is prompted to enter all the parameters needed before a project is crea
 """
 
 import sys
+from typing import List
 
 import questionary
 
@@ -72,7 +73,7 @@ def interactive_mode() -> None:
                 commands.validate_project(language, project_name)
 
             case "clean":
-                choices: list[str] = ["---Abort---"]
+                choices: List[str] = ["---Abort---"]
                 projects = nester_log.find_all_projects()
 
                 if projects is not None:

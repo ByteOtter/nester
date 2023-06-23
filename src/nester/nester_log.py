@@ -5,6 +5,7 @@ This module handles Nester's logging functionality. Nester logs all projects cre
 import logging
 import re
 from pathlib import Path
+from typing import List
 
 
 class ProjectLogFormatter(logging.Formatter):
@@ -86,13 +87,13 @@ def remove_log_entry(project_name: str, verbose: bool = True) -> None:
     """
     try:
         with _LOG_FILE_PATH.open("r", encoding="utf-8") as log_file:
-            log: list[str] = log_file.readlines()
+            log: List[str] = log_file.readlines()
     except FileNotFoundError:
         print("\033[34mNo log file found! Moving on ...\033[0m")
         return
 
     entry_found: bool = False
-    updated_lines: list[str] = []
+    updated_lines: List[str] = []
 
     if project_name[-1] == "/" and project_name[-2] != "\\":
         # If project_name is given as directory or escaped "/" (with ending "/"), trim last "/".
@@ -157,11 +158,11 @@ def clean_orphaned_entries() -> None:
         )
 
 
-def find_all_projects() -> list[str]:  # type: ignore
+def find_all_projects() -> List[str]:
     """
     Read the log file and save all project names into a list.
     """
-    projects: list[str] = []
+    projects: List[str] = []
     try:
         # Check if log fille exists
         if not _LOG_FILE_PATH.exists():
@@ -181,10 +182,10 @@ def find_all_projects() -> list[str]:  # type: ignore
                     )
                     projects.append(project_name)
 
-            return projects
-
     except Exception as exception:
         print(f"\033[31mAn unexpected error occurred: {exception}\033[30m")
+
+    return projects
 
 
 def print_log_to_table() -> None:
