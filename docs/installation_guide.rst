@@ -24,8 +24,6 @@ Simply run this in your terminal:
 Installation as `rpm` package
 -----------------------------
 
---COMING SOON--
-
 Some systems may not initially ship with `python3` or `pip` or you may simply do not want to use `pip`.
 For this reason we are planning to offer Nester in a varietly of different Linux packages.
 
