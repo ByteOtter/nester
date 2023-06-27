@@ -12,6 +12,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
@@ -52,11 +54,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.create_structure"><code class="docutils literal notranslate"><span class="pre">create_structure()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.detect_languages"><code class="docutils literal notranslate"><span class="pre">detect_languages()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.get_project_dir"><code class="docutils literal notranslate"><span class="pre">get_project_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.utils.initialize_git_repository"><code class="docutils literal notranslate"><span class="pre">initialize_git_repository()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.load_json"><code class="docutils literal notranslate"><span class="pre">load_json()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.utils.validate_structure"><code class="docutils literal notranslate"><span class="pre">validate_structure()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html">   The `nester_log` module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">   The `commands` module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supported_languages.html">Supported Languages</a></li>
 </ul>
 
@@ -97,25 +101,25 @@
 </ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="nester.utils.clean">
-<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.clean" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.utils.clean" title="Permalink to this definition"></a></dt>
 <dd><p>Cleanup the given project.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>projectname</strong> – The name of the project</p>
+<dd class="field-odd"><p><strong>project_name</strong> – The name of the project</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="nester.utils.create_structure">
-<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">create_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.create_structure" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">create_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.utils.create_structure" title="Permalink to this definition"></a></dt>
 <dd><p>Iterate through the items in the structure and create directories and files based on that structure</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>structure</strong> (<em>dict</em>) – the directory structure from the template</p></li>
 <li><p><strong>base_path</strong> (<em>Path</em>) – The current directory</p></li>
-<li><p><strong>projectname</strong> (<em>str</em>) – the name of the project</p></li>
+<li><p><strong>project_name</strong> (<em>str</em>) – the name of the project</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -126,7 +130,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="nester.utils.detect_languages">
-<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">detect_languages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.detect_languages" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">detect_languages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#nester.utils.detect_languages" title="Permalink to this definition"></a></dt>
 <dd><p>Look through the templates folder to find which languages we have templates for</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -140,15 +144,15 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="nester.utils.get_project_dir">
-<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">get_project_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_create</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.get_project_dir" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">get_project_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_create</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="headerlink" href="#nester.utils.get_project_dir" title="Permalink to this definition"></a></dt>
 <dd><p>Get the project root directory.
-If the name of the current working directory does not match the projectname,
-a new directory will be created with the given projectname inside which the project
+If the name of the current working directory does not match the project_name,
+a new directory will be created with the given project_name inside which the project
 is created.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>projectname</strong> (<em>str</em>) – the name of the project</p></li>
+<li><p><strong>project_name</strong> (<em>str</em>) – the name of the project</p></li>
 <li><p><strong>should_create</strong> (<em>bool</em>) – if directory should be created or not</p></li>
 </ul>
 </dd>
@@ -159,14 +163,25 @@ is created.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="nester.utils.initialize_git_repository">
+<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">initialize_git_repository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.utils.initialize_git_repository" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize <code class="docutils literal notranslate"><span class="pre">`git`</span></code> repository in project dir.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>project_dir</strong> – Directory of the project to initialize git repository in.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="nester.utils.load_json">
-<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">load_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.load_json" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">load_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#nester.utils.load_json" title="Permalink to this definition"></a></dt>
 <dd><p>Load the template for the project.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>language</strong> (<em>str</em>) – the programming language of the project</p></li>
-<li><p><strong>projectname</strong> (<em>str</em>) – the name of the project</p></li>
+<li><p><strong>project_name</strong> (<em>str</em>) – the name of the project</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return structure<span class="colon">:</span></dt>
@@ -180,7 +195,7 @@ is created.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="nester.utils.validate_structure">
-<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">validate_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.utils.validate_structure" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nester.utils.</span></span><span class="sig-name descname"><span class="pre">validate_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#nester.utils.validate_structure" title="Permalink to this definition"></a></dt>
 <dd><p>Iterates through the subdirectories of the current directory and validates if it is a subset of the schema for
 the given language.</p>
 <dl class="field-list simple">
@@ -188,7 +203,7 @@ the given language.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>structure</strong> (<em>dict</em>) – The directory structure from the template</p></li>
 <li><p><strong>base_path</strong> (<em>Path</em>) – The current directory</p></li>
-<li><p><strong>projectname</strong> (<em>str</em>) – The name of the project</p></li>
+<li><p><strong>project_name</strong> (<em>str</em>) – The name of the project</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

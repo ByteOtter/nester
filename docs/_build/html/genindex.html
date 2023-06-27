@@ -11,6 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
@@ -46,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dev_docs.html">Developer Docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/utils.html">   The `utils` module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/logging.html">   The `nester_log` module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/commands.html">   The `commands` module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supported_languages.html">Supported Languages</a></li>
 </ul>
 
@@ -80,6 +83,7 @@
  | <a href="#D"><strong>D</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
@@ -95,11 +99,15 @@
 </li>
       <li><a href="source/utils.html#nester.utils.clean">clean() (in module nester.utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/logging.html#nester.nester_log.clean_orphaned_entries">clean_orphaned_entries() (in module nester.nester_log)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/commands.html#nester.commands.clean_project">clean_project() (in module nester.commands)</a>
+</li>
       <li><a href="source/logging.html#nester.nester_log.create_log_file_if_none">create_log_file_if_none() (in module nester.nester_log)</a>
+</li>
+      <li><a href="source/commands.html#nester.commands.create_project">create_project() (in module nester.commands)</a>
 </li>
       <li><a href="source/utils.html#nester.utils.create_structure">create_structure() (in module nester.utils)</a>
 </li>
@@ -117,6 +125,10 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/logging.html#nester.nester_log.find_all_projects">find_all_projects() (in module nester.nester_log)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/logging.html#nester.nester_log.ProjectLogFormatter.format">format() (nester.nester_log.ProjectLogFormatter method)</a>
 </li>
   </ul></td>
@@ -126,6 +138,14 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/utils.html#nester.utils.get_project_dir">get_project_dir() (in module nester.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/utils.html#nester.utils.initialize_git_repository">initialize_git_repository() (in module nester.utils)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -145,6 +165,8 @@
     module
 
       <ul>
+        <li><a href="source/commands.html#module-nester.commands">nester.commands</a>
+</li>
         <li><a href="source/logging.html#module-nester.nester_log">nester.nester_log</a>
 </li>
         <li><a href="source/utils.html#module-nester.utils">nester.utils</a>
@@ -156,6 +178,13 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    nester.commands
+
+      <ul>
+        <li><a href="source/commands.html#module-nester.commands">module</a>
+</li>
+      </ul></li>
       <li>
     nester.nester_log
 
@@ -178,6 +207,8 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/commands.html#nester.commands.print_log">print_log() (in module nester.commands)</a>
+</li>
       <li><a href="source/logging.html#nester.nester_log.print_log_to_table">print_log_to_table() (in module nester.nester_log)</a>
 </li>
   </ul></td>
@@ -199,6 +230,10 @@
 
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/commands.html#nester.commands.validate_project">validate_project() (in module nester.commands)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/utils.html#nester.utils.validate_structure">validate_structure() (in module nester.utils)</a>
 </li>

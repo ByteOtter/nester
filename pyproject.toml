@@ -16,7 +16,7 @@ dynamic = [
 ]
 
 [project.scripts]
-nester = "nester.nester_commands:cli"
+nester = "nester.cli:cli"
 
 [tool.setuptools_scm]
 root = "."

@@ -113,10 +113,10 @@ nester <OPERATION> <OPTIONAL -git FLAG> <LANGUAGE> <PROJECT_NAME>
 The following operations will be available:
 |`Operation`|Flags|Argument|Argument|Effect|
 |-|-|-|-|-|
-|`create`|`-g/--git`, `--no-log`|`Language`|`Projectname`|Creates the project structure for the selected lanugage in *the current directory*. IF `-git` is set it will also call `git init` in this directory. `--no-log` Will prevent Nester from creating a log entry for this project. You can find the log in your home directory at `~/nester.log`|
-|`validate`|n/A|`Language`|`Projectname`|Checks the current directory and its sub-directories if it corresponds to the schema provided for the language|
+|`create`|`-g/--git`, `--no-log`|`Language`|`Project_Name`|Creates the project structure for the selected lanugage in *the current directory*. IF `-git` is set it will also call `git init` in this directory. `--no-log` Will prevent Nester from creating a log entry for this project. You can find the log in your home directory at `~/nester.log`|
+|`validate`|n/A|`Language`|`Project_Name`|Checks the current directory and its sub-directories if it corresponds to the schema provided for the language|
 |`log`|`--clean`|n/A|n/A|Prints out all *logged* projects that have been created previously<br>If the `--clean` flag is set, orphaned log entries (projects which had their directory deleted) will be purged from the log|
-|`clean`|`-y/--yes`|`Projectname`|n/A|Deletes the content of the specified project|
+|`clean`|`-y/--yes`|`Project_Name`|n/A|Deletes the content of the specified project|
 
 ### Interactive / GUI - Mode (coming soon)
 

@@ -1,24 +1,29 @@
 """
-This module implements Nester's CLI-behaviour.
+This module implements Nester's CLI-behavior.
 """
-
-import os
-import sys
 
 import click
 
-from . import __version__, nester_log, utils
+from . import __version__, commands, tui, utils
 
-_context_settings = dict(help_option_names=["-h", "--help"])
+_context_settings: dict = dict(help_option_names=["-h", "--help"])
 
 
-@click.group(context_settings=_context_settings)
-def cli():
+@click.group(context_settings=_context_settings, invoke_without_command=True)
+@click.pass_context
+def cli(ctx):
     """
     Nester - Copyright (c) 2023 ByteOtter. (github.com/ByteOtter)\n
     Licensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more info.
     """
-    pass
+    if ctx.invoked_subcommand is None:
+        click.echo(
+            """Nester - Copyright (c) 2023 ByteOtter. (github.com/ByteOtter)\nLicensed under the terms of GPL-3.0.
+Check github.com/ByteOtter/nester/LICENSE for more info.
+        """
+        )
+        click.echo("No commands registered. Starting interactive mode...")
+        tui.interactive_mode()
 
 
 @click.command()
@@ -28,103 +33,64 @@ def cli():
     required=1,
     metavar="[LANGUAGE]",
 )
-@click.argument("projectname", type=click.STRING, required=1)
+@click.argument("project_name", type=click.STRING, required=1)
 @click.option(
-    "--git", "-g", is_flag=True, default=False, help="Set up git repository aswell."
+    "--git", "-g", is_flag=True, default=False, help="Set up git repository as well."
 )
 @click.option("--no-log", is_flag=True, default=False, help="Do not log this project.")
-def create(language, projectname, git, no_log):
+def create(language: str, project_name: str, git: bool, no_log: bool) -> None:
     """
     Create new project structure within current directory.
 
     LANGUAGE can be either:
     py, c, cpp, cs, java, rb
 
-    PROJECTNAME refers to the name of your project. Your package will be named that way.
+    PROJECT_NAME refers to the name of your project. Your package will be named that way.
     """
 
     click.echo(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software."
     )
 
-    click.echo(f"Checking log file for possible duplicate.")
-    if nester_log.check_log_for_duplicate(projectname):
-        print(
-            f"\033[31mUups! A project called '{projectname}' already exists!\033[0m\nPlease choose a different name and try again!"
-        )
-        sys.exit(1)
-
-    click.echo(
-        f"Creating file structure for your {language} project '{projectname}'..."
-    )
-
-    structure = utils.load_json(language, projectname)
-    project_dir = utils.get_project_dir(projectname, True)
-    utils.create_structure(structure, project_dir, projectname)
-
-    if git:
-        click.echo("Also creating git repository...")
-        os.system("git init")
-
-    if not no_log:
-        nester_log.create_log_file_if_none()
-        nester_log.LOGGER.info(
-            "",
-            extra={
-                "projectname": projectname,
-                "programming_language": language,
-                "location": str(project_dir),
-            },
-        )
-
-    click.echo("\033[32mDone! Happy Hacking!\033[0m")
+    commands.create_project(language, project_name, git, no_log)
 
 
 @click.command(help="Validate current structure against Nester's JSON schemas.")
 @click.argument("language", type=click.Choice(utils.LANGUAGES))
-@click.argument("projectname", type=click.STRING, required=1)
-def validate(language, projectname):
+@click.argument("project_name", type=click.STRING, required=1)
+def validate(language: str, project_name: str) -> None:
     """
     Validate given project against the schema for the given language.
     """
     print(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
-    print(f"Validating file structure for your {language} project...")
 
-    structure = utils.load_json(language, projectname)
-    project_dir = utils.get_project_dir(projectname, False)
-
-    if not utils.validate_structure(structure, projectname, project_dir):
-        print(
-            "\033[31mYour structure does not seem to line up to our schemas :(\033[0m"
-        )
-    else:
-        print("\033[32mValidation complete!\033[0m Everything looks good. :)")
+    commands.validate_project(language, project_name)
 
 
 @click.command()
-@click.argument("projectname", type=click.STRING, required=1)
+@click.argument("project_name", type=click.STRING, required=1)
 @click.confirmation_option(
     prompt="Are you sure you want to delete this project?\nThis CANNOT be undone!"
 )
-def clean(projectname):
+def clean(project_name: str) -> None:
     """
-    Delete ALL contents within the current directory.
+    Delete the given project, if it is found in the log.
 
     THIS ACTION CANNOT BE UNDONE
     """
     click.echo(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
-    utils.clean(projectname)
+    commands.clean_project(project_name)
 
 
 @click.command()
 @click.option(
     "--clean", is_flag=True, default=False, help="Remove orphaned log entries"
 )
-def log(clean):
+def log(clean: bool) -> None:
     """
     List all previously created projects.
 
@@ -133,18 +99,16 @@ def log(clean):
     click.echo(
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
     )
-    if clean:
-        nester_log.clean_orphaned_entries()
-    nester_log.print_log_to_table()
+    commands.print_log(clean)
 
 
 @click.command()
-def version():
+def version() -> None:
     """
     Print Nester version
     """
 
-    click.echo(
+    print(
         """Nester - Copyright (c) 2023 ByteOtter. (github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more info.\nNester-version:""",
         __version__,
     )

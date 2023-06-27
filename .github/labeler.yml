@@ -5,13 +5,16 @@ json:
 - src/templates/**/*.json
 
 cli-frontend:
-- src/nester/nester_commands.py
+- src/nester/cli.py
+
+commands:
+- src/nester/commands.py
 
 logging:
 - src/nester/nester_log.py
 
 interactive-mode:
-- src/nester/interactive_mode.py
+- src/nester/tui.py
 
 utils:
 - src/nester/utils.py
@@ -42,6 +45,7 @@ packaging:
 
 workflows:
 - .github/workflows/*.yml
+- .github/labeler.yml
 
 container:
 - Dockerfile
