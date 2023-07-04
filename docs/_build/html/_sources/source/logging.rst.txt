@@ -7,5 +7,5 @@ The user can easily query them and get a list with all of his projects, the lang
 
 You can find Nester's log file in `~/.nester.log`
 
-.. automodule:: nester.nester_log
+.. automodule:: nester.core.nester_log
   :members:
