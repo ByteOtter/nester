@@ -4,7 +4,8 @@ This module implements Nester's CLI-behavior.
 
 import click
 
-from . import __version__, commands, tui, utils
+from . import __version__, tui
+from .core import commands, utils
 
 _context_settings: dict = dict(help_option_names=["-h", "--help"])
 

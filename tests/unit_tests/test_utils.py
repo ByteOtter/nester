@@ -5,7 +5,7 @@ This module contains unit tests for the utils.py functions
 from pathlib import Path
 from unittest import mock
 
-import src.nester.utils as utils
+import nester.core.utils as utils
 
 
 def test_detect_languages():

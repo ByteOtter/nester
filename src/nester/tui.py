@@ -10,7 +10,7 @@ from typing import List
 
 import questionary
 
-from . import commands, nester_log, utils
+from .core import commands, nester_log, utils
 
 
 def interactive_mode() -> None:

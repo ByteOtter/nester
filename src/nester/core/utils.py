@@ -15,6 +15,8 @@ from . import nester_log
 
 PROJECT_ROOT: Path = Path(__file__).parent.absolute()
 
+print(PROJECT_ROOT)
+
 
 def detect_languages() -> list:
     """

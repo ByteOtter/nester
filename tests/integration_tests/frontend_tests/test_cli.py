@@ -4,7 +4,7 @@ import pytest
 from click.testing import CliRunner
 
 import nester.cli as commands
-import src.nester.utils as utils
+import nester.core.utils as utils
 
 
 @pytest.fixture
