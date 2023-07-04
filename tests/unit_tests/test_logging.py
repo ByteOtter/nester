@@ -5,7 +5,7 @@ This module provides unittests for all components of Nester's logging functional
 import logging
 from unittest.mock import mock_open, patch
 
-import src.nester.nester_log as nester_log
+import nester.core.nester_log as nester_log
 
 
 def test_project_log_formatter():

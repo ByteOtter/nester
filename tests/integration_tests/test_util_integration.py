@@ -1,5 +1,5 @@
 """
-This module contains integration tests to asess if all of Nester's function work well together.
+This module contains integration tests to asses if all of Nester's function work well together.
 
 This is done by temporarily creating a project, calling all of Nester's features and cleaning up the created project in the end.
 """
@@ -7,7 +7,7 @@ This is done by temporarily creating a project, calling all of Nester's features
 from pathlib import Path
 from unittest.mock import patch
 
-import src.nester.utils as utils
+import nester.core.utils as utils
 
 
 def test_get_project_dir(fake_project_name):

@@ -51,17 +51,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../dev_docs.html">Developer Docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">   The `utils` module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">   The `nester_log` module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.ProjectLogFormatter"><code class="docutils literal notranslate"><span class="pre">ProjectLogFormatter</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#nester.nester_log.ProjectLogFormatter.format"><code class="docutils literal notranslate"><span class="pre">ProjectLogFormatter.format()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nester.nester_log.ProjectLogFormatter.process"><code class="docutils literal notranslate"><span class="pre">ProjectLogFormatter.process()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.ProjectLogFormatter"><code class="docutils literal notranslate"><span class="pre">ProjectLogFormatter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nester.core.nester_log.ProjectLogFormatter.format"><code class="docutils literal notranslate"><span class="pre">ProjectLogFormatter.format()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nester.core.nester_log.ProjectLogFormatter.process"><code class="docutils literal notranslate"><span class="pre">ProjectLogFormatter.process()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.check_log_for_duplicate"><code class="docutils literal notranslate"><span class="pre">check_log_for_duplicate()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.clean_orphaned_entries"><code class="docutils literal notranslate"><span class="pre">clean_orphaned_entries()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.create_log_file_if_none"><code class="docutils literal notranslate"><span class="pre">create_log_file_if_none()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.find_all_projects"><code class="docutils literal notranslate"><span class="pre">find_all_projects()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.print_log_to_table"><code class="docutils literal notranslate"><span class="pre">print_log_to_table()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nester.nester_log.remove_log_entry"><code class="docutils literal notranslate"><span class="pre">remove_log_entry()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.check_log_for_duplicate"><code class="docutils literal notranslate"><span class="pre">check_log_for_duplicate()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.clean_orphaned_entries"><code class="docutils literal notranslate"><span class="pre">clean_orphaned_entries()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.create_log_file_if_none"><code class="docutils literal notranslate"><span class="pre">create_log_file_if_none()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.find_all_projects"><code class="docutils literal notranslate"><span class="pre">find_all_projects()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.print_log_to_table"><code class="docutils literal notranslate"><span class="pre">print_log_to_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.remove_log_entry"><code class="docutils literal notranslate"><span class="pre">remove_log_entry()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">   The `commands` module</a></li>
@@ -98,28 +98,28 @@
 <p>Nester Log is a functionality of Nester added in v0.5.0.</p>
 <p>The user can easily query them and get a list with all of his projects, the language they are written in, and their location based from the user’s home directory.</p>
 <p>You can find Nester’s log file in <cite>~/.nester.log</cite></p>
-<span class="target" id="module-nester.nester_log"></span><p>This module handles Nester’s logging functionality. Nester logs all projects created with it unless the –no-log flag ist set when calling nester create.</p>
+<span class="target" id="module-nester.core.nester_log"></span><p>This module handles Nester’s logging functionality. Nester logs all projects created with it unless the –no-log flag ist set when calling nester create.</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="nester.nester_log.ProjectLogFormatter">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">ProjectLogFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.nester_log.ProjectLogFormatter" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.nester_log.ProjectLogFormatter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nester.core.nester_log.</span></span><span class="sig-name descname"><span class="pre">ProjectLogFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nester.core.nester_log.ProjectLogFormatter" title="Permalink to this definition"></a></dt>
 <dd><p>Custom formatter class to handle the custom log fields Nester requires.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="nester.nester_log.ProjectLogFormatter.format">
-<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LogRecord</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#nester.nester_log.ProjectLogFormatter.format" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.nester_log.ProjectLogFormatter.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LogRecord</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#nester.core.nester_log.ProjectLogFormatter.format" title="Permalink to this definition"></a></dt>
 <dd><p>Override logging.Formatter.format function</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="nester.nester_log.ProjectLogFormatter.process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LogRecord</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">LogRecord</span></span></span><a class="headerlink" href="#nester.nester_log.ProjectLogFormatter.process" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.nester_log.ProjectLogFormatter.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LogRecord</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">LogRecord</span></span></span><a class="headerlink" href="#nester.core.nester_log.ProjectLogFormatter.process" title="Permalink to this definition"></a></dt>
 <dd><p>Override logging.Formatter.process function</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.nester_log.check_log_for_duplicate">
-<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">check_log_for_duplicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#nester.nester_log.check_log_for_duplicate" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.nester_log.check_log_for_duplicate">
+<span class="sig-prename descclassname"><span class="pre">nester.core.nester_log.</span></span><span class="sig-name descname"><span class="pre">check_log_for_duplicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#nester.core.nester_log.check_log_for_duplicate" title="Permalink to this definition"></a></dt>
 <dd><p>Check for duplicate log entries.</p>
 <p>Check the nester.log file in the home directory, whether a given project_name has been taken already.
 If no log file exists: Continue with the program.</p>
@@ -137,8 +137,8 @@ If no log file exists: Continue with the program.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.nester_log.clean_orphaned_entries">
-<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">clean_orphaned_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.nester_log.clean_orphaned_entries" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.nester_log.clean_orphaned_entries">
+<span class="sig-prename descclassname"><span class="pre">nester.core.nester_log.</span></span><span class="sig-name descname"><span class="pre">clean_orphaned_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.core.nester_log.clean_orphaned_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Check log entries for orphaned projects.</p>
 <p>Orphaned projects are projects created and logged by Nester, but the source tree has been removed.
 Check all projects listed in the log and see whether their paths are still valid.
@@ -154,8 +154,8 @@ If not remove the entry.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.nester_log.create_log_file_if_none">
-<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">create_log_file_if_none</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.nester_log.create_log_file_if_none" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.nester_log.create_log_file_if_none">
+<span class="sig-prename descclassname"><span class="pre">nester.core.nester_log.</span></span><span class="sig-name descname"><span class="pre">create_log_file_if_none</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.core.nester_log.create_log_file_if_none" title="Permalink to this definition"></a></dt>
 <dd><p>Create <code class="docutils literal notranslate"><span class="pre">`.nester.log`</span></code> file if it does not exist already.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Param<span class="colon">:</span></dt>
@@ -168,14 +168,14 @@ If not remove the entry.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.nester_log.find_all_projects">
-<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">find_all_projects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#nester.nester_log.find_all_projects" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.nester_log.find_all_projects">
+<span class="sig-prename descclassname"><span class="pre">nester.core.nester_log.</span></span><span class="sig-name descname"><span class="pre">find_all_projects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#nester.core.nester_log.find_all_projects" title="Permalink to this definition"></a></dt>
 <dd><p>Read the log file and save all project names into a list.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.nester_log.print_log_to_table">
-<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">print_log_to_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.nester_log.print_log_to_table" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.nester_log.print_log_to_table">
+<span class="sig-prename descclassname"><span class="pre">nester.core.nester_log.</span></span><span class="sig-name descname"><span class="pre">print_log_to_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.core.nester_log.print_log_to_table" title="Permalink to this definition"></a></dt>
 <dd><p>Read the log file and print its contents into a table.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Param<span class="colon">:</span></dt>
@@ -188,8 +188,8 @@ If not remove the entry.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.nester_log.remove_log_entry">
-<span class="sig-prename descclassname"><span class="pre">nester.nester_log.</span></span><span class="sig-name descname"><span class="pre">remove_log_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.nester_log.remove_log_entry" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.nester_log.remove_log_entry">
+<span class="sig-prename descclassname"><span class="pre">nester.core.nester_log.</span></span><span class="sig-name descname"><span class="pre">remove_log_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.core.nester_log.remove_log_entry" title="Permalink to this definition"></a></dt>
 <dd><p>Check if the given project appears in the log. If it does, remove the entry from the log.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

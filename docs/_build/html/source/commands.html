@@ -52,10 +52,10 @@
 <li class="toctree-l1"><a class="reference internal" href="utils.html">   The `utils` module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html">   The `nester_log` module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">   The `commands` module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#nester.commands.clean_project"><code class="docutils literal notranslate"><span class="pre">clean_project()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nester.commands.create_project"><code class="docutils literal notranslate"><span class="pre">create_project()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nester.commands.print_log"><code class="docutils literal notranslate"><span class="pre">print_log()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nester.commands.validate_project"><code class="docutils literal notranslate"><span class="pre">validate_project()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.commands.clean_project"><code class="docutils literal notranslate"><span class="pre">clean_project()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.commands.create_project"><code class="docutils literal notranslate"><span class="pre">create_project()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.commands.print_log"><code class="docutils literal notranslate"><span class="pre">print_log()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.commands.validate_project"><code class="docutils literal notranslate"><span class="pre">validate_project()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../supported_languages.html">Supported Languages</a></li>
@@ -90,11 +90,11 @@
 <h1>The Commands module<a class="headerlink" href="#the-commands-module" title="Permalink to this heading"></a></h1>
 <p>The commands module abstracts all functionality around the call of the utils functions.</p>
 <p>This way they can be used as simple function calls by both the CLI and Terminal User Interface (TUI).</p>
-<span class="target" id="module-nester.commands"></span><p>This module provides an abstraction of the functionality previously found in the cli module.</p>
+<span class="target" id="module-nester.core.commands"></span><p>This module provides an abstraction of the functionality previously found in the cli module.</p>
 <p>Implemented here are commonly used functions for Nester used in its frontend both cli as well as TUI.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.commands.clean_project">
-<span class="sig-prename descclassname"><span class="pre">nester.commands.</span></span><span class="sig-name descname"><span class="pre">clean_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.commands.clean_project" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.commands.clean_project">
+<span class="sig-prename descclassname"><span class="pre">nester.core.commands.</span></span><span class="sig-name descname"><span class="pre">clean_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.core.commands.clean_project" title="Permalink to this definition"></a></dt>
 <dd><p>Delete project when it is found in the log.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -104,8 +104,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.commands.create_project">
-<span class="sig-prename descclassname"><span class="pre">nester.commands.</span></span><span class="sig-name descname"><span class="pre">create_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">git</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.commands.create_project" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.commands.create_project">
+<span class="sig-prename descclassname"><span class="pre">nester.core.commands.</span></span><span class="sig-name descname"><span class="pre">create_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">git</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.core.commands.create_project" title="Permalink to this definition"></a></dt>
 <dd><p>Create a new project.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -120,8 +120,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.commands.print_log">
-<span class="sig-prename descclassname"><span class="pre">nester.commands.</span></span><span class="sig-name descname"><span class="pre">print_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clean_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.commands.print_log" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.commands.print_log">
+<span class="sig-prename descclassname"><span class="pre">nester.core.commands.</span></span><span class="sig-name descname"><span class="pre">print_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clean_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.core.commands.print_log" title="Permalink to this definition"></a></dt>
 <dd><p>Print nester log to console.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -131,8 +131,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="nester.commands.validate_project">
-<span class="sig-prename descclassname"><span class="pre">nester.commands.</span></span><span class="sig-name descname"><span class="pre">validate_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.commands.validate_project" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="nester.core.commands.validate_project">
+<span class="sig-prename descclassname"><span class="pre">nester.core.commands.</span></span><span class="sig-name descname"><span class="pre">validate_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.core.commands.validate_project" title="Permalink to this definition"></a></dt>
 <dd><p>Validate the project against a given languages’s structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

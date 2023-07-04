@@ -5,5 +5,5 @@ The commands module abstracts all functionality around the call of the utils fun
 
 This way they can be used as simple function calls by both the CLI and Terminal User Interface (TUI).
 
-.. automodule:: nester.commands
+.. automodule:: nester.core.commands
   :members:
