@@ -1,5 +1,9 @@
 """This module provides logic to allow Nester to manage dependencies."""
 
+import subprocess
+
+from . import utils
+
 
 def add_dependency(language: str, dependency: str) -> None:
     """
@@ -11,7 +15,13 @@ def add_dependency(language: str, dependency: str) -> None:
     :param language: The language of the project.
     :param dependency: The name of the dependency to add.
     """
-    pass
+    match language:
+        case "py":
+            if utils.check_pip_installed():
+                subprocess.run("pip").args("install").args(dependency)
+                # TODO Add dependency logging!
+            else:
+                print("Error: Dependency cannot be added. Pip is not installed!")
 
 
 def remove_dependency(dependency: str) -> None:
