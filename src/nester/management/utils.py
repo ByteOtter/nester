@@ -1,6 +1,12 @@
 """This module provides frequently used code to the wider management module."""
 
+import os
+import platform
 import subprocess
+
+import nester.exceptions as exceptions
+
+PACKAGE_MANAGERS: list[str] = ["zypper", "apt", "apt-get", "dnf", "packman"]
 
 
 def check_pip_installed() -> bool:
@@ -14,9 +20,44 @@ def check_pip_installed() -> bool:
     return True
 
 
-def get_package_manager() -> str:
-    """Check what package manager is installed."""
-    pass
+def get_package_manager() -> str | None:
+    """Check what package manager is installed.
+
+    Attempts to identify the system Nester is installed on.
+    If it cannot identify the system it will raise an exception.
+
+    :return package_manager: name of the system's package manager
+    """
+    package_manager: str | None = None
+    system: str = platform.system()
+
+    match system:
+        case "Linux":
+            package_manager = identify_linux_package_manager()
+        case "Darwin":
+            package_manager = "brew"
+        case "Windows":
+            package_manager = "winget"
+
+    return package_manager
+
+
+def identify_linux_package_manager() -> str | None:
+    """
+    Will attempt to identify the distribution's package manager by brute forcing all known package manager.
+
+    Will raise a UnknownDistroExcpetion if the package manager cannot be identified.
+
+    :return pkgmgr: The Package Manager from the list of known package managers
+    """
+    for pkgmgr in PACKAGE_MANAGERS:
+        try:
+            subprocess.run(pkgmgr)
+        except subprocess.CalledProcessError:
+            raise excpetions.UnknownDistroException(
+                "Error: Distribution could not be identified."
+            )
+        return pkgmgr
 
 
 def check_for_virtualenv(project_name: str) -> bool:
@@ -41,3 +82,4 @@ def select_dependency_source(language: str) -> None:
 
     :param language: The language the project is written in.
     """
+    pass
