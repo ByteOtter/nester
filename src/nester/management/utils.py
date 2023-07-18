@@ -4,14 +4,13 @@ import os
 import platform
 import subprocess
 
-import nester.exceptions as exceptions
+from ..exceptions import management_excs
 
 PACKAGE_MANAGERS: list[str] = ["zypper", "apt", "apt-get", "dnf", "packman"]
 
 
 def check_pip_installed() -> bool:
     """Verify pip is installed on the current system."""
-
     try:
         subprocess.run("pip", check=True)
     except subprocess.CalledProcessError:
@@ -21,7 +20,8 @@ def check_pip_installed() -> bool:
 
 
 def get_package_manager() -> str | None:
-    """Check what package manager is installed.
+    """
+    Check what package manager is installed.
 
     Attempts to identify the system Nester is installed on.
     If it cannot identify the system it will raise an exception.
@@ -54,10 +54,12 @@ def identify_linux_package_manager() -> str | None:
         try:
             subprocess.run(pkgmgr)
         except subprocess.CalledProcessError:
-            raise excpetions.UnknownDistroException(
+            raise management_excs.UnknownDistroException(
                 "Error: Distribution could not be identified."
             )
         return pkgmgr
+
+    return None
 
 
 def check_for_virtualenv(project_name: str) -> bool:
@@ -69,10 +71,11 @@ def check_for_virtualenv(project_name: str) -> bool:
     :param project_name: The name of the project to check.
     :return: Whether the given project has a virtualenv.
     """
-    pass
+
+    return False
 
 
-def select_dependency_source(language: str) -> None:
+def select_dependency_source(language: str) -> str:
     """
     Select the source of the project's dependencies according to its language.
 
@@ -82,4 +85,10 @@ def select_dependency_source(language: str) -> None:
 
     :param language: The language the project is written in.
     """
+    match language:
+        case "py":
+            return "pip"
+        case "rb":
+            return "gem"
+    # TODO
     pass
