@@ -6,8 +6,12 @@ their content into the already created empty config files.
 import subprocess
 from typing import Any
 
-import toml
 import yaml
+
+try:
+    import tomllib as toml
+except ImportError:
+    import toml
 
 from . import exceptions, supported_linters
 
