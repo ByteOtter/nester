@@ -6,12 +6,9 @@ their content into the already created empty config files.
 import subprocess
 from typing import Any
 
+# If a version of the dump method comes available in python 3.11's native tomllib, add a import try except here.
+import toml
 import yaml
-
-try:
-    import tomllib as toml
-except ImportError:
-    import toml
 
 from . import exceptions, supported_linters
 
