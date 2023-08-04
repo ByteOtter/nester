@@ -39,7 +39,16 @@ Check github.com/ByteOtter/nester/LICENSE for more info.
     "--git", "-g", is_flag=True, default=False, help="Set up git repository as well."
 )
 @click.option("--no-log", is_flag=True, default=False, help="Do not log this project.")
-def create(language: str, project_name: str, git: bool, no_log: bool) -> None:
+@click.option(
+    "--opinionated",
+    "-o",
+    is_flag=True,
+    default=False,
+    help="Configure supported linters and build tools for your project.",
+)
+def create(
+    language: str, project_name: str, git: bool, no_log: bool, opinionated: bool
+) -> None:
     """
     Create new project structure within current directory.
 
@@ -53,7 +62,7 @@ def create(language: str, project_name: str, git: bool, no_log: bool) -> None:
         "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software."
     )
 
-    commands.create_project(language, project_name, git, no_log)
+    commands.create_project(language, project_name, git, no_log, opinionated)
 
 
 @click.command(help="Validate current structure against Nester's JSON schemas.")

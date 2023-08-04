@@ -8,9 +8,12 @@ import sys
 from pathlib import Path
 
 from . import nester_log, utils
+from .opinionated import opinionated_creation
 
 
-def create_project(language: str, project_name: str, git: bool, no_log: bool) -> None:
+def create_project(
+    language: str, project_name: str, git: bool, no_log: bool, opinionated: bool
+) -> None:
     """
     Create a new project.
 
@@ -33,6 +36,15 @@ def create_project(language: str, project_name: str, git: bool, no_log: bool) ->
     utils.create_structure(structure, project_dir, project_name)
 
     print(f"Creating file structure for your {language} project '{project_name}'...")
+
+    if opinionated:
+        if language is not "py":
+            print(
+                "\033[31mSorry, Nester currently only supports opinionated creation for Python projects.\033[0m\nStay tuned on updates for your language."
+            )
+        else:
+            opinionated_creation.install_build_system(language)
+            opinionated_creation.install_linters(language)
 
     if git:
         utils.initialize_git_repository(project_dir)

@@ -10,7 +10,7 @@ from typing import Any
 import toml
 import yaml
 
-from . import exceptions, supported_linters
+from . import exceptions, supported_tools
 
 
 def set_config_files_for_project(
@@ -68,6 +68,7 @@ def set_config_files_for_project(
                     "pre-commit": "*",
                 }
 
+                # Add isort profile config to pyproject toml to avoid conflicts between isort and black
                 pyproject_config["tool"]["isort"] = {"profile": "black"}
 
                 with open("pyproject.toml", "w") as project_toml:
@@ -92,7 +93,7 @@ def install_build_system(language: str) -> None:
     """
     match language:
         case "py":
-            for tool in supported_linters.py_build:
+            for tool in supported_tools.py_build:
                 subprocess.run(["pip", "install", tool])
         case _:
             raise exceptions.UnsupportedLanguageException
@@ -109,7 +110,7 @@ def install_linters(language: str) -> None:
     match language:
         case "py":
             try:
-                for linter in supported_linters.py_linters:
+                for linter in supported_tools.py_linters:
                     subprocess.run(["pip", "install", linter])
             except subprocess.CalledProcessError as exc:
                 print(
