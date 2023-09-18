@@ -1,11 +1,11 @@
 {
   "$projectname": {
     "include": {
-      "my_header.h": "#ifndef MY_HEADER_H\n#define MY_HEADER_H\n\nvoid my_function();\n\n#endif /* MY_HEADER_H */"
+      "$projectname.h": "#ifndef MY_HEADER_H\n#define MY_HEADER_H\n\nvoid my_function();\n\n#endif /* MY_HEADER_H */"
     },
     "src": {
       "main.c": "#include <stdio.h>\n#include \"my_header.h\"\n\nint main() {\n  /* Default method implementation */\n  return 0;\n}",
-      "my_source.c": "#include \"my_header.h\"\n\nvoid my_function() {\n  /* Default method implementation */\n  return 0;\n}"
+      "$projectname.c": "#include \"my_header.h\"\n\nvoid my_function() {\n  /* Default method implementation */\n  return 0;\n}"
     },
     "Makefile": ""
   },
