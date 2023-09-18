@@ -5,10 +5,10 @@
     },
     "src": {
       "main.cpp": "#include <iostream>\n#include \"${projectname}_header.hpp\"\n\nint main() {\n  /* Default method implementation */\n  return 0;\n}",
-      "my_source.cpp": "#include \"${projectname}_header.hpp\"\n\nvoid my_function() {\n  /* Default method implementation */\n  return 0;\n}"
+      "$projectname_source.cpp": "#include \"${projectname}_header.hpp\"\n\nvoid my_function() {\n  /* Default method implementation */\n  return 0;\n}"
     },
     "tests": {
-      "my_test.test.cpp": "#include <gtest/gtest.h>\n#include \"${projectname}_header.hpp\"\n\ntest(MyTest, TestFunction) {\n  /* Default test implementation */\n}"
+      "$projectname.test.cpp": "#include <gtest/gtest.h>\n#include \"${projectname}_header.hpp\"\n\ntest(MyTest, TestFunction) {\n  /* Default test implementation */\n}"
     }
   },
   "README": "<!--Your Readme goes here-->",
