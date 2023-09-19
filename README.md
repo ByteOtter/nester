@@ -62,7 +62,7 @@ Nester, by default, also logs all projects you create with it which allows you t
 
 ## Installation
 
-### Get it on PyPi!
+### Get it from PyPi!
 
 `Nester` is released on [PyPi](https://pypi.org)!<br>
 To do so, make sure you have at least `Python 3.10` and `pip` installed.<br>
@@ -72,6 +72,16 @@ To get `Nester` simply run:
 pip install nester-struct
 ```
 Your done! Have fun with `Nester`!
+
+Note: At least on openSUSE, `pip` does no longer allow packages to be installed system-wide. At least not without using the `--break-system-packages` flag.
+
+To install the most recent Nester version from PyPi, you can use [`pipx`](https://github.com/pypa/pipx).
+
+Simply download `pipx` using your distribution's package manager and install Nester just like you would with `pip`.
+
+```bash
+pipx install nester-struct
+```
 
 ### Get it as an `.rpm` package (wip)
 

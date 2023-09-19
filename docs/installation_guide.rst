@@ -21,6 +21,17 @@ Simply run this in your terminal:
 
 `pip` now installs nester with all its dependencies. That should be it!
 
+Note: At least on openSUSE (and probably on other distributions aswell), `pip` does not allow you to install packages system wide anymore.
+
+Therefore we recommend using something like `pipx`, which installs Nester in a closed off environment.
+
+Simply download `pipx` using your distribution's package manager and install Nester in a similar fashion as before with `pip`.
+
+.. code-block:: shell
+   
+  pipx install nester-struct
+
+
 Installation as `rpm` package
 -----------------------------
 
