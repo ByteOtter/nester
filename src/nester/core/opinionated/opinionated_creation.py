@@ -94,7 +94,12 @@ def install_build_system(language: str) -> None:
     match language:
         case "py":
             for tool in supported_tools.py_build:
-                subprocess.run(["pip", "install", tool])
+                try:
+                    subprocess.run(["pip", "install", tool])
+                except subprocess.CalledProcessError:
+                    print(
+                        "\033[91mError: Pip does not seem to be installed on your system. Install it and try again.\033[0m"
+                    )
         case _:
             raise exceptions.UnsupportedLanguageException
 

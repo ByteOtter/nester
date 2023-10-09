@@ -2,3 +2,5 @@
 
 py_build = ["setuptools", "setuptools-scm", "wheel"]
 py_linters = ["black", "isort", "pylint"]
+
+package_managers = ["zypper", "apt", "dnf"]
