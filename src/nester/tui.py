@@ -76,7 +76,7 @@ def interactive_mode() -> None:
                 choices: List[str] = ["---Abort---"]
                 projects = nester_log.find_all_projects()
 
-                if projects is not None:
+                if projects:
                     for project in projects:
                         choices.append(project)
                 else:
