@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "$projectname"
+version = "0.0.1"
+description = ""
+authors = [
+    { name = "", email = "" }
+]
+license = ""
+readme = "README.md"
+homepage = ""
+repository = "https://github.com/<YourUserName>/$projectname"
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+
+[project.scripts]
+$projectname = "$projectname.$projectname:main"
+
+
+[project.dependencies]
+
+
+[project.dev-dependencies]
+
+
+[tool.setuptools_scm]
+root = "."
+relative_to = "src/nester/__init__.py"
+
+[tool.isort]
+profile = "black"
