@@ -120,6 +120,46 @@ def remove_log_entry(project_name: str, verbose: bool = True) -> None:
         print(f"\033[34mNo log entry found for '{project_name}'\033[0m")
 
 
+def rename_log_entry(old_project_name: str, new_project_name: str) -> None:
+    """
+    Rename an entry in the logfile.
+
+    :param old_project_name: The entry to rename.
+    :param new_project_name: The new name of the project to inject.
+    :return: None
+    """
+    try:
+        with _LOG_FILE_PATH.open("r", encoding="utf-8") as log_file:
+            log: List[str] = log_file.readlines()
+    except FileNotFoundError:
+        print("\033[33mNo log file found! Aborting!")
+        quit(1)
+
+    entry_found: bool = False
+    updated_lines: List[str] = []
+
+    if old_project_name[-1] == "/" and old_project_name[-2] != "\\":
+        # If project_name is given as directory or escaped "/" (with ending "/"), trim last "/".
+        # This may happen when using autocompletion in the terminal.
+        old_project_name = old_project_name[:-1]
+
+    for line in log:
+        if old_project_name in line:
+            entry_found = True
+            line.replace(old_project_name, new_project_name)
+        else:
+            updated_lines.append(line)
+
+    if entry_found:
+        try:
+            with _LOG_FILE_PATH.open("w", encoding="utf-8") as log_file:
+                log_file.writelines(updated_lines)
+        except Exception as exception:
+            print(f"\033[31mError while renaming entry: {exception}\033[0m")
+    else:
+        print(f"\033[34mNo log entry found for '{old_project_name}'\033[0m")
+
+
 def clean_orphaned_entries() -> None:
     """
     Check log entries for orphaned projects.

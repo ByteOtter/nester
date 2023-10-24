@@ -181,3 +181,10 @@ def initialize_git_repository(project_dir: Path) -> None:
     os.system("git init")
     # return to previous directory
     os.chdir(current_dir)
+
+
+def rename_project_directory(old_project_name: str, new_project_name: str):
+    """
+    Find and rename a project directory including all of its files that may have the name attached.
+    """
+    pass
