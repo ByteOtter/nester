@@ -183,8 +183,14 @@ def initialize_git_repository(project_dir: Path) -> None:
     os.chdir(current_dir)
 
 
-def rename_project_directory(old_project_name: str, new_project_name: str):
+def rename_project_directory(old_project_name: str, new_project_name: str) -> None:
     """
-    Find and rename a project directory including all of its files that may have the name attached.
+    Find and rename a project directory including all of the files that may have the project name as their own.
+
+    :param old_project_dir: The project to be renamed.
+    :param new_project_dir: The new name of the project.
+    :return: None
     """
-    pass
+    current_dir: str = os.getcwd()
+    project_dir: Path = get_project_dir(old_project_name, False)
+    os.chdir(project_dir)
