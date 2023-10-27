@@ -30,7 +30,7 @@ A small command line tool to set up the basic structure for your Python, C#, C++
 - [Introduction](#introduction)
 - [Our Goal](#our-goal)
 - [Installation](#installation)
-  - [Get it on PyPi!](#get-it-on-pypi)
+  - [Get it from PyPi!](#get-it-from-pypi)
   - [Get it as an `.rpm` package (wip)](#get-it-as-an-rpm-package-wip)
   - [Build it from source](#build-it-from-source)
 - [Usage](#usage)
@@ -127,6 +127,7 @@ The following operations will be available:
 |-|-|-|-|-|
 |`create`|`-g/--git`, `--no-log`|`Language`|`Project_Name`|Creates the project structure for the selected lanugage in *the current directory*. IF `-git` is set it will also call `git init` in this directory. `--no-log` Will prevent Nester from creating a log entry for this project. You can find the log in your home directory at `~/nester.log`|
 |`validate`|n/A|`Language`|`Project_Name`|Checks the current directory and its sub-directories if it corresponds to the schema provided for the language|
+|`rename`|n/A|`Old_Project_Name`|`New_Project_Name`|Renames your chosen project and its corresponding log entry. **Only works for logged projects.**|
 |`log`|`--clean`|n/A|n/A|Prints out all *logged* projects that have been created previously<br>If the `--clean` flag is set, orphaned log entries (projects which had their directory deleted) will be purged from the log|
 |`clean`|`-y/--yes`|`Project_Name`|n/A|Deletes the content of the specified project|
 
