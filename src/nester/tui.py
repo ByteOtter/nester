@@ -13,6 +13,7 @@ import questionary
 from .core import commands, nester_log, utils
 
 
+# pylint: disable=too-many-branches, use-implicit-booleaness-not-comparison, too-many-statements
 def interactive_mode() -> None:
     """
     Nester's interactive mode.
@@ -23,7 +24,7 @@ def interactive_mode() -> None:
     try:
         operation: questionary.Choice = questionary.select(
             "What operation do you want to perform?",
-            choices=["create", "validate", "clean", "log", "---EXIT---"],
+            choices=["create", "validate", "clean", "rename", "log", "---EXIT---"],
         ).unsafe_ask()
 
         match operation:
@@ -102,6 +103,37 @@ def interactive_mode() -> None:
                     utils.clean(project_name)
                 else:
                     print("Aborting...")
+
+            case "rename":
+                choices: List[str] = ["---Abort---"]
+                projects = nester_log.find_all_projects()
+
+                if projects != []:
+                    for project in projects:
+                        choices.append(project)
+                else:
+                    print(
+                        "\033[34mNo projects have been logged yet. Renaming is only available for logged projects.\033[0m"
+                    )
+                    sys.exit(0)
+
+                old_project_name: str = questionary.select(
+                    "What project do you want to rename?",
+                    choices=choices,
+                ).unsafe_ask()
+
+                if old_project_name == "---Abort---":
+                    print("Aborting...")
+                    sys.exit(0)
+
+                new_project_name: str = questionary.text(
+                    "New name for your project:", multiline=False
+                ).unsafe_ask()
+
+                print(
+                    f"Renaming project '{old_project_name}' in '{new_project_name}'..."
+                )
+                commands.rename_project(old_project_name, new_project_name)
 
             case "log":
                 print("Loading project log...")

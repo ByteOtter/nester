@@ -97,3 +97,25 @@ Or it does not exist."""
         )
     else:
         utils.clean(project_name)
+
+
+def rename_project(old_project_name: str, new_project_name: str) -> None:
+    """
+    Rename a given project.
+
+    The project will be searched in the log and the log entry will get changed.
+
+    :param old_project_name: The project to rename.
+    :param new_project_name: The new name for the given project.
+    """
+    print("Checking log if project exists...")
+    if not nester_log.check_log_for_duplicate(old_project_name):
+        print(
+            f"""\033[31mError: Project '{old_project_name}' not found! Either the project was created with logging disabled.
+    Or it does not exist."""
+        )
+    else:
+        print("Renaming project directory...")
+        utils.rename_project_directory(old_project_name, new_project_name)
+        print("Renaming log entry...")
+        nester_log.rename_log_entry(old_project_name, new_project_name)

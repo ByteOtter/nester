@@ -21,6 +21,11 @@ def fake_project_name():
 
 
 @pytest.fixture
+def fake_new_project_name():
+    return "new_test_project"
+
+
+@pytest.fixture
 def valid_structure():
     structure = {"src": {"test_project": {"__init__.py": "test"}}}
     return structure

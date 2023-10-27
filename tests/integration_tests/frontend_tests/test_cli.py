@@ -103,6 +103,22 @@ def test_log(runner, fake_language, fake_project_name):
     assert result.exit_code == 0
 
 
+def test_rename_command(runner, fake_project_name, fake_new_project_name):
+    # Arrange
+    args = [fake_project_name, fake_new_project_name]
+    runner.invoke(commands.create, ["py", fake_project_name])
+
+    # Act
+    result = runner.invoke(commands.rename, args)
+
+    # Assert
+    assert f"Successfully renamed the project tree." in result.output
+    assert f"Successfully renamed the log entry." in result.output
+    assert result.exit_code == 0
+
+    utils.clean(fake_new_project_name)
+
+
 def test_clean_with_unknown_project(runner):
     # Arrange
     project_name = "no_project"

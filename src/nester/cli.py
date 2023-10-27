@@ -104,6 +104,19 @@ def log(clean: bool) -> None:
 
 
 @click.command()
+@click.argument("old_project_name", type=click.STRING, required=1)
+@click.argument("new_project_name", type=click.STRING, required=1)
+def rename(old_project_name: str, new_project_name: str):
+    """
+    Rename a given project.
+    """
+    click.echo(
+        "Starting Nester.\nCopyright (c) 2023 ByteOtter.(github.com/ByteOtter)\nLicensed under the terms of GPL-3.0. Check github.com/ByteOtter/nester/LICENSE for more information.\nNo warranty or liability are included with the use of this software.\n"
+    )
+    commands.rename_project(old_project_name, new_project_name)
+
+
+@click.command()
 def version() -> None:
     """
     Print Nester version
@@ -119,4 +132,5 @@ cli.add_command(create)
 cli.add_command(validate)
 cli.add_command(clean)
 cli.add_command(log)
+cli.add_command(rename)
 cli.add_command(version)

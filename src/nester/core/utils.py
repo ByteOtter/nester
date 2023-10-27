@@ -3,6 +3,7 @@ This module provides all functions necessary for Nester's three main utilities:
 
 - create
 - validate
+- rename
 - clean
 """
 
@@ -181,3 +182,33 @@ def initialize_git_repository(project_dir: Path) -> None:
     os.system("git init")
     # return to previous directory
     os.chdir(current_dir)
+
+
+def rename_project_directory(old_project_name: str, new_project_name: str) -> None:
+    """
+    Find and rename a project directory including all of the files that may have the project name as their own.
+
+    :param old_project_dir: The project to be renamed.
+    :param new_project_dir: The new name of the project.
+    :return: None
+    """
+    current_dir: Path = Path.cwd()
+    project_dir: Path = get_project_dir(old_project_name, False)
+    os.chdir(project_dir)
+
+    # Rename the project directory
+    print("Renaming project directory...")
+    new_project_dir: Path = project_dir.parent / new_project_name
+    project_dir.rename(new_project_dir)
+
+    # Rename all files in the project directory
+    for filepath in project_dir.glob("**/*"):
+        if old_project_name in filepath.name:
+            filepath.rename(
+                filepath.with_name(
+                    filepath.name.replace(old_project_name, new_project_name)
+                )
+            )
+
+    os.chdir(current_dir)
+    print("\033[32mSuccessfully renamed the project tree.\033[0m")
