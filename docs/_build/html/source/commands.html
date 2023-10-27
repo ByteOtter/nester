@@ -55,6 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#nester.core.commands.clean_project"><code class="docutils literal notranslate"><span class="pre">clean_project()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.core.commands.create_project"><code class="docutils literal notranslate"><span class="pre">create_project()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.core.commands.print_log"><code class="docutils literal notranslate"><span class="pre">print_log()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.commands.rename_project"><code class="docutils literal notranslate"><span class="pre">rename_project()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.core.commands.validate_project"><code class="docutils literal notranslate"><span class="pre">validate_project()</span></code></a></li>
 </ul>
 </li>
@@ -126,6 +127,21 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>clean_log</strong> – Whether or not to sanitize the log and remove orphaned entries.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nester.core.commands.rename_project">
+<span class="sig-prename descclassname"><span class="pre">nester.core.commands.</span></span><span class="sig-name descname"><span class="pre">rename_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.core.commands.rename_project" title="Permalink to this definition"></a></dt>
+<dd><p>Rename a given project.</p>
+<p>The project will be searched in the log and the log entry will get changed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>old_project_name</strong> – The project to rename.</p></li>
+<li><p><strong>new_project_name</strong> – The new name for the given project.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

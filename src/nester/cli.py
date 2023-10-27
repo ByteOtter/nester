@@ -106,7 +106,6 @@ def log(clean: bool) -> None:
 @click.command()
 @click.argument("old_project_name", type=click.STRING, required=1)
 @click.argument("new_project_name", type=click.STRING, required=1)
-@click.confirmation_option(prompt="Are you sure you want to rename this project?")
 def rename(old_project_name: str, new_project_name: str):
     """
     Rename a given project.

@@ -3,6 +3,7 @@ This module provides all functions necessary for Nester's three main utilities:
 
 - create
 - validate
+- rename
 - clean
 """
 
@@ -210,3 +211,4 @@ def rename_project_directory(old_project_name: str, new_project_name: str) -> No
             )
 
     os.chdir(current_dir)
+    print("\033[32mSuccessfully renamed the project tree.\033[0m")

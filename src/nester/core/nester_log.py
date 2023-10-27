@@ -159,6 +159,7 @@ def rename_log_entry(old_project_name: str, new_project_name: str) -> None:
             print(f"\033[31mError while renaming entry: {exception}\033[0m")
     else:
         print(f"\033[34mNo log entry found for '{old_project_name}'\033[0m")
+    print("\033[32mSuccessfully renamed the log entry.\033[0m")
 
 
 def clean_orphaned_entries() -> None:

@@ -38,8 +38,16 @@ def test_validate_structure(tmp_path, valid_structure, invalid_structure):
     )
 
 
-def test_cleanup(fake_project_name):
+def test_rename_structure(fake_project_name, fake_new_project_name):
     project_dir = utils.get_project_dir(fake_project_name, False)
-    utils.clean(fake_project_name)
+    utils.rename_project_directory(fake_project_name, fake_new_project_name)
+    new_project_dir = utils.get_project_dir(fake_new_project_name, False)
+    assert Path.exists(new_project_dir)
+    assert not Path.exists(project_dir)
+
+
+def test_cleanup(fake_new_project_name):
+    project_dir = utils.get_project_dir(fake_new_project_name, False)
+    utils.clean(fake_new_project_name)
 
     assert not Path.exists(project_dir)

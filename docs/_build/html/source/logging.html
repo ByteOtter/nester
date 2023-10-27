@@ -62,6 +62,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.find_all_projects"><code class="docutils literal notranslate"><span class="pre">find_all_projects()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.print_log_to_table"><code class="docutils literal notranslate"><span class="pre">print_log_to_table()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.remove_log_entry"><code class="docutils literal notranslate"><span class="pre">remove_log_entry()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nester.core.nester_log.rename_log_entry"><code class="docutils literal notranslate"><span class="pre">rename_log_entry()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">   The `commands` module</a></li>
@@ -196,6 +197,23 @@ If not remove the entry.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>project_name</strong> (<em>str</em>) – The name of the project to be removed.</p></li>
 <li><p><strong>verbose</strong> (<em>bool</em>) – Flag whether or not to suppress print statements. Needed for clean function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nester.core.nester_log.rename_log_entry">
+<span class="sig-prename descclassname"><span class="pre">nester.core.nester_log.</span></span><span class="sig-name descname"><span class="pre">rename_log_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nester.core.nester_log.rename_log_entry" title="Permalink to this definition"></a></dt>
+<dd><p>Rename an entry in the logfile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>old_project_name</strong> – The entry to rename.</p></li>
+<li><p><strong>new_project_name</strong> – The new name of the project to inject.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
