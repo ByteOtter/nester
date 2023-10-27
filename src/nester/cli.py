@@ -104,6 +104,9 @@ def log(clean: bool) -> None:
 
 
 @click.command()
+@click.argument("old_project_name", type=click.STRING, required=1)
+@click.argument("new_project_name", type=click.STRING, required=1)
+@click.confirmation_option(prompt="Are you sure you want to rename this project?")
 def rename(old_project_name: str, new_project_name: str):
     """
     Rename a given project.
@@ -130,4 +133,5 @@ cli.add_command(create)
 cli.add_command(validate)
 cli.add_command(clean)
 cli.add_command(log)
+cli.add_command(rename)
 cli.add_command(version)

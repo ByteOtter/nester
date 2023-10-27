@@ -146,7 +146,8 @@ def rename_log_entry(old_project_name: str, new_project_name: str) -> None:
     for line in log:
         if old_project_name in line:
             entry_found = True
-            line.replace(old_project_name, new_project_name)
+            line = line.replace(old_project_name, new_project_name)
+            updated_lines.append(line)
         else:
             updated_lines.append(line)
 
