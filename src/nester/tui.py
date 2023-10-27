@@ -118,7 +118,7 @@ def interactive_mode() -> None:
                     sys.exit(0)
 
                 old_project_name: str = questionary.select(
-                    "What projet do you want to remove?",
+                    "What project do you want to rename?",
                     choices=choices,
                 ).unsafe_ask()
 

@@ -82,6 +82,20 @@ Nester clean
   :return: None
   :rtype: None
 
+Nester rename
+~~~~~~~~~~~~~
+
+.. function:: nester rename(old_project_name, new_project_name)
+
+  Renames a given project. **The project must be logged to be renamed.**
+
+  :param old_project_name: The current name of the project to rename.
+  :type old_project_name: str
+  :param new_project_name: The new name of the project.
+  :type new_project_name: str
+  :return: None
+  :rtype: None
+
 Interactive Mode
 ----------------
 
