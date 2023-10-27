@@ -4,6 +4,7 @@ This module handles Nester's logging functionality. Nester logs all projects cre
 
 import logging
 import re
+import sys
 from pathlib import Path
 from typing import List
 
@@ -133,7 +134,7 @@ def rename_log_entry(old_project_name: str, new_project_name: str) -> None:
             log: List[str] = log_file.readlines()
     except FileNotFoundError:
         print("\033[33mNo log file found! Aborting!")
-        quit(1)
+        sys.exit(1)
 
     entry_found: bool = False
     updated_lines: List[str] = []

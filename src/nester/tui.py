@@ -13,6 +13,7 @@ import questionary
 from .core import commands, nester_log, utils
 
 
+# pylint: disable=too-many-branches, use-implicit-booleaness-not-comparison, too-many-statements
 def interactive_mode() -> None:
     """
     Nester's interactive mode.
