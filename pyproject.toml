@@ -12,7 +12,10 @@ dynamic = [
   "keywords",
   "license",
   "classifiers",
-  "version"
+  "version",
+  "readme",
+  "dependencies",
+  "optional-dependencies"
 ]
 
 [project.scripts]
