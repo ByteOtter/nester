@@ -1,0 +1,11 @@
+main_workflow:
+  steps:
+    - trigger_services:
+        project: home:ByteOtter
+        package: nester
+    - rebuild_package:
+        project: home:ByteOtter
+        package: nester
+  filters:
+    event: tag_push
+    tag: 'v*'
